@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycom.project.review.dao.ReviewDao">
+    <insert id="reviewRegister" parameterType="com.mycom.project.review.dto.ReviewDto">
+    	insert into review( review_id, user_seq, stars, content, reg_dt )
+    		values ( #{reviewId}, #{userSeq}, #{stars}, #{content}, now() )
+    </insert>
+</mapper>

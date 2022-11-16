@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Untree.co" />
+    <link rel="shortcut icon" href="favicon.png" />
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap5" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/fonts/icomoon/style.css" />
+    <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css" />
+
+    <link rel="stylesheet" href="/css/tiny-slider.css" />
+    <link rel="stylesheet" href="/css/aos.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+    
+	<!-- JavaScript -->
+	<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+	<!-- CKEditor -->
+	<script src="https://cdn.ckeditor.com/ckeditor5/35.2.1/classic/ckeditor.js"></script>
+	<!-- CSS -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+	<!-- Default theme -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+	<!-- Semantic UI theme -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+	<!-- Bootstrap theme -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+    <style>
+    	.ck-content {
+    		height: 400px;
+    	}
+    	#btnBoardUpdateForm, #btnBoardDeleteConfirm {
+    		background-color: #005555;
+    		color: white;
+    	}
+    	#inputSearchWord {
+    		float: left;
+    		width: 90%;
+    	}
+    	#btnInsertPage, #btnBoardInsert {
+    		width: 90px;
+    		height: 52px;
+    	}
+    	#btnSearchWord {
+    		width: 90px;
+    		height: 52px;
+    		float: left;
+    	}
+    	#btnInsertPage:hover, #btnInsertPage:active, #btnInsertPage:disabled, #btnInsertPage:enabled, #btnInsertPage:visited {
+    		background-color: #005555;
+    	}
+    	#btnSearchWord:hover, #btnSearchWord:active, #btnSearchWord:disabled, #btnSearchWord:enabled, #btnSearchWord:visited {
+    		background-color: #005555;
+    	}
+    	#btnBoardInsert:hover, #btnBoardInsert:active, #btnBoardInsert:disabled, #btnBoardInsert:enabled, #btnBoardInsert:visited {
+    		background-color: #005555;
+    	}
+    	.page-link {
+		  color: #005555; 
+		  background-color: #fff;
+		  border-color: #fff;
+		}
+		
+		.page-item.active .page-link {
+		 z-index: 1;
+		 color: #fff;
+		 font-weight:bold;
+		 background-color: #005555; 
+		  border-color: #005555; 
+		 
+		}
+		
+		.page-link:focus, .page-link:hover {
+		  color: #fff;
+		  background-color: #005555; 
+		  border-color: #005555; 
+		}
+    </style>
+    <title>Property &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
+  </head>
+  <body>
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close">
+          <span class="icofont-close js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <nav class="site-nav">
+      <div class="container">
+        <div class="menu-bg-wrap">
+          <div class="site-navigation">
+            <a href="/main" class="logo m-0 float-start"><img id="logo" src="/images/logo.png" style="width: 100px"></a>
+            <div id="header" style="display: inline-block; padding-top: 13px; padding-left: 10px; color: #fff;">Hello,</div>
+            <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
+              <li class="active"><a href="/mypage">MyPage</a></li>
+              <li class="active"><a href="/logout">Logout</a></li>
+              <li class="active"><a href="/notice">Notice</a></li>
+            </ul>
+
+            <a
+              href="#"
+              class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none"
+              data-toggle="collapse"
+              data-target="#main-navbar"
+            >
+              <span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="hero page-inner overlay" style="background-image: url('/images/hero_bg_3.jpg'); height: 150px">
+      <div class="container">
+        <div class="row justify-content-center align-items-center" id="searchDiv">
+          <div class="col-lg-9 text-center" style="margin-bottom: 250px">
+            <h1 class="heading" data-aos="fade-up">Notice</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 50px;">
+    	  <div class="container">
+	    	  <input type="text" class="form-control" id="inputSearchWord" placeholder="Search"/>
+	          <button class="btn btn-success" type="button" id="btnSearchWord">Search</button>   
+    	  </div>
+	      <table class="table table-hover">
+	        <thead>
+	            <tr>
+	                <th scope="col">#</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Views</th>
+	            </tr>
+	        </thead>
+	       	<tbody id="boardTbody"></tbody>
+	      </table>
+      <div id="paginationWrapper"></div>
+      
+      <button class="btn btn-success" type="button" id="btnInsertPage">Register</button>
+    </div><br><br><br>
+    
+    <!-- Modal Insert-->
+    <div class="modal fade" id="boardInsertModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Notice</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">            
+            <div class="mb-3">
+                <label for="titleInsert" class="form-label">Title</label>
+                <input type="text" class="form-control" id="titleInsert">
+              </div>
+              <div class="mb-3">
+                <label for="contentInsert" class="form-label">Content</label>
+                <!-- CKEditor insert -->
+                <div id="divEditorInsert"></div>
+              </div>
+              <div class="mb-3">
+                <div class="form-check" style="display: none">
+				  <input class="form-check-input" type="checkbox" value="" id="chkFileUploadInsert">
+				  <label class="form-check-label" for="chkFileUploadInsert">File Add</label>
+				</div>
+              </div>
+              <div class="mb-3" id="imgFileUploadInsertWrapper">
+                <input type="file" id="inputFileUploadInsert" multiple>
+                <div id="imgFileUploadInsertThumbnail" class="thumbnail-wrapper"></div>
+              </div>
+              <button id="btnBoardInsert" type="button" class="btn btn-sm btn-primary float-end" data-bs-dismiss="modal" >Register</button>
+        </div>            
+      </div>
+    </div>
+  </div>
+
+    <!-- Modal Detail-->
+    <div class="modal fade" id="boardDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	    <div class="modal-dialog modal-lg">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <h5 class="modal-title" id="exampleModalLabel">Notice Detail</h5>
+	          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	        </div>
+	        <div class="modal-body">            
+	      <table class="table table-hover">
+	            	<tbody>
+	            		<tr><td>No</td><td id="boardIdDetail">#</td></tr>
+	            		<tr><td>Title</td><td id="titleDetail">#</td></tr>
+	            		<tr><td>Content</td><td id="contentDetail">#</td></tr>
+	            		<tr><td>Owner</td><td id="userNameDetail">#</td></tr>
+	            		<tr><td>Date</td><td id="regDtDetail">#</td></tr>
+	            		<tr><td>Views</td><td id="readCountDetail">#</td></tr> 
+	            		
+	            		<!-- 첨부 파일 -->
+	            		<tr><td colspan="2">Files</td></tr>                   
+	            		<tr><td colspan="2" id=fileListDetail>#</td></tr>                   
+	            	</tbody>
+	        	</table>
+	        	
+	        	<button id="btnBoardUpdateForm" type="button" class="btn btn-sm btn-primary" data-bs-dismiss="modal">Modify</button>
+	        	<button id="btnBoardDeleteConfirm" type="button" class="btn btn-sm btn-warning" data-bs-dismiss="modal">Delete</button>
+	        </div>
+	
+	      </div>
+	    </div>
+	  </div>
+    
+    <!-- Modal Update-->
+    <div class="modal fade" id="boardUpdateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	    <div class="modal-dialog modal-lg">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <h5 class="modal-title" id="exampleModalLabel">Notice Modify</h5>
+	          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	        </div>
+	        <div class="modal-body">            
+	            <div class="mb-3">
+	                <label for="titleUpdate" class="form-label">Title</label>
+	                <input type="text" class="form-control" id="titleUpdate">
+	              </div>
+	              <div class="mb-3">
+	                <label for="contentUpdate" class="form-label">Content</label>
+	                <!-- CKEditor update -->
+	                <div id="divEditorUpdate"></div>
+	              </div>
+	              <div class="mb-3">
+	                <div class="form-check" style="display: none">
+					  <input class="form-check-input" type="checkbox" value="" id="chkFileUploadUpdate">
+					  <label class="form-check-label" for="chkFileUploadUpdate">File Upload</label>
+					</div>
+	              </div>
+	              <div class="mb-3" id="imgFileUploadUpdateWrapper">
+	                <input type="file" id="inputFileUploadUpdate" multiple>
+	                <div id="imgFileUploadUpdateThumbnail" class="thumbnail-wrapper"></div>
+	              </div>
+	              <button id="btnBoardUpdate" type="button" class="btn btn-sm btn-primary float-end" data-bs-dismiss="modal">Modify</button>
+	        </div>            
+	      </div>
+	    </div>
+	</div>  
+  
+    
+    <div class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="widget">
+              <h3>Contact</h3>
+              <address>부산광역시 강서구 녹산산업중로 333</address>
+              <ul class="list-unstyled links">
+                <li><a href="tel://11234567890">+82(010)-5448-2069</a></li>
+                <li>
+                  <a href="mailto:indl1670@gmail.com">indl1670@gmail.com</a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.widget -->
+          </div>
+        <div class="row mt-5">
+          <div class="col-12 text-center">
+            <p>
+              Copyright &copy;
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              . All Rights Reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- /.container -->
+    </div>
+    <!-- /.site-footer -->
+	</div>
+    <!-- Preloader -->
+    <div id="overlayer"></div>
+    <div class="loader">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/tiny-slider.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/navbar.js"></script>
+    <script src="/js/counter.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/js/util.js"></script>
+
+    <script>
+	
+		var OFFSET = 0;
+		var SEARCH_WORD = '';
+		
+		// pagination
+		var LIST_ROW_COUNT = 10; // limit
+		var PAGE_LINK_COUNT = 10; // pagination link 갯수    	
+		var CURRENT_PAGE_INDEX = 1;
+		var TOTAL_LIST_ITEM_COUNT = 0; // 총 건수
+		
+		const SUCCESS = 1; // response 성공
+		
+		/*
+		CKEditor 전역변수
+		*/
+		var CKEditorInsert;
+		var CKEditorUpdate;
+		
+		window.onload = function(){
+			let user = window.sessionStorage.getItem("userDto");
+			let userJson = JSON.parse(user);
+			let userNm = userJson.userName;
+			document.querySelector("#header").innerText += " " + userNm;
+			
+			initCKEditor(); // CKEditor 초기화
+			
+			boardList();
+			
+			document.querySelector("#btnSearchWord").onclick = function(){
+				SEARCH_WORD = document.querySelector("#inputSearchWord").value;
+				// 초기화
+				OFFSET = 0;
+				CURRENT_PAGE_INDEX = 1;
+				
+				boardList();
+			}
+			
+			
+			// insert page
+			// javascript 로 bootstrap modal 제어
+			document.querySelector("#btnInsertPage").onclick = function(){
+				
+				document.querySelector("#titleInsert").value = "";
+				CKEditorInsert.setData("");
+				
+				// 파일 업로드 관련 ui 초기화
+				document.querySelector("#chkFileUploadInsert").checked = false;
+				document.querySelector("#inputFileUploadInsert").value = "";
+				document.querySelector("#imgFileUploadInsertThumbnail").innerHTML = "";
+				document.querySelector("#imgFileUploadInsertWrapper").style.display = "";
+				
+				let modal = new bootstrap.Modal(
+						document.querySelector("#boardInsertModal")
+				);
+				
+				modal.show();
+			}
+			
+			// insert
+			document.querySelector("#btnBoardInsert").onclick = function(){
+				if( validateInsert() ){
+					boardInsert();
+				}else{
+					alertify.error("Error! Check Your Input.")
+				}
+			}
+			
+			// update
+			document.querySelector("#btnBoardUpdateForm").onclick = function(){
+			// detail => update 글 상세 내용을 복사 ( key 인 boardId 를 복사 포함)
+			// detail modal 닫고 update modal 을 띄운다.
+			let boardId = document.querySelector("#boardDetailModal").getAttribute("data-boardId");
+			document.querySelector("#boardUpdateModal").setAttribute("data-boardId", boardId);
+			document.querySelector("#titleUpdate").value = document.querySelector("#titleDetail").innerHTML;
+			CKEditorUpdate.setData(document.querySelector("#contentDetail").innerHTML);
+			
+			
+			
+			let modalDetail = new bootstrap.Modal(
+								document.querySelector("#boardDetailModal")
+						);
+						console.dir( modalDetail );
+						
+			modalDetail.hide();
+			
+			// 파일 업로드 관련 ui 초기화
+			document.querySelector("#chkFileUploadUpdate").checked = false;
+			document.querySelector("#inputFileUploadUpdate").value = "";
+			document.querySelector("#imgFileUploadUpdateThumbnail").innerHTML = "";
+			document.querySelector("#imgFileUploadUpdateWrapper").style.display = "";
+			
+				let modalUpdate = new bootstrap.Modal(
+						document.querySelector("#boardUpdateModal")
+				);
+				
+				modalUpdate.show();
+			}
+			
+			document.querySelector("#btnBoardUpdate").onclick = function(){
+				if( validateUpdate() ){
+					boardUpdate();
+				}else{
+					alertify.error("Error! Check Your Input.")
+				}
+			}
+			
+			// delete
+			document.querySelector("#btnBoardDeleteConfirm").onclick = function(){
+				alertify.confirm("Confirm", "Delete?", 
+						function(){
+							boardDelete();
+						}, 
+						function(){
+							console.log('user cancel');
+						});
+			}
+			
+			// logout
+			document.querySelector("#btnLogout").onclick = function(){
+				logout();
+			}
+	      	
+			// 파일업로드 CheckBox
+			document.querySelector("#chkFileUploadInsert").onchange = function() {
+				if (this.checked) {
+					document.querySelector("#imgFileUploadInsertWrapper").style.display = "";
+				} else {
+					document.querySelector("#inputFileUploadInsert").value = "";
+					document.querySelector("#imgFileUploadInsertThumbnail").innerHTML = "";
+					document.querySelector("#imgFileUploadInsertWrapper").style.display = "";
+				}
+			}
+			
+			document.querySelector("#chkFileUploadUpdate").onchange = function() {
+				if (this.checked) {
+					document.querySelector("#imgFileUploadUpdateWrapper").style.display = "";
+				} else {
+					document.querySelector("#inputFileUploadUpdate").value = "";
+					document.querySelector("#imgFileUploadUpdateThumbnail").innerHTML = "";
+					document.querySelector("#imgFileUploadUpdateWrapper").style.display = "";
+				}
+			}
+			
+			// thumbnail image 처리
+			document.querySelector("#inputFileUploadInsert").onchange = function() {
+				const fileArray = Array.from(this.files); // 첨부파일 여러개가 javaScript 객체의 배열로 변환
+				fileArray.forEach(file => {
+					let reader = new FileReader();
+					reader.readAsDataURL(file); // 파일을 읽어들인다.
+					reader.onload = function(e) { // 파일을 다 읽으면
+						let thumbnailHTML = `<img src = "${e.target.result}">`;
+						document.querySelector("#imgFileUploadInsertThumbnail").insertAdjacentHTML("beforeend", thumbnailHTML);
+					}
+				});
+			}
+			
+			document.querySelector("#inputFileUploadUpdate").onchange = function() {
+				const fileArray = Array.from(this.files); // 첨부파일 여러개가 javaScript 객체의 배열로 변환
+				fileArray.forEach(file => {
+					let reader = new FileReader();
+					reader.readAsDataURL(file); // 파일을 읽어들인다.
+					reader.onload = function(e) { // 파일을 다 읽으면
+						let thumbnailHTML = `<img src = "${e.target.result}">`;
+						document.querySelector("#imgFileUploadUpdateThumbnail").insertAdjacentHTML("beforeend", thumbnailHTML);
+					}
+				})
+			}
+		}
+		
+		// CKEditor 초기화
+		async function initCKEditor() {
+			try {
+				CKEditorInsert = await ClassicEditor.create(document.querySelector( '#divEditorInsert' ));
+				CKEditorUpdate = await ClassicEditor.create(document.querySelector( '#divEditorUpdate' ));
+				
+			} catch (error) {
+				console.error(error);
+			}
+		}
+		// GET
+		async function boardList(){
+			let url = '/boards';
+			let urlParams = '?limit=' + LIST_ROW_COUNT + '&offset=' + OFFSET + '&searchWord=' + SEARCH_WORD;
+			//let urlParams = `?limit=${LIST_ROW_COUNT}&offset=${OFFSET}`; // jsp el 표기법과 javascript es6 literal template 과 충돌
+			let fetchOptions = {
+				method: 'GET',
+				headers: {
+					'async' : 'true'
+				}
+			}
+			
+			try{
+				let response = await fetch( url + urlParams, fetchOptions);
+				let data = await response.json();
+				console.log( data );
+				
+				if (data.result == "login") {
+					window.location.href="/login";
+				} else if (data.result == SUCCESS) {
+					makeListHtml(data.list);
+					// 총 건수를 이미 가져왔으므로 바로 처리
+	    			TOTAL_LIST_ITEM_COUNT = data.count;
+	    			makePaginationHtml( LIST_ROW_COUNT, PAGE_LINK_COUNT, CURRENT_PAGE_INDEX, TOTAL_LIST_ITEM_COUNT, "paginationWrapper" );
+				}
+				
+				
+			}catch( error ){
+				console.log(error);
+				alertify.error('Error for Notice Detail')
+			}
+		}
+		
+		// javascript array 를 이용해서 테이블 <tr> 을 반복적으로 만들어서 목록을 완성
+		function makeListHtml( list ){
+			let listHtml = ``;
+			
+			list.forEach( el => {
+				let boardId = el.boardId;
+				let userName = el.userName;
+				let title = el.title;
+				let regDt = el.regDt;
+				let regDtStr = makeDateStr( regDt.date.year, regDt.date.month, regDt.date.day, '/');
+				let readCount = el.readCount;
+				
+				listHtml +=
+					`<tr style="cursor:pointer" data-boardId=${boardId}><td>${boardId}</td><td>${userName}</td><td>${title}</td><td>${regDtStr}</td><td>${readCount}</td></tr>`;
+			});
+			
+			document.querySelector("#boardTbody").innerHTML = listHtml;
+			
+			makeListHtmlEventHandler();
+			
+			// boardListTotalCnt(); - 이미 boardList()에서 가져옴
+		}
+		
+		function makeListHtmlEventHandler(){
+			document.querySelectorAll("#boardTbody tr").forEach( el => {
+				el.onclick = function(){
+					let boardId = this.getAttribute("data-boardId");
+					boardDetail(boardId);
+				}
+			})
+		}
+		
+		function movePage(pageIndex){
+			OFFSET = (pageIndex - 1) * LIST_ROW_COUNT;
+			CURRENT_PAGE_INDEX = pageIndex;
+			boardList();
+		}
+		
+		
+		// GET
+		async function boardDetail(boardId){
+			let url = '/boards/' + boardId; // path variable
+	
+	 		let fetchOptions = {
+	 			method: 'GET',
+				headers: {
+					'async' : 'true'
+				}
+	 		}
+	 		
+	 		try{
+	 			let response = await fetch( url, fetchOptions);
+	 			let data = await response.json();
+	 			console.log( data );
+	 			if (data.result == "login") {
+					window.location.href="/login";
+				} else if (data.result == SUCCESS) {
+	 				console.log(data.dto);
+	 				makeDetailHtml( data.dto );
+	 			} else {
+	 				alertify.error('Error for Notice Detail');
+	 			}
+	 		}catch( error ){
+	 			console.log(error);
+	 			alertify.error('Error for Notice Detail')
+	 		}
+	 	}
+	 	
+	 	function makeDetailHtml( detail ){
+			let boardId = detail.boardId;
+			let userName = detail.userName;
+			let title = detail.title;
+			let content = detail.content;
+			let regDt = detail.regDt;
+			let regDtStr = 
+				makeDateStr( regDt.date.year, regDt.date.month, regDt.date.day, '/') + ' ' +
+				makeTimeStr( regDt.time.hour, regDt.time.minute, regDt.time.second, ':');
+			let readCount = detail.readCount;
+			let sameUser = detail.sameUser;
+			
+			// 첨부파일
+			let fileList = detail.fileList;
+			
+			// 화면 구성
+			document.querySelector("#boardDetailModal").setAttribute("data-boardId", boardId );
+	 		document.querySelector("#boardIdDetail").innerHTML = boardId;
+	 		document.querySelector("#titleDetail").innerHTML = title;
+	 		document.querySelector("#contentDetail").innerHTML = content;
+	 		document.querySelector("#userNameDetail").innerHTML = userName;
+	 		document.querySelector("#regDtDetail").innerHTML = regDtStr;
+	 		document.querySelector("#readCountDetail").innerHTML = readCount;
+	 		
+	 		// 첨부파일 화면 구성
+	 		let fileListDetailHtml = ``;
+	 		if (fileList.length > 0) { // 첨부 파일이 있으면
+	 			fileList.forEach(el => {
+	 				let fileId = el.fileId;
+	 				let fileName = el.fileName;
+	 				let fileUrl = el.fileUrl;
+	 				
+	 				fileListDetailHtml += 
+	 					`
+	 					<div>
+	 						<span class="fileName">${fileName}</span>
+	 						&nbsp;&nbsp;
+	 						<a type="button" 
+	 						   class="btn btn-outline btn-default btn-xs" 
+	 						   data-fileId="${fileId}"
+	 						   href="${fileUrl}"
+	 						   download="${fileName}"
+	 						>Download</a>
+	 					</div>
+	 					`
+	 			});
+	 		}
+	 		
+	 		document.querySelector("#fileListDetail").innerHTML = fileListDetailHtml;
+	 		
+	 		if( sameUser ){
+	 			document.querySelector("#btnBoardUpdateForm").style.display = "inline-block";
+	 			document.querySelector("#btnBoardDeleteConfirm").style.display = "inline-block";
+	 		}else{
+	 			document.querySelector("#btnBoardUpdateForm").style.display = "none";
+	 			document.querySelector("#btnBoardDeleteConfirm").style.display = "none";
+	 		}
+	 		
+	 		let modal = new bootstrap.Modal(
+				document.querySelector("#boardDetailModal")
+			);
+			
+			modal.show();
+	 	}
+	 	
+	 	///////////////////////////////////
+	     function validateInsert(){
+	         // return true / false
+	         let isTitleInsertValid = false;
+	         let isContentInsertValid = false;
+	
+	         let titleInsertValue = document.querySelector("#titleInsert").value;
+	         if( titleInsertValue.length > 0 ){
+	         	isTitleInsertValid = true;
+	         }
+	
+	         let contentInsertValue = CKEditorInsert.getData();
+	         if( contentInsertValue.length > 0 ){
+	         	isContentInsertValid = true;
+	         }
+	
+	         if( isTitleInsertValid && isContentInsertValid ){
+	           return true;
+	         }
+	         return false;
+	       }
+	
+			async function boardInsert() {
+			// 기존의 x-www..  파라미터 처리 대신 multipart/form-data
+			let formData = new FormData();
+			formData.append("title", document.querySelector("#titleInsert").value);
+			formData.append("content", CKEditorInsert.getData());
+			
+			// file upload
+			let files = document.querySelector("#inputFileUploadInsert").files;
+			
+	// 		// #1
+	// 		for (let i = 0; i < files.length; i++) {
+	// 			formData.append("file", files[i]);
+	// 		}
+			
+			// #2
+			const fileArray = Array.from(files);
+			fileArray.forEach(file => formData.append("file", file));
+			
+			let url = "/boards";
+			
+			// fetch options
+			let fetchOptions = {
+			  method: "POST",
+			  body: formData,
+			  headers: {
+					'async' : 'true'
+			  }
+			}
+			
+			try{
+			    let response = await fetch( url, fetchOptions);
+			    let data = await response.json(); // json => javascript object <= JSON.parse()
+			    
+			    if (data.result == "login") {
+					window.location.href="/login";
+				} else if( data.result == SUCCESS){ // login.jsp => boardMain.jsp 로 페이지 이동 ( 새로운 페이지(html....) 요청)
+			      alertify.success('Success!');
+			      boardList();
+			    } else {
+			  	  alertify.error('Error for Notice Regist');
+			    }            	
+			}catch(error){
+				alertify.error('Error for Notice Regist');
+			}
+		}
+	    
+	    function validateUpdate(){
+	        // return true / false
+	        let isTitleUpdateValid = false;
+	        let isContentUpdateValid = false;
+	
+	        let titleUpdateValue = document.querySelector("#titleUpdate").value;
+	        if( titleUpdateValue.length > 0 ){
+	        	isTitleUpdateValid = true;
+	        }
+	
+	        let contentUpdateValue = CKEditorUpdate.getData();
+	        if( contentUpdateValue.length > 0 ){
+	        	isContentUpdateValid = true;
+	        }
+	
+	        if( isTitleUpdateValid && isContentUpdateValid ){
+	          return true;
+	        }
+	        return false;
+	    }
+	
+		async function boardUpdate() {
+			let boardId = document.querySelector("#boardUpdateModal").getAttribute("data-boardId");
+			
+			// 기존의 x-www..  파라미터 처리 대신 multipart/form-data
+			let formData = new FormData();
+			formData.append("boardId", boardId);
+			formData.append("title", document.querySelector("#titleUpdate").value);
+			formData.append("content", CKEditorUpdate.getData());
+			
+			// file upload
+			let files = document.querySelector("#inputFileUploadUpdate").files;
+
+			// #2
+			const fileArray = Array.from(files);
+			fileArray.forEach(file => formData.append("file", file));
+			
+			let url = "/boards/" + boardId;
+			
+			// fetch options
+			let fetchOptions = {
+			  method: "POST",
+			  body: formData,
+			  headers: {
+					'async' : 'true'
+			  }
+			}
+			
+			try{
+			    let response = await fetch( url, fetchOptions);
+			    let data = await response.json(); // json => javascript object <= JSON.parse()
+			    if (data.result == "login") {
+					window.location.href="/login";
+				} else if( data.result == SUCCESS){ // login.jsp => boardMain.jsp 로 페이지 이동 ( 새로운 페이지(html....) 요청)
+			      alertify.success('Success!');
+			      boardList();
+			    } else {
+			  	  alertify.error('Error for Notice Modify');
+			    }            	
+			}catch(error){
+				alertify.error('Error for Notice Modify');
+			}
+		}
+		
+	    async function boardDelete(){
+	    	let boardId = document.querySelector("#boardDetailModal").getAttribute("data-boardId");
+	
+	        let url = "/boards/" + boardId;
+	        let fetchOptions = {
+	                method: "DELETE",
+	    			headers: {
+	    				'async' : 'true'
+	    			}
+	              }
+	        try{
+	            let response = await fetch( url , fetchOptions); // default GET
+	            let data = await response.json(); // json => javascript object <= JSON.parse()
+	            if( data.result == SUCCESS){ // login.jsp => boardMain.jsp 로 페이지 이동 ( 새로운 페이지(html....) 요청)
+	              alertify.success('Success!');
+	              boardList();
+	            } else {
+	          	  alertify.error('Error for Notice Delete');
+	            }            	
+	        }catch(error){
+	        	alertify.error('Error for Notice Delete');
+	        }
+	
+	    }
+	    
+	    async function logout(){
+	    	// logout 요청 => 벡앤드에서는 session.invalidate(); result:success
+	    	// result 가 success => login 페이지 이동 (ajax X , window.location.href 로 이동)
+	    	let url = "/logout";
+	    	
+	    	try{
+	            let response = await fetch( url ); // default GET
+	            let data = await response.json(); // json => javascript object <= JSON.parse()
+	            if( data.result == "success"){ // login.jsp => boardMain.jsp 로 페이지 이동 ( 새로운 페이지(html....) 요청)
+	              window.location.href = "/logout";
+	            }else if( data.result == "fail"){
+	          	  alertify.error('Error for Login');
+	            }            	
+	        }catch(error){
+	        	alertify.error('Error for Login');
+	        }
+	    }
+	</script>
+    
+  </body>
+</html>

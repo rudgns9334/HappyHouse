@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycom.project.user.dao.UserDao">
+    
+        <insert id="userRegister" parameterType="com.mycom.project.user.dto.UserDto">
+    	insert into users( user_name, user_password, user_email, user_profile_image_url, user_register_date, user_state )
+    		values ( #{userName}, #{userPassword}, #{userEmail}, '', now(), #{userState} )
+    </insert>
+    
+    <update id="userModify" parameterType="com.mycom.project.user.dto.UserDto">
+    	update users
+    		set user_name = #{userName}, user_password = #{userPassword}
+    		where user_email = #{userEmail}
+    </update>
+    
+    <delete id="userWithdraw" parameterType="com.mycom.project.user.dto.UserDto">
+    	delete from users
+    		where user_email = #{userEmail} and user_password = #{userPassword} and user_name = #{userName}
+    </delete>
+    
+</mapper>
