@@ -7,9 +7,19 @@
           <card type="login" plain>
             <div slot="header" class="logo-container"></div>
 
-            <fg-input class="no-border" placeholder="Name" addon-left-icon="now-ui-icons users_circle-08"> </fg-input>
+            <fg-input
+              class="no-border"
+              placeholder="Name"
+              addon-left-icon="now-ui-icons users_circle-08"
+            >
+            </fg-input>
 
-            <fg-input class="no-border" placeholder="Email" addon-left-icon="now-ui-icons ui-1_email-85"> </fg-input>
+            <fg-input
+              class="no-border"
+              placeholder="Email"
+              addon-left-icon="now-ui-icons ui-1_email-85"
+            >
+            </fg-input>
             <fg-input
               type="password"
               class="no-border input-lg"
@@ -35,7 +45,7 @@
   </div>
 </template>
 <script>
-import {Card, Button, FormGroupInput} from "@/components";
+import { Card, Button, FormGroupInput } from "@/components";
 import MainFooter from "@/layout/MainFooter";
 export default {
   name: "login-page",

@@ -53,7 +53,7 @@ export default new Router({
     {
       path: "/register",
       name: "register",
-      components: {default: Register, header: MainNavbar},
+      components: {default: Register, header: MainNavbar, footer: MainFooter},
       props: {
         header: {colorOnScroll: 400},
       },

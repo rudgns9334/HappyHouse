@@ -8,7 +8,7 @@
     <li
       v-for="index in endPageIndex - startPageIndex + 1"
       :key="index"
-      v-bind:class="{ active: startPageIndex + index - 1 == $store.state.board.currentPageIndex }"
+      v-bind:class="{ active: startPageIndex + index - 1 == currentPageIndex }"
       class="page-item"
     >
       <a @click="paginationChanged(startPageIndex + index - 1)" class="page-link" href="#">{{
@@ -24,6 +24,9 @@
   </ul>
 </template>
 <script>
+import { mapState, mapGetters } from "vuex";
+
+const boardStore = "boardStore";
 export default {
   name: "n-pagination",
   props: {
@@ -36,23 +39,31 @@ export default {
     },
   },
   computed: {
+    ...mapState(boardStore, ["currentPageIndex"]),
+    ...mapGetters(boardStore, [
+      "getPageCount",
+      "getStartPageIndex",
+      "getEndPageIndex",
+      "getPrev",
+      "getNext",
+    ]),
     paginationClass() {
       return `pagination-${this.type}`;
     },
     pageCount: function () {
-      return this.$store.getters.getPageCount;
+      return this.getPageCount;
     },
     startPageIndex: function () {
-      return this.$store.getters.getStartPageIndex;
+      return this.getStartPageIndex;
     },
     endPageIndex: function () {
-      return this.$store.getters.getEndPageIndex;
+      return this.getEndPageIndex;
     },
     prev: function () {
-      return this.$store.getters.getPrev;
+      return this.getPrev;
     },
     next: function () {
-      return this.$store.getters.getNext;
+      return this.getNext;
     },
   },
   methods: {

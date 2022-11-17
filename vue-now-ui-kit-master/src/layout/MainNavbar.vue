@@ -21,26 +21,22 @@
       </el-popover>
       <div
         id="header"
-        v-show="$store.getters.isLogin"
+        v-show="isLogin"
         style="display: inline-block; padding-top: 13px; padding-left: 10px; color: #fff"
       >
-        Hello,{{ $store.getters.isUserName }}
+        Hello, {{ user.userName }}
       </div>
     </template>
     <template slot="navbar-menu">
-      <li class="nav-item">
+      <li class="nav-item" v-show="!isLogin">
         <router-link class="nav-link" to="/login">
           <p>Login</p>
         </router-link>
       </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          href="https://www.creative-tim.com/product/vue-now-ui-kit"
-          target="_blank"
-        >
+      <li class="nav-item" v-show="isLogin">
+        <router-link class="nav-link" to="/main">
           <p>Logout</p>
-        </a>
+        </router-link>
       </li>
       <li class="nav-item">
         <router-link class="nav-link" to="/register">
@@ -48,13 +44,9 @@
         </router-link>
       </li>
       <li class="nav-item">
-        <a
-          class="nav-link"
-          href="https://www.creative-tim.com/product/vue-now-ui-kit"
-          target="_blank"
-        >
+        <router-link class="nav-link" to="/profile">
           <p>MyPage</p>
-        </a>
+        </router-link>
       </li>
       <li class="nav-item">
         <router-link class="nav-link" to="/notice">
@@ -77,6 +69,10 @@
 <script>
 import { Navbar } from "@/components";
 import { Popover } from "element-ui";
+import { mapState } from "vuex";
+
+const userStore = "userStore";
+
 export default {
   name: "main-navbar",
   props: {
@@ -86,6 +82,9 @@ export default {
   components: {
     Navbar,
     [Popover.name]: Popover,
+  },
+  computed: {
+    ...mapState(userStore, ["isLogin", "user"]),
   },
 };
 </script>

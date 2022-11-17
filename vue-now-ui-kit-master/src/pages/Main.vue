@@ -14,6 +14,7 @@
     <apt-list></apt-list>
     <review-list></review-list>
     <img src="img/bg11.jpg" alt="" />
+
     <pre-loader></pre-loader>
   </div>
 </template>

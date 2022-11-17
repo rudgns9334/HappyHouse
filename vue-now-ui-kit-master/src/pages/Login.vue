@@ -11,7 +11,7 @@
               class="no-border input-lg"
               addon-left-icon="now-ui-icons ui-1_email-85"
               placeholder="Email"
-              v-model="$store.state.user.userEmail"
+              v-model="$store.state.userStore.user.userEmail"
             >
             </fg-input>
 
@@ -20,7 +20,7 @@
               class="no-border input-lg"
               addon-left-icon="now-ui-icons objects_key-25"
               placeholder="Password"
-              v-model="$store.state.user.userPassword"
+              v-model="$store.state.userStore.user.userPassword"
             >
             </fg-input>
 
@@ -59,6 +59,9 @@ import VueAlertify from "vue-alertify";
 Vue.use(VueAlertify);
 
 import http from "@/common/axios.js";
+import { mapMutations } from "vuex";
+
+const userStore = "userStore";
 
 export default {
   name: "login-page",
@@ -70,10 +73,11 @@ export default {
     [FormGroupInput.name]: FormGroupInput,
   },
   methods: {
+    ...mapMutations(userStore, ["SET_LOGIN"]),
     async login() {
       let loginObj = {
-        userEmail: this.$store.state.user.userEmail,
-        userPassword: this.$store.state.user.userPassword,
+        userEmail: this.$store.state.userStore.user.userEmail,
+        userPassword: this.$store.state.userStore.user.userPassword,
       };
       try {
         let { data } = await http.post("/login", loginObj);
@@ -87,7 +91,7 @@ export default {
               ...dto,
             },
           };
-          this.$store.commit("SET_LOGIN", payload);
+          this.SET_LOGIN(payload);
           this.$router.push("/main");
         }
       } catch (error) {

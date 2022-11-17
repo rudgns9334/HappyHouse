@@ -5,12 +5,7 @@
       <div v-else class="container">
         <slot></slot>
         <slot name="dismiss-icon">
-          <button
-            type="button"
-            class="close"
-            aria-label="Close"
-            @click="dismissAlert"
-          >
+          <button type="button" class="close" aria-label="Close" @click="dismissAlert">
             <span aria-hidden="true">
               <i class="now-ui-icons ui-1_simple-remove"></i>
             </span>
@@ -20,34 +15,35 @@
     </div>
   </fade-transition>
 </template>
+
 <script>
-import { FadeTransition } from 'vue2-transitions';
+import { FadeTransition } from "vue2-transitions";
 
 export default {
-  name: 'alert',
+  name: "alert",
   components: {
-    FadeTransition
+    FadeTransition,
   },
   props: {
     type: {
       type: String,
-      default: 'default',
-      description: 'Alert type'
+      default: "default",
+      description: "Alert type",
     },
     dismissible: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
-      visible: true
+      visible: true,
     };
   },
   methods: {
     dismissAlert() {
       this.visible = false;
-    }
-  }
+    },
+  },
 };
 </script>

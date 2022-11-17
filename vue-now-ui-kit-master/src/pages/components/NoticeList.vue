@@ -6,10 +6,15 @@
         class="form-control"
         id="inputSearchWord"
         placeholder="Search"
-        v-model="$store.state.board.searchWord"
-        @keydown.enter="boardList"
+        v-model="$store.state.boardStore.searchWord"
+        @keydown.enter="callBoardList"
       />
-      <button class="btn btn-round btn-success" type="button" id="btnSearchWord" @click="boardList">
+      <button
+        class="btn btn-round btn-success"
+        type="button"
+        id="btnSearchWord"
+        @click="callBoardList"
+      >
         Search
       </button>
     </div>
@@ -33,6 +38,11 @@
         </tr>
       </tbody>
     </table>
+    <div
+      style="height: 46px"
+      v-for="idx in 8 - $store.state.boardStore.countCurrentList"
+      :key="idx + 'blank'"
+    ></div>
     <div class="navbar-fixed-bottom">
       <n-pagination type="default" v-on:call-parent="movePage"> </n-pagination>
     </div>
@@ -42,6 +52,9 @@
 <script>
 import util from "@/common/util.js";
 import { Pagination } from "@/components";
+import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
+
+const boardStore = "boardStore";
 
 export default {
   components: {
@@ -49,13 +62,16 @@ export default {
   },
   name: "noticeList",
   computed: {
+    ...mapGetters(boardStore, ["getBoardList"]),
     listGetters() {
-      return this.$store.getters.getBoardList;
+      return this.getBoardList;
     },
   },
   methods: {
-    boardList() {
-      this.$store.dispatch("boardList", "001");
+    ...mapActions(boardStore, ["boardList"]),
+    ...mapMutations(boardStore, ["SET_BOARD_MOVE_PAGE"]),
+    callBoardList() {
+      this.boardList("001");
     },
     movePage(pageIndex) {
       console.log("BoardMainVue : movePage : pageIndex : " + pageIndex);
@@ -63,13 +79,13 @@ export default {
       // store commit 으로 변경
       // this.offset = (pageIndex - 1) * this.listRowCount;
       // this.currentPageIndex = pageIndex;
-      this.$store.commit("SET_BOARD_MOVE_PAGE", pageIndex);
+      this.SET_BOARD_MOVE_PAGE(pageIndex);
 
-      this.boardList();
+      this.callBoardList();
     },
   },
   created() {
-    this.boardList();
+    this.callBoardList();
   },
   filters: {
     makeDateStr: function (date, type) {
