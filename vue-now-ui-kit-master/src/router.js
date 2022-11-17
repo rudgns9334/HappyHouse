@@ -7,7 +7,7 @@ import Register from "./pages/Register.vue";
 import Profile from "./pages/Profile.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
-import Apt from "./pages/AptDetail.vue";
+import Apt from "./pages/AptMap.vue";
 import Notice from "./pages/Notice.vue";
 
 Vue.use(Router);
@@ -70,7 +70,7 @@ export default new Router({
     {
       path: "/apt",
       name: "apt",
-      components: {default: Apt, header: MainNavbar},
+      components: {default: Apt},
       props: {
         header: {colorOnScroll: 400},
       },

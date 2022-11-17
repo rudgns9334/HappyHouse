@@ -21,6 +21,9 @@ import router from './router';
 import store from './store/store.js';
 import NowUiKit from './plugins/now-ui-kit';
 
+import "@/api/fontAwesomeIcon.js"; // fontAwesomeIcon.js 불러옴
+import "@/api/vueBootstrap.js";
+
 Vue.config.productionTip = false;
 
 Vue.use(NowUiKit);

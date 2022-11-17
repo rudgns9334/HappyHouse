@@ -7,11 +7,11 @@
       <div class="container">
         <div class="content-center brand">
           <h1 class="heading" data-aos="fade-up">The Easiest Way To Find My Home</h1>
-          <search-bar></search-bar>
+          <!-- <search-bar></search-bar> -->
         </div>
       </div>
     </div>
-    <apt-list></apt-list>
+    <popular-apt></popular-apt>
     <review-list></review-list>
     <img src="img/bg11.jpg" alt="" />
 
@@ -20,8 +20,8 @@
 </template>
 <script>
 import { Parallax } from "@/components";
-import SearchBar from "./components/SearchBar.vue";
-import AptList from "./components/AptList.vue";
+// import SearchBar from "./components/SearchBar.vue";
+import PopularApt from "./components/PopularApt.vue";
 import ReviewList from "./components/ReviewList.vue";
 
 import custom from "@/common/custom.js";
@@ -34,8 +34,8 @@ export default {
   bodyClass: "index-page",
   components: {
     Parallax,
-    SearchBar,
-    AptList,
+    // SearchBar,
+    PopularApt,
     ReviewList,
     PreLoader,
     MobileMenu,

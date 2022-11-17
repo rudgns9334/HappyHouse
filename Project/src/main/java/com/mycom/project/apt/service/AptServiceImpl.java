@@ -2,6 +2,7 @@ package com.mycom.project.apt.service;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +12,18 @@ import com.mycom.project.apt.dto.AptInfoDto;
 import com.mycom.project.apt.dto.AptParamDto;
 import com.mycom.project.apt.dto.AptResultDto;
 import com.mycom.project.apt.dto.DongDto;
+import com.mycom.project.apt.dto.HouseInfoDto;
+import com.mycom.project.apt.dto.SidoGugunCodeDto;
+import com.mycom.project.apt.mapper.HouseMapMapper;
 
 @Service
 public class AptServiceImpl implements AptService{
 
 	@Autowired
 	AptDao dao;
+	
+	@Autowired
+	private SqlSession sqlSession;
 	
 	private final int SUCCESS = 1;
 	private final int FAIL = -1;
@@ -89,5 +96,4 @@ public class AptServiceImpl implements AptService{
 		}
 		return aptResultDto;
 	}
-
 }

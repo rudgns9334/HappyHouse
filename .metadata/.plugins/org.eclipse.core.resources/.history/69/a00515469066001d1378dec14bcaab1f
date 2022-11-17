@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycom.project.apt.mapper.HouseMapMapper">
+
+	<resultMap type="com.mycom.project.apt.dto.HouseInfoDto" id="dongNameList">
+		<result column="name" property="dongName"></result>
+	</resultMap>
+	<resultMap type="com.mycom.project.apt.dto.HouseInfoDto" id="aptList">
+		<result column="name" property="aptName"></result>
+		<result column="lat" property="lat"></result>
+		<result column="lng" property="lng"></result>
+		<result column="recentPrice" property="recentPrice"></result>
+	</resultMap>
+	<select id="getSido" resultType="com.mycom.project.apt.dto.SidoGugunCodeDto">
+		select left(sidoCode,2) sidoCode, sidoName
+		from sidocode
+		order by sidoCode
+	</select>
+	
+	<select id="getGugunInSido" parameterType="string" resultType="com.mycom.project.apt.dto.SidoGugunCodeDto">
+		select left(gugunCode,5) gugunCode, gugunName
+		from guguncode
+		where left(gugunCode,2) = #{sido}
+		order by gugunCode
+	</select>
+	
+	<select id="getDongInGugun" parameterType="string" resultMap="dongNameList">
+		select distinct name
+		from dong_code
+		where left(gugun_code, 5) = #{gugun}
+		order by name
+	</select>
+	
+	<select id="getAptInDong" parameterType="string" resultMap="aptList">
+		select h.no, h.aptName, d.code, h.dong, d.city_name, d.gugun_name, h.buildYear, h.jibun, h.lat, h.lng, h.img from houseinfo h left join dong_code d on left(h.dong,2) = left(d.name,2) where h.dong = "사직동"
+		order by aptName
+	</select>
+	
+</mapper>

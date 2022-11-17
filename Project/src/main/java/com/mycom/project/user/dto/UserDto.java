@@ -67,11 +67,7 @@ public class UserDto {
 		return userProfileImageUrl;
 	}
 	public void setUserProfileImageUrl(String userProfileImageUrl) {
-		if( userProfileImageUrl == null || "null".equals(userProfileImageUrl) || "".equals(userProfileImageUrl)) {
-			this.userProfileImageUrl = "/img/noProfile.png";
-		}else {
-			this.userProfileImageUrl = userProfileImageUrl;			
-		}
+		this.userProfileImageUrl = userProfileImageUrl;
 	}
 	public Date getUserRegisterDate() {
 		return userRegisterDate;
