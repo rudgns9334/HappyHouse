@@ -1619,3 +1619,197 @@ Caused by: java.io.IOException: ÇöÀç ¿¬°áÀº »ç¿ëÀÚÀÇ È£½ºÆ® ½Ã½ºÅÛÀÇ ¼ÒÇÁÆ®¿þ¾îÀ
  java.lang.Thread.run(Thread.java:750)
 2022-11-18 02:59:19.012  INFO 29404 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Shutdown initiated...
 2022-11-18 02:59:19.033  INFO 29404 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Shutdown completed.
+2022-11-18 09:10:43.125  INFO 20016 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 20016 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-18 09:10:43.126  INFO 20016 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-18 09:10:43.158  INFO 20016 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-11-18 09:10:43.158  INFO 20016 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-11-18 09:10:43.975  INFO 20016 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-18 09:10:43.982  INFO 20016 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-18 09:10:43.982  INFO 20016 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-18 09:10:44.039  INFO 20016 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-18 09:10:44.039  INFO 20016 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 881 ms
+2022-11-18 09:10:44.371  INFO 20016 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-18 09:10:44.604  INFO 20016 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-18 09:10:44.631  INFO 20016 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-18 09:10:44.640  INFO 20016 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 1.76 seconds (JVM running for 2.266)
+2022-11-18 09:21:46.330  INFO 20016 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-18 09:21:46.330  INFO 20016 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-18 09:21:46.331  INFO 20016 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-18 09:21:46.400  INFO 20016 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-18 09:21:47.807 ERROR 20016 --- [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476) [HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) [HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115) [HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) [HikariCP-4.0.3.jar:na]
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159) [spring-jdbc-5.3.23.jar:5.3.23]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117) [spring-jdbc-5.3.23.jar:5.3.23]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80) [spring-jdbc-5.3.23.jar:5.3.23]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80) [mybatis-spring-2.0.7.jar:2.0.7]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67) [mybatis-spring-2.0.7.jar:2.0.7]
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:337) [mybatis-3.5.9.jar:3.5.9]
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:86) [mybatis-3.5.9.jar:3.5.9]
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62) [mybatis-3.5.9.jar:3.5.9]
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325) [mybatis-3.5.9.jar:3.5.9]
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156) [mybatis-3.5.9.jar:3.5.9]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109) [mybatis-3.5.9.jar:3.5.9]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:89) [mybatis-3.5.9.jar:3.5.9]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151) [mybatis-3.5.9.jar:3.5.9]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145) [mybatis-3.5.9.jar:3.5.9]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140) [mybatis-3.5.9.jar:3.5.9]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76) [mybatis-3.5.9.jar:3.5.9]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_321]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_321]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_321]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[na:1.8.0_321]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427) [mybatis-spring-2.0.7.jar:2.0.7]
+	at com.sun.proxy.$Proxy67.selectOne(Unknown Source) [na:na]
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160) [mybatis-spring-2.0.7.jar:2.0.7]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:87) [mybatis-3.5.9.jar:3.5.9]
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:145) [mybatis-3.5.9.jar:3.5.9]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86) [mybatis-3.5.9.jar:3.5.9]
+	at com.sun.proxy.$Proxy78.login(Unknown Source) [na:na]
+	at com.mycom.project.login.service.LoginServiceImpl.login(LoginServiceImpl.java:20) [main/:na]
+	at com.mycom.project.login.controller.LoginController.login(LoginController.java:38) [main/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_321]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_321]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_321]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[na:1.8.0_321]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) [spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) [spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) [spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) [spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) [spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) [spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) [spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) [spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) [spring-webmvc-5.3.23.jar:5.3.23]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) [spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:696) [tomcat-embed-core-9.0.68.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) [spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779) [tomcat-embed-core-9.0.68.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) [spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) [spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.23.jar:5.3.23]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.68.jar:9.0.68]
+	at java.lang.Thread.run(Unknown Source) [na:1.8.0_321]
+
+2022-11-18 09:21:47.859  WARN 20016 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: <EOL><EOL>### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)<EOL><EOL>### The error may exist in mapper/login_query.xml<EOL><EOL>### The error may involve com.mycom.project.login.dao.LoginDao.login<EOL><EOL>### The error occurred while executing a query<EOL><EOL>### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)]
+2022-11-18 09:22:23.248  INFO 20016 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-11-18 09:22:23.342  INFO 20016 --- [Thread-6] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-18 09:22:23.343  INFO 20016 --- [Thread-6] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-18 09:22:23.471  INFO 20016 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 20016 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-18 09:22:23.472  INFO 20016 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-18 09:22:23.732  INFO 20016 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-18 09:22:23.733  INFO 20016 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-18 09:22:23.733  INFO 20016 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-18 09:22:23.744  INFO 20016 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-18 09:22:23.744  INFO 20016 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 271 ms
+2022-11-18 09:22:23.846  INFO 20016 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-18 09:22:23.901  INFO 20016 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-18 09:22:23.912  INFO 20016 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-18 09:22:23.915  INFO 20016 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.47 seconds (JVM running for 701.543)
+2022-11-18 09:22:23.917  INFO 20016 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-18 09:22:24.566  INFO 20016 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-11-18 09:22:24.658  INFO 20016 --- [RMI TCP Connection(2)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-18 09:22:35.726  INFO 23640 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 23640 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-18 09:22:35.728  INFO 23640 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-18 09:22:35.762  INFO 23640 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-11-18 09:22:35.762  INFO 23640 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-11-18 09:22:36.637  INFO 23640 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-18 09:22:36.644  INFO 23640 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-18 09:22:36.644  INFO 23640 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-18 09:22:36.702  INFO 23640 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-18 09:22:36.702  INFO 23640 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 939 ms
+2022-11-18 09:22:37.144  INFO 23640 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-18 09:22:37.418  INFO 23640 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-18 09:22:37.448  INFO 23640 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-18 09:22:37.458  INFO 23640 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 2.021 seconds (JVM running for 2.592)
+2022-11-18 09:22:44.098  INFO 23640 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-18 09:22:44.098  INFO 23640 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-18 09:22:44.099  INFO 23640 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-18 09:22:44.142  INFO 23640 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-18 09:22:44.500  INFO 23640 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-18 09:22:49.650  INFO 23640 --- [http-nio-8080-exec-2] c.m.p.apt.controller.HouseMapController  : sido - È£ï¿½ï¿½
+2022-11-18 09:22:51.754  INFO 23640 --- [http-nio-8080-exec-4] c.m.p.apt.controller.HouseMapController  : gugun - È£ï¿½ï¿½
+2022-11-18 09:22:52.840  INFO 23640 --- [http-nio-8080-exec-5] c.m.p.apt.controller.HouseMapController  : dong - È£ï¿½ï¿½
+2022-11-18 09:22:55.610  INFO 23640 --- [http-nio-8080-exec-6] c.m.p.apt.controller.HouseMapController  : sido - È£ï¿½ï¿½
+2022-11-18 09:24:13.704  INFO 23640 --- [http-nio-8080-exec-8] c.m.p.apt.controller.HouseMapController  : dong - È£ï¿½ï¿½
+2022-11-18 09:24:31.187  INFO 23640 --- [http-nio-8080-exec-10] c.m.p.apt.controller.HouseMapController  : sido - È£ï¿½ï¿½
+2022-11-18 09:30:16.571  INFO 23640 --- [http-nio-8080-exec-2] c.m.p.apt.controller.HouseMapController  : sido - È£ï¿½ï¿½
+2022-11-18 09:30:18.743  INFO 23640 --- [http-nio-8080-exec-3] c.m.p.apt.controller.HouseMapController  : gugun - È£ï¿½ï¿½
+2022-11-18 09:30:19.617  INFO 23640 --- [http-nio-8080-exec-4] c.m.p.apt.controller.HouseMapController  : dong - È£ï¿½ï¿½
+2022-11-18 09:30:25.339  INFO 23640 --- [http-nio-8080-exec-5] c.m.p.apt.controller.HouseMapController  : dong - È£ï¿½ï¿½
+2022-11-18 09:30:39.103  INFO 23640 --- [http-nio-8080-exec-6] c.m.p.apt.controller.HouseMapController  : sido - È£ï¿½ï¿½
+2022-11-18 09:32:13.105  INFO 23640 --- [http-nio-8080-exec-8] c.m.p.apt.controller.HouseMapController  : sido - È£ï¿½ï¿½
+2022-11-18 09:32:43.764  INFO 23640 --- [http-nio-8080-exec-9] c.m.p.apt.controller.HouseMapController  : sido - È£ï¿½ï¿½
+2022-11-18 09:32:44.686  INFO 23640 --- [http-nio-8080-exec-10] c.m.p.apt.controller.HouseMapController  : gugun - È£ï¿½ï¿½
+2022-11-18 09:32:48.551  INFO 23640 --- [http-nio-8080-exec-1] c.m.p.apt.controller.HouseMapController  : dong - È£ï¿½ï¿½
+2022-11-18 09:32:53.481  INFO 23640 --- [http-nio-8080-exec-2] c.m.p.apt.controller.HouseMapController  : sido - È£ï¿½ï¿½
+2022-11-18 09:39:37.937  INFO 23640 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-11-18 09:39:38.072  INFO 23640 --- [Thread-6] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-18 09:39:38.074  INFO 23640 --- [Thread-6] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-18 09:39:38.082  WARN 23640 --- [Thread-6] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+ java.lang.Thread.run(Unknown Source)
+2022-11-18 09:39:38.089  INFO 23640 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-18 09:39:38.098  INFO 23640 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-18 09:39:38.241  INFO 23640 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 23640 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-18 09:39:38.242  INFO 23640 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-18 09:39:38.569  INFO 23640 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-18 09:39:38.570  INFO 23640 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-18 09:39:38.570  INFO 23640 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-18 09:39:38.584  INFO 23640 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-18 09:39:38.584  INFO 23640 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 340 ms
+2022-11-18 09:39:38.716  INFO 23640 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-18 09:39:38.792  INFO 23640 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-18 09:39:38.807  INFO 23640 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-18 09:39:38.812  INFO 23640 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.601 seconds (JVM running for 1023.946)
+2022-11-18 09:39:38.814  INFO 23640 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-18 09:43:45.692  INFO 23640 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-11-18 09:43:45.794  INFO 23640 --- [RMI TCP Connection(2)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]

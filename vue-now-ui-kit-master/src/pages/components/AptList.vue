@@ -15,6 +15,7 @@
 import HouseListItem from "@/components/house/HouseListItem";
 import {mapState} from "vuex";
 
+const aptStore = "aptStore";
 export default {
   name: "HouseList",
   components: {
@@ -24,7 +25,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["houses"]),
+    ...mapState(aptStore, ["houses"]),
   },
 };
 </script>
