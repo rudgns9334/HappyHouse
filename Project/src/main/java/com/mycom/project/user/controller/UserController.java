@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,8 +33,7 @@ public class UserController {
 	private final int SUCCESS = 1;
 
 	@PostMapping(value="/register")
-	public ResponseEntity<Map<String, String>> register(UserDto dto) {
-		System.out.println("!!!!!!!!!!!!!!!");
+	public ResponseEntity<Map<String, String>> register(@RequestBody UserDto dto) {
 		System.out.println(dto);
 		UserResultDto userResultDto = userService.userRegister(dto);
 		Map<String, String> map = new HashMap<>();

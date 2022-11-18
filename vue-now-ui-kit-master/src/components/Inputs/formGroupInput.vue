@@ -39,19 +39,17 @@
           <i class="input-group-text" :class="addonRightIcon"></i>
         </span>
       </slot>
-
-      <slot name="infoBlock"></slot>
+    </div>
+    <slot name="infoBlock"></slot>
       <slot name="helpBlock">
         <div
           class="text-danger invalid-feedback"
           style="display: block;"
-          :class="{ 'mt-2': hasIcon }"
-          v-if="error"
+          
         >
           {{ error }}
         </div>
       </slot>
-    </div>
   </div>
 </template>
 <script>
@@ -111,4 +109,12 @@ export default {
   }
 };
 </script>
-<style></style>
+<style>
+.login-page .card-login .input-group:last-child{
+  margin-bottom: 0px;
+}
+.invalid-feedback{
+  height: 20px;
+  margin-top: 0px;
+}
+</style>

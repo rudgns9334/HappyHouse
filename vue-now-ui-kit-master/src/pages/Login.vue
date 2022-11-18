@@ -106,4 +106,8 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+.card-body {
+  height: 250px;
+}
+</style>
