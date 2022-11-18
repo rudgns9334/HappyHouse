@@ -202,6 +202,10 @@ export default {
         contentNode = document.createElement("div"), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다
         markers = [], // 마커를 담을 배열입니다
         currCategory = ""; // 현재 선택된 카테고리를 가지고 있을 변수입니다
+      var selectedCategory = [];
+
+      // 카테고리별 마커
+      var BKMarkers = [], MTMarkers = [], PMMarkers = [], OLMarkers = [], CEMarkers = [], CSMarkers = [];
 
       // 장소 검색 객체를 생성합니다
       var ps = new kakao.maps.services.Places(map);
@@ -232,8 +236,8 @@ export default {
         // 커스텀 오버레이를 숨깁니다
         placeOverlay.setMap(null);
 
-        // 지도에 표시되고 있는 마커를 제거합니다
-        removeMarker();
+        // // 지도에 표시되고 있는 마커를 제거합니다
+        // removeMarker();
 
         ps.categorySearch(currCategory, placesSearchCB, {useMapBounds: true});
       }
@@ -247,11 +251,13 @@ export default {
 
         if (className === "on") {
           currCategory = "";
-          changeCategoryClass();
-          removeMarker();
+          this.className = "";
+          selectedCategory.pop(id);
+          removeMarker(id);
         } else {
           currCategory = id;
-          changeCategoryClass(this);
+          this.className = "on";
+          selectedCategory.push(id);
           searchPlaces();
         }
       }
@@ -266,26 +272,54 @@ export default {
         }
       }
 
-      // 클릭된 카테고리에만 클릭된 스타일을 적용하는 함수입니다
-      function changeCategoryClass(el) {
-        var category = document.getElementById("category"),
-          children = category.children,
-          i;
+      // // 클릭된 카테고리에만 클릭된 스타일을 적용하는 함수입니다
+      // function changeCategoryClass(el) {
+      //   var category = document.getElementById("category"),
+      //     children = category.children,
+      //     i;
 
-        for (i = 0; i < children.length; i++) {
-          children[i].className = "";
-        }
+      //   for (i = 0; i < children.length; i++) {
+      //     children[i].className = "";
+      //   }
 
-        if (el) {
-          el.className = "on";
-        }
-      }
+      //   if (el) {
+      //     el.className = "on";
+      //   }
+      // }
       // 지도 위에 표시되고 있는 마커를 모두 제거합니다
-      function removeMarker() {
-        for (var i = 0; i < markers.length; i++) {
-          markers[i].setMap(null);
+      function removeMarker(id) {
+        
+        if (id == "BK9") {
+          for (var i = 0; i < BKMarkers.length; i++) {
+            BKMarkers[i].setMap(null);
+          }
+          BKMarkers = [];
+        } else if (id == "MT1") {
+          for (var i = 0; i < MTMarkers.length; i++) {
+            MtMarkers[i].setMap(null);
+          }
+          MTMarkers = [];
+        } else if (id == "PM9") {
+          for (var i = 0; i < PMMarkers.length; i++) {
+            PMMarkers[i].setMap(null);
+          }
+          MTMarkers = [];
+        } else if (id == "OL7") {
+          for (var i = 0; i < OLMarkers.length; i++) {
+            OLMarkers[i].setMap(null);
+          }
+          OLMarkers = [];
+        } else if (id == "CE7") {
+          for (var i = 0; i < CEMarkers.length; i++) {
+            CEMarkers[i].setMap(null);
+          }
+          CEMarkers = [];
+        } else if (id == "CS2") {
+          for (var i = 0; i < CSMarkers.length; i++) {
+            CSMarkers[i].setMap(null);
+          }
+          CSMarkers = [];
         }
-        markers = [];
       }
       // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
       function placesSearchCB(data, status, pagination) {
@@ -300,6 +334,7 @@ export default {
       }
       // 지도에 마커를 표출하는 함수입니다
       function displayPlaces(places) {
+        console.log(places);
         // 몇번째 카테고리가 선택되어 있는지 얻어옵니다
         // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
         var order = document.getElementById(currCategory).getAttribute("data-order");
@@ -333,7 +368,20 @@ export default {
           });
 
         marker.setMap(map); // 지도 위에 마커를 표출합니다
-        markers.push(marker); // 배열에 생성된 마커를 추가합니다
+
+        if (currCategory == "BK9") {
+          BKMarkers.push(marker); // 배열에 생성된 마커를 추가합니다
+        } else if (currCategory == "MT1") {
+          MTMarkers.push(marker); // 배열에 생성된 마커를 추가합니다
+        } else if (currCategory == "PM9") {
+          MTMarkers.push(marker); // 배열에 생성된 마커를 추가합니다
+        } else if (currCategory == "OL7") {
+          OLMarkers.push(marker); // 배열에 생성된 마커를 추가합니다
+        } else if (currCategory == "CE7") {
+          CEMarkers.push(marker); // 배열에 생성된 마커를 추가합니다
+        } else if (currCategory == "CS2") {
+          CSMarkers.push(marker); // 배열에 생성된 마커를 추가합니다
+        }
 
         return marker;
       }
@@ -464,7 +512,8 @@ export default {
   margin-top: 70px;
   margin-left: 10px;
   margin-right: 10px;
-  height: 73%;
+  height: 68%;
+  overflow: auto;
 }
 .searchDiv {
   margin-left: 30px;
@@ -677,4 +726,5 @@ export default {
   height: 12px;
   background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png");
 }
+
 </style>

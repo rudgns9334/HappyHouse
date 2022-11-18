@@ -9,9 +9,9 @@ import http from "@/common/axios.js";
 export default {
     namespaced: true,
     state: {
-        sidos: [{ value: null, text: "선택하세요" }],
-        guguns: [{ value: null, text: "선택하세요" }],
-        dongs: [{ value: null, text: "선택하세요" }],
+        sidos: [{ value: null, text: "시/도 구분" }],
+        guguns: [{ value: null, text: "구/군 구분" }],
+        dongs: [{ value: null, text: "동 구분" }],
         houses: [],
         house: null,
     },
@@ -32,17 +32,18 @@ export default {
       });
       },
         CLEAR_SIDO_LIST(state) {
-            state.sidos = [{ value: null, text: "선택하세요" }];
+            state.sidos = [{ value: null, text: "시/도 구분" }];
+        },
+        CLEAR_GUGUN_LIST(state) {
+            state.guguns = [{ value: null, text: "구/군 구분" }];
+        },
+        CLEAR_DONG_LIST(state) {
+            state.dongs = [{ value: null, text: "동 구분" }];
+            console.log(state.dongs);
         },
         CLEAR_APT_LIST(state) {
             state.houses = [];
             state.house = null;
-        },
-        CLEAR_GUGUN_LIST(state) {
-            state.guguns = [{ value: null, text: "선택하세요" }];
-        },
-        CLEAR_DONG_LIST(state) {
-          state.dongs = [{ value: null, text: "선택하세요" }];
         },
         SET_HOUSE_LIST(state, houses) {
             state.houses = houses;
@@ -54,21 +55,6 @@ export default {
         },
     },
     actions: {
-        /////////////////////////////// House start /////////////////////////////////////
-        // getSido(context) {
-        //   aptAxios.getSido(
-        //     ({ data }) => {
-        //       if(data.result == 'login'){
-        //           router.push("/login");
-        //       }else{
-        //           context.commit("SET_SIDO_LISTT", data);
-        //       }
-        //   },
-        //   (error) => {
-        //       console.error(error);
-        //       this.$alertify.error("서버에 문제가 있습니다.");
-        //   });
-        // },
         getSido({ commit }) {
             http
               .get(`/apts/sido`)

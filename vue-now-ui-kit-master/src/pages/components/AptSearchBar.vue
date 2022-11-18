@@ -47,7 +47,7 @@ export default {
     },
     dongList() {
       this.CLEAR_DONG_LIST();
-      this.dongName = null;
+      this.dongCode = null;
       console.log(this.gugunCode);
       if (this.gugunCode) this.getDong(this.gugunCode);
     },
