@@ -303,7 +303,7 @@ export default {
           for (var i = 0; i < PMMarkers.length; i++) {
             PMMarkers[i].setMap(null);
           }
-          MTMarkers = [];
+          PMMarkers = [];
         } else if (id == "OL7") {
           for (var i = 0; i < OLMarkers.length; i++) {
             OLMarkers[i].setMap(null);
@@ -374,7 +374,7 @@ export default {
         } else if (currCategory == "MT1") {
           MTMarkers.push(marker); // 배열에 생성된 마커를 추가합니다
         } else if (currCategory == "PM9") {
-          MTMarkers.push(marker); // 배열에 생성된 마커를 추가합니다
+          PMMarkers.push(marker); // 배열에 생성된 마커를 추가합니다
         } else if (currCategory == "OL7") {
           OLMarkers.push(marker); // 배열에 생성된 마커를 추가합니다
         } else if (currCategory == "CE7") {
