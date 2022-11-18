@@ -1813,3 +1813,225 @@ java.sql.SQLException: Access denied for user 'root'@'localhost' (using password
 2022-11-18 09:39:38.814  INFO 23640 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
 2022-11-18 09:43:45.692  INFO 23640 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
 2022-11-18 09:43:45.794  INFO 23640 --- [RMI TCP Connection(2)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-18 13:31:35.717  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 21184 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-18 13:31:35.718  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-18 13:31:35.757  INFO 21184 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-11-18 13:31:35.758  INFO 21184 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-11-18 13:31:36.806  INFO 21184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-18 13:31:36.816  INFO 21184 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-18 13:31:36.816  INFO 21184 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-18 13:31:36.884  INFO 21184 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-18 13:31:36.884  INFO 21184 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1126 ms
+2022-11-18 13:31:37.390  INFO 21184 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-18 13:31:37.694  INFO 21184 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-18 13:31:37.732  INFO 21184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-18 13:31:37.742  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 2.347 seconds (JVM running for 2.982)
+2022-11-18 13:34:09.421  INFO 21184 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-18 13:34:09.421  INFO 21184 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-18 13:34:09.423  INFO 21184 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-18 13:34:09.507  INFO 21184 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-18 13:34:10.000  INFO 21184 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-18 13:34:12.738  WARN 21184 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.IllegalStateException: Ambiguous handler methods mapped for '/apts/sido': {private org.springframework.http.ResponseEntity com.mycom.project.apt.controller.AptController.aptList(java.lang.String,com.mycom.project.apt.dto.AptParamDto), private org.springframework.http.ResponseEntity com.mycom.project.apt.controller.AptController.aptDetail(int)}]
+2022-11-18 13:36:58.116  INFO 21184 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-11-18 13:36:58.260  INFO 21184 --- [Thread-6] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-18 13:36:58.262  INFO 21184 --- [Thread-6] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-18 13:36:58.269  WARN 21184 --- [Thread-6] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+ java.lang.Thread.run(Unknown Source)
+2022-11-18 13:36:58.274  INFO 21184 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-18 13:36:58.285  INFO 21184 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-18 13:36:58.427  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 21184 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-18 13:36:58.427  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-18 13:36:58.699  INFO 21184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-18 13:36:58.699  INFO 21184 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-18 13:36:58.699  INFO 21184 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-18 13:36:58.711  INFO 21184 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-18 13:36:58.711  INFO 21184 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 281 ms
+2022-11-18 13:36:58.820  INFO 21184 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-18 13:36:58.881  INFO 21184 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-18 13:36:58.892  INFO 21184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-18 13:36:58.896  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.501 seconds (JVM running for 324.135)
+2022-11-18 13:36:58.898  INFO 21184 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-18 13:37:09.932  INFO 21184 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-18 13:37:09.933  INFO 21184 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-18 13:37:09.934  INFO 21184 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-18 13:37:09.937  INFO 21184 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2022-11-18 13:37:09.953  INFO 21184 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2022-11-18 13:38:14.334  INFO 21184 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-11-18 13:38:14.433  INFO 21184 --- [Thread-8] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-18 13:38:14.433  INFO 21184 --- [Thread-8] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-18 13:38:14.437  WARN 21184 --- [Thread-8] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-2 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+ java.lang.Thread.run(Unknown Source)
+2022-11-18 13:38:14.440  INFO 21184 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2022-11-18 13:38:14.448  INFO 21184 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2022-11-18 13:38:14.577  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 21184 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-18 13:38:14.578  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-18 13:38:14.841  INFO 21184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-18 13:38:14.842  INFO 21184 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-18 13:38:14.842  INFO 21184 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-18 13:38:14.857  INFO 21184 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-18 13:38:14.857  INFO 21184 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 277 ms
+2022-11-18 13:38:14.971  INFO 21184 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-18 13:38:15.027  INFO 21184 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-18 13:38:15.039  INFO 21184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-18 13:38:15.042  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.493 seconds (JVM running for 400.281)
+2022-11-18 13:38:15.044  INFO 21184 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-18 13:38:19.232  INFO 21184 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-18 13:38:19.233  INFO 21184 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-18 13:38:19.234  INFO 21184 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-18 13:38:22.101  INFO 21184 --- [http-nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2022-11-18 13:38:22.116  INFO 21184 --- [http-nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2022-11-18 13:48:37.985  INFO 21184 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-11-18 13:48:38.096  INFO 21184 --- [Thread-12] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-18 13:48:38.097  INFO 21184 --- [Thread-12] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-18 13:48:38.100  WARN 21184 --- [Thread-12] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-3 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+ java.lang.Thread.run(Unknown Source)
+2022-11-18 13:48:38.105  INFO 21184 --- [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2022-11-18 13:48:38.112  INFO 21184 --- [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2022-11-18 13:48:38.245  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 21184 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-18 13:48:38.246  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-18 13:48:38.541  INFO 21184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-18 13:48:38.542  INFO 21184 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-18 13:48:38.542  INFO 21184 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-18 13:48:38.554  INFO 21184 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-18 13:48:38.554  INFO 21184 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 307 ms
+2022-11-18 13:48:38.669  INFO 21184 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-18 13:48:38.730  INFO 21184 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-18 13:48:38.744  INFO 21184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-18 13:48:38.747  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.53 seconds (JVM running for 1023.986)
+2022-11-18 13:48:38.749  INFO 21184 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-18 13:50:26.395  INFO 21184 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-18 13:50:26.396  INFO 21184 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-18 13:50:26.397  INFO 21184 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-18 13:50:26.399  INFO 21184 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2022-11-18 13:50:26.418  INFO 21184 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2022-11-18 13:58:33.115  INFO 21184 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-11-18 13:58:33.218  INFO 21184 --- [Thread-16] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-18 13:58:33.218  INFO 21184 --- [Thread-16] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-18 13:58:33.221  WARN 21184 --- [Thread-16] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-4 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+ java.lang.Thread.run(Unknown Source)
+2022-11-18 13:58:33.225  INFO 21184 --- [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2022-11-18 13:58:33.232  INFO 21184 --- [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2022-11-18 13:58:33.367  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 21184 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-18 13:58:33.368  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-18 13:58:33.656  INFO 21184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-18 13:58:33.657  INFO 21184 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-18 13:58:33.657  INFO 21184 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-18 13:58:33.671  INFO 21184 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-18 13:58:33.671  INFO 21184 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 301 ms
+2022-11-18 13:58:33.777  INFO 21184 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-18 13:58:33.828  INFO 21184 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-18 13:58:33.840  INFO 21184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-18 13:58:33.843  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.501 seconds (JVM running for 1619.082)
+2022-11-18 13:58:33.845  INFO 21184 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-18 13:59:21.157  INFO 21184 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-11-18 13:59:21.263  INFO 21184 --- [Thread-20] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-18 13:59:21.382  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 21184 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-18 13:59:21.382  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-18 13:59:21.689  INFO 21184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-18 13:59:21.690  INFO 21184 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-18 13:59:21.690  INFO 21184 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-18 13:59:21.703  INFO 21184 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-18 13:59:21.703  INFO 21184 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 318 ms
+2022-11-18 13:59:21.812  INFO 21184 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-18 13:59:21.869  INFO 21184 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-18 13:59:21.881  INFO 21184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-18 13:59:21.886  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.529 seconds (JVM running for 1667.125)
+2022-11-18 13:59:21.887  INFO 21184 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-18 13:59:23.982  INFO 21184 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-18 13:59:23.983  INFO 21184 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-18 13:59:23.984  INFO 21184 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-11-18 13:59:26.738  INFO 21184 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2022-11-18 13:59:26.755  INFO 21184 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2022-11-18 13:59:57.759  INFO 21184 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-11-18 13:59:57.857  INFO 21184 --- [Thread-24] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-18 13:59:57.858  INFO 21184 --- [Thread-24] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-18 13:59:57.861  WARN 21184 --- [Thread-24] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-5 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+ java.lang.Thread.run(Unknown Source)
+2022-11-18 13:59:57.866  INFO 21184 --- [Thread-24] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2022-11-18 13:59:57.871  INFO 21184 --- [Thread-24] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2022-11-18 13:59:57.998  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 21184 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-18 13:59:57.999  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-18 13:59:58.263  INFO 21184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-18 13:59:58.264  INFO 21184 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-18 13:59:58.264  INFO 21184 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-18 13:59:58.275  INFO 21184 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-18 13:59:58.275  INFO 21184 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 274 ms
+2022-11-18 13:59:58.368  INFO 21184 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-18 13:59:58.426  INFO 21184 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-18 13:59:58.437  INFO 21184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-18 13:59:58.440  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.466 seconds (JVM running for 1703.679)
+2022-11-18 13:59:58.441  INFO 21184 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-18 14:00:04.519  INFO 21184 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-18 14:00:04.520  INFO 21184 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-18 14:00:04.521  INFO 21184 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-18 14:00:08.968  INFO 21184 --- [http-nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2022-11-18 14:00:08.985  INFO 21184 --- [http-nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2022-11-18 14:01:52.545  INFO 21184 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-11-18 14:01:52.649  INFO 21184 --- [Thread-28] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-18 14:01:52.649  INFO 21184 --- [Thread-28] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-18 14:01:52.652  WARN 21184 --- [Thread-28] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-6 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+ java.lang.Thread.run(Unknown Source)
+2022-11-18 14:01:52.655  INFO 21184 --- [Thread-28] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2022-11-18 14:01:52.665  INFO 21184 --- [Thread-28] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2022-11-18 14:01:52.763  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 21184 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-18 14:01:52.763  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-18 14:01:53.048  INFO 21184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-18 14:01:53.049  INFO 21184 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-18 14:01:53.049  INFO 21184 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-18 14:01:53.061  INFO 21184 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-18 14:01:53.061  INFO 21184 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 295 ms
+2022-11-18 14:01:53.152  INFO 21184 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-18 14:01:53.213  INFO 21184 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-18 14:01:53.226  INFO 21184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-18 14:01:53.230  INFO 21184 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.495 seconds (JVM running for 1818.469)
+2022-11-18 14:01:53.232  INFO 21184 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-18 14:29:03.931  INFO 21184 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-11-18 14:29:04.035  INFO 21184 --- [RMI TCP Connection(2)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]

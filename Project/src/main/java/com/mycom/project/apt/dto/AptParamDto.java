@@ -17,5 +17,7 @@ public class AptParamDto {
 	private int offset;
 	private String searchWord;
 
+	private String code;
+	
 	private int no;
 }

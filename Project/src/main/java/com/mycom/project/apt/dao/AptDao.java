@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import com.mycom.project.apt.dto.AptDto;
 import com.mycom.project.apt.dto.AptInfoDto;
 import com.mycom.project.apt.dto.AptParamDto;
-import com.mycom.project.apt.dto.DongDto;
+import com.mycom.project.apt.dto.SGDDto;
 
 @Mapper
 public interface AptDao {
@@ -18,7 +18,19 @@ public interface AptDao {
 	List<AptDto> aptListSearchWord(AptParamDto aptParamDto);
 	int aptListSearchWordTotalCount(AptParamDto aptParamDto);
 
+	List<AptDto> aptListWithDong(AptParamDto aptParamDto);
+	int aptListWithDongTotalCount(AptParamDto aprParamDto);
+	
+	List<AptDto> aptListWithDongSearchWord(AptParamDto aptParamDto);
+	int aptListWithDongSearchWordTotalCount(AptParamDto aprParamDto);
+	
 	AptDto aptDetail(AptParamDto aptParamDto);
-	DongDto addressDetail(@Param("code") String code, @Param("name") String dong);
+	SGDDto addressDetail(@Param("code") String code, @Param("name") String dong);
 	AptInfoDto aptLatLng(int houseNo);
+	
+	List<SGDDto> sidoList();
+	List<SGDDto> gugunList(AptParamDto aptParamDto);
+	List<SGDDto> dongList(AptParamDto aptParamDto);
+	
 }
+

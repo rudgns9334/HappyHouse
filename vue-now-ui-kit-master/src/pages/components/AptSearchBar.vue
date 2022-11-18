@@ -3,7 +3,7 @@
     <b-col class="selectBox">
       <b-form-select class="sidoSel" v-model="sidoCode" :options="sidos" @change="gugunList"></b-form-select>
       <b-form-select class="gugunSel" v-model="gugunCode" :options="guguns" @change="dongList"></b-form-select>
-      <b-form-select class="dongSel" v-model="dongName" :options="dongs" @change="searchApt"></b-form-select>
+      <b-form-select class="dongSel" v-model="dongCode" :options="dongs" @change="searchApt"></b-form-select>
     </b-col>
   </b-row>
 </template>
@@ -18,7 +18,7 @@ export default {
     return {
       sidoCode: null,
       gugunCode: null,
-      dongName: null,
+      dongCode: null,
     };
   },
   computed: {
@@ -53,8 +53,8 @@ export default {
     },
     searchApt() {
       this.CLEAR_APT_LIST();
-      console.log(this.dongName);
-      if (this.dongName) this.getHouseList(this.dongName);
+      console.log(this.dongCode);
+      if (this.dongCode) this.getHouseList(this.dongCode);
     },
   },
 };

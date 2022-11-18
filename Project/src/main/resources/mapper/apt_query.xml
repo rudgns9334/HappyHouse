@@ -26,6 +26,34 @@
 			where AptName like concat('%', #{searchWord},'%')
 	</select>
 	
+	<!-- withDong -->
+	<select id="aptListWithDong" parameterType="map" resultType="com.mycom.project.apt.dto.AptDto">
+		select no, dong, AptName, code, dealAmount, buildYear, dealYear, dealMonth, dealDay, area, floor, jibun, type, house_no
+            from housedeal
+            where dong = (select name from dong_code where code = #{code})
+            order by no desc
+	</select>
+	
+	<select id="aptListWithDongTotalCount" parameterType="string" resultType="int">
+		select count(*) from housedeal 
+			where dong = (select name from dong_code where code = #{code})
+	</select>
+	
+	<!-- withDongSearchWord -->
+	<select id="aptListWithDongSearchWord" parameterType="map" resultType="com.mycom.project.apt.dto.AptDto">
+		select no, dong, AptName, code, dealAmount, buildYear, dealYear, dealMonth, dealDay, area, floor, jibun, type, house_no
+            from housedeal
+            where dong = (select name from dong_code where code = #{code})
+            and AptName like concat('%', #{searchWord}, '%')
+            order by no desc
+	</select>
+	
+	<select id="aptListWithDongSearchWordTotalCount" parameterType="string" resultType="int">
+		select count(*) from housedeal 
+			where dong = (select name from dong_code where code = #{code})
+			and AptName like concat('%', #{searchWord}, '%')
+	</select>
+	
 	<!-- Detail -->
 	<select id="aptDetail" parameterType="int" resultType="com.mycom.project.apt.dto.AptDto">
 		select no, dong, AptName, code, dealAmount, buildYear, dealYear, dealMonth, dealDay, area, floor, jibun, type, house_no
@@ -33,7 +61,7 @@
             where no = #{no}
 	</select>
 	
-	<select id="addressDetail" parameterType="map" resultType="com.mycom.project.apt.dto.DongDto">
+	<select id="addressDetail" parameterType="map" resultType="com.mycom.project.apt.dto.SGDDto">
 		select code, name, city_code, city_name, gugun_code, gugun_name
 		from dong_code
 		where gugun_code = #{code}
@@ -45,5 +73,38 @@
 		from houseinfo
 		where no = #{houseNo}
 	</select>
+	
+	<resultMap type="com.mycom.project.apt.dto.SGDDto" id="sidoList">
+		<result column="name" property="sidoName"></result>
+		<result column="code" property="sidoCode"></result>
+	</resultMap>
+	
+	<select id="sidoList" resultMap="sidoList">
+		select code, name
+		from sido_code
+	</select>
+	
+	<resultMap type="com.mycom.project.apt.dto.SGDDto" id="gugunList">
+		<result column="name" property="gugunName"></result>
+		<result column="code" property="gugunCode"></result>
+	</resultMap>
+	
+	<select id="gugunList" parameterType="map" resultMap="gugunList">
+		select code, name
+		from gugun_code
+		where sido_code = #{code}
+	</select>
+	
+	<resultMap type="com.mycom.project.apt.dto.SGDDto" id="dongList">
+		<result column="name" property="dongName"></result>
+		<result column="code" property="dongCode"></result>
+	</resultMap>
+	
+	<select id="dongList" parameterType="map" resultMap="dongList">
+		select code, name
+		from dong_code
+		where gugun_code = #{code}
+	</select>
+	
 	
 </mapper>

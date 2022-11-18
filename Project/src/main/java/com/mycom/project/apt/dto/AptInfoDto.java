@@ -25,4 +25,6 @@ public class AptInfoDto {
 	private String houseAddress;
 	private String houseDealDate;
 	private int houseNo;
+	
+	private String recentDealAmount;
 }

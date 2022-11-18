@@ -19,6 +19,7 @@ public class AptResultDto {
 	private AptDto dto;
 	private AptInfoDto infoDto;
 	private List<AptDto> list;
+	private List<SGDDto> sgdList;
 	private int count;
 	
 }

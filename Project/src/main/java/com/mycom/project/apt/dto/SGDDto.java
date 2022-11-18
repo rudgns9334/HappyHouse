@@ -11,11 +11,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class DongDto {
-	private String code;
-	private String name;
-	private String cityCode;
-	private String cityName;
+public class SGDDto {
+	private String dongCode;
+	private String dongName;
+	private String sidoCode;
+	private String sidoName;
 	private String gugunCode;
 	private String gugunName;
 }

@@ -30,11 +30,19 @@ public class AptController {
 	@GetMapping(value="/apts")
 	private ResponseEntity<AptResultDto> aptList(AptParamDto aptParamDto) {
 		AptResultDto aptResultDto;
-
-		if (aptParamDto.getSearchWord() == null || aptParamDto.getSearchWord().isEmpty()) {
-			aptResultDto = aptService.aptList(aptParamDto);
-		} else {
-			aptResultDto = aptService.aptListSearchWord(aptParamDto);
+		System.out.println(aptParamDto);
+		if(aptParamDto.getCode() == null || aptParamDto.getCode().isEmpty()) {
+			if (aptParamDto.getSearchWord() == null || aptParamDto.getSearchWord().isEmpty()) {
+				aptResultDto = aptService.aptList(aptParamDto);
+			} else{
+				aptResultDto = aptService.aptListSearchWord(aptParamDto);
+			}
+		}else {
+			if (aptParamDto.getSearchWord() == null || aptParamDto.getSearchWord().isEmpty()) {
+				aptResultDto = aptService.aptListWithDong(aptParamDto);
+			} else{
+				aptResultDto = aptService.aptListWithDongSearchWord(aptParamDto);
+			}
 		}
 		
 		if (aptResultDto.getResult() == SUCCESS) {
@@ -44,7 +52,7 @@ public class AptController {
 		}
 	}
 	
-	@GetMapping(value="/apts/{aptNo}")
+	@GetMapping(value="/apts/detail/{aptNo}")
 	private ResponseEntity<AptResultDto> aptDetail(@PathVariable int aptNo) {
 		AptResultDto aptResultDto;
 		AptParamDto aptParamDto = new AptParamDto();
@@ -57,4 +65,41 @@ public class AptController {
 			return new ResponseEntity<AptResultDto>(aptResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	@GetMapping(value="/apts/sido")
+	private ResponseEntity<AptResultDto> sidoList(AptParamDto aptParamDto) {
+		AptResultDto aptResultDto;
+		aptResultDto = aptService.sidoList();
+			
+		if (aptResultDto.getResult() == SUCCESS) {
+			return new ResponseEntity<AptResultDto>(aptResultDto, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<AptResultDto>(aptResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping(value="/apts/gugun")
+	private ResponseEntity<AptResultDto> gugunList(AptParamDto aptParamDto) {
+		AptResultDto aptResultDto;
+		aptResultDto = aptService.gugunList(aptParamDto);	
+		
+		if (aptResultDto.getResult() == SUCCESS) {
+			return new ResponseEntity<AptResultDto>(aptResultDto, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<AptResultDto>(aptResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	@GetMapping(value="/apts/dong")
+	private ResponseEntity<AptResultDto> dongList(AptParamDto aptParamDto) {
+		AptResultDto aptResultDto;
+		aptResultDto = aptService.dongList(aptParamDto);
+		
+		if (aptResultDto.getResult() == SUCCESS) {
+			return new ResponseEntity<AptResultDto>(aptResultDto, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<AptResultDto>(aptResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 }

@@ -28,7 +28,7 @@ export default {
         },
         SET_DONG_LIST(state, dongs) {
           dongs.forEach((dong) => {
-              state.dongs.push({ value: dong.dongName, text: dong.dongName });
+              state.dongs.push({ value: dong.dongCode, text: dong.dongName });
       });
       },
         CLEAR_SIDO_LIST(state) {
@@ -71,14 +71,14 @@ export default {
         // },
         getSido({ commit }) {
             http
-              .get(`/apt/sido`)
+              .get(`/apts/sido`)
               .then(({ data }) => {
                 console.log(data.result);
                 if(data.result == 'login'){
                   router.push("/login");
                 } else {
                   // console.log(data);
-                  commit("SET_SIDO_LIST", data);
+                  commit("SET_SIDO_LIST", data.sgdList);
                 }
               })
               .catch((error) => {
@@ -86,12 +86,14 @@ export default {
               });
           },
           getGugun({ commit }, sidoCode) {
-            const params = { sido: sidoCode };
+            const params = { 
+              code: sidoCode 
+            };
             http
-              .get(`/apt/gugun`, { params })
+              .get(`/apts/gugun`, { params })
               .then(({ data }) => {
                 // console.log(commit, response);
-                commit("SET_GUGUN_LIST", data);
+                commit("SET_GUGUN_LIST", data.sgdList);
               })
               .catch((error) => {
                 console.log(error);
@@ -99,49 +101,30 @@ export default {
           },
           getDong({ commit }, gugunCode) {
             console.log(gugunCode)
-            const params = { gugun: gugunCode };
+            const params = { 
+              code: gugunCode
+            };
             http
-              .get(`/apt/dong`, { params })
+              .get(`/apts/dong`, { params })
               .then(({ data }) => {
                 console.log(data);
                 // console.log(commit, response);
-                commit("SET_DONG_LIST", data);
+                commit("SET_DONG_LIST", data.sgdList);
               })
               .catch((error) => {
                 console.log(error);
               });
           },
-          getHouseList({ commit }, dongName) {
-            console.log("GETHOUSELIST");
-            console.log(dongName);
-            // // vue cli enviroment variables 검색
-            // //.env.local file 생성.
-            // // 반드시 VUE_APP으로 시작해야 한다.
-            // const SERVICE_KEY = process.env.VUE_APP_APT_DEAL_API_KEY;
-            // // const SERVICE_KEY =
-            // //   "######################## Service Key ########################";
-            // const SERVICE_URL =
-            //   "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev";
-            // const params = {
-            //   LAWD_CD: gugunCode,
-            //   DEAL_YMD: "202207",
-            //   serviceKey: decodeURIComponent(SERVICE_KEY),
-            // };
-            // http
-            //   .get(SERVICE_URL, { params })
-            //   .then(({ data }) => {
-            //     // console.log(commit, data);
-            //     commit("SET_HOUSE_LIST", data.response.body.items.item);
-            //   })
-            //   .catch((error) => {
-            //     console.log(error);
-            //   });
-            const params = {dong: dongName};
+          getHouseList({ commit }, dongCode) {
+            console.log(dongCode);
+            const params = {
+              code: dongCode,
+            };
             http
-              .get('/apt/aptlist', { params })
+              .get('/apts', { params })
               .then(({ data }) => {
                 console.log(data);
-                commit("SET_HOUSE_LIST", data)
+                commit("SET_HOUSE_LIST", data.list)
               })
               .catch((error) => {
                 console.log(error);

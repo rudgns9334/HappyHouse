@@ -2,7 +2,6 @@ package com.mycom.project.apt.service;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,19 +10,13 @@ import com.mycom.project.apt.dto.AptDto;
 import com.mycom.project.apt.dto.AptInfoDto;
 import com.mycom.project.apt.dto.AptParamDto;
 import com.mycom.project.apt.dto.AptResultDto;
-import com.mycom.project.apt.dto.DongDto;
-import com.mycom.project.apt.dto.HouseInfoDto;
-import com.mycom.project.apt.dto.SidoGugunCodeDto;
-import com.mycom.project.apt.mapper.HouseMapMapper;
+import com.mycom.project.apt.dto.SGDDto;
 
 @Service
 public class AptServiceImpl implements AptService{
 
 	@Autowired
 	AptDao dao;
-	
-	@Autowired
-	private SqlSession sqlSession;
 	
 	private final int SUCCESS = 1;
 	private final int FAIL = -1;
@@ -61,6 +54,38 @@ public class AptServiceImpl implements AptService{
 	}
 
 	@Override
+	public AptResultDto aptListWithDong(AptParamDto aptParamDto) {
+		AptResultDto aptResultDto = new AptResultDto();
+		try {
+			List<AptDto> list = dao.aptListWithDong(aptParamDto);
+			int count = dao.aptListWithDongTotalCount(aptParamDto);
+			aptResultDto.setList(list);
+			aptResultDto.setCount(count);
+			aptResultDto.setResult(SUCCESS);
+		} catch (Exception e) {
+			e.printStackTrace();
+			aptResultDto.setResult(FAIL);
+		}
+		return aptResultDto;
+	}
+
+	@Override
+	public AptResultDto aptListWithDongSearchWord(AptParamDto aptParamDto) {
+		AptResultDto aptResultDto = new AptResultDto();
+		try {
+			List<AptDto> list = dao.aptListWithDongSearchWord(aptParamDto);
+			int count = dao.aptListWithDongSearchWordTotalCount(aptParamDto);
+			aptResultDto.setList(list);
+			aptResultDto.setCount(count);
+			aptResultDto.setResult(SUCCESS);
+		} catch (Exception e) {
+			e.printStackTrace();
+			aptResultDto.setResult(FAIL);
+		}
+		return aptResultDto;
+	}
+	
+	@Override
 	public AptResultDto aptDetail(AptParamDto aptParamDto) {
 		AptResultDto aptResultDto = new AptResultDto();
 		try {
@@ -80,9 +105,9 @@ public class AptServiceImpl implements AptService{
 			
 			String code = aptDto.getCode();
 			String dong = aptDto.getDong();
-			DongDto dongDto = dao.addressDetail(code, dong);
+			SGDDto dongDto = dao.addressDetail(code, dong);
 			
-			infoDto.setHouseAddress(dongDto.getCityName() + " " + dongDto.getGugunName() + " " + dongDto.getName() + " " + aptDto.getJibun());
+			infoDto.setHouseAddress(dongDto.getSidoName() + " " + dongDto.getGugunName() + " " + dongDto.getDongName() + " " + aptDto.getJibun());
 			
 			
 			aptResultDto.setDto(aptDto);
@@ -96,4 +121,52 @@ public class AptServiceImpl implements AptService{
 		}
 		return aptResultDto;
 	}
+
+	@Override
+	public AptResultDto sidoList() {
+		AptResultDto aptResultDto = new AptResultDto();
+		try {
+			List<SGDDto> sgdList = dao.sidoList();
+			aptResultDto.setSgdList(sgdList);
+			aptResultDto.setResult(SUCCESS);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			aptResultDto.setResult(FAIL);
+		}
+		return aptResultDto;
+	}
+
+	@Override
+	public AptResultDto gugunList(AptParamDto aptParamDto) {
+		AptResultDto aptResultDto = new AptResultDto();
+		try {
+			List<SGDDto> sgdList = dao.gugunList(aptParamDto);
+			aptResultDto.setSgdList(sgdList);
+			aptResultDto.setResult(SUCCESS);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			aptResultDto.setResult(FAIL);
+		}
+		return aptResultDto;
+	}
+
+	@Override
+	public AptResultDto dongList(AptParamDto aptParamDto) {
+		AptResultDto aptResultDto = new AptResultDto();
+		try {
+			List<SGDDto> sgdList = dao.dongList(aptParamDto);
+			aptResultDto.setSgdList(sgdList);
+			aptResultDto.setResult(SUCCESS);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			aptResultDto.setResult(FAIL);
+		}
+		return aptResultDto;
+	}
+
+	
+
 }
