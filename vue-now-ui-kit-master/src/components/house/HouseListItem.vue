@@ -6,10 +6,10 @@
     @mouseout="colorChange(false)"
     :class="{ 'mouse-over-bgcolor': isColor }"
   >
-    <b-col cols="2" class="text-center align-self-center">
-      <b-img thumbnail src="https://picsum.photos/250/250/?image=58" alt="Image 1"></b-img>
+    <b-col cols="3" class="text-center align-self-center">
+      <b-img src="images/apt-thumbnail2.png" alt="Image 1"></b-img>
     </b-col>
-    <b-col cols="10" class="align-self-center"> [{{ house.no }}] {{ house.aptName }} </b-col>
+    <b-col cols="7" class="align-self-center"><strong>{{ house.aptName }}</strong><br>{{ house.dealAmount }},000원</b-col>
   </b-row>
 </template>
 
@@ -45,6 +45,6 @@ export default {
   width: 50px;
 }
 .mouse-over-bgcolor {
-  background-color: lightblue;
+  background-color: rgba(226, 226, 226, 0.644);
 }
 </style>
