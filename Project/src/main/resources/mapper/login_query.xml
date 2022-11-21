@@ -4,7 +4,7 @@
 <mapper namespace="com.mycom.project.login.dao.LoginDao">
 
     <select id="login" parameterType="string" resultType="com.mycom.project.user.dto.UserDto">
-    	select user_seq, user_name, user_password, user_email, user_profile_image_url, user_register_date, user_state, user_event_part
+    	select user_seq, user_name, user_password, user_email, user_profile_image_url, user_register_date, user_state, user_event_part, user_comment
     		from users
     		where user_email = #{userEmail}
     </select>

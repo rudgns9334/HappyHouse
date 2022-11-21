@@ -58,8 +58,7 @@ import Vue from "vue";
 import VueAlertify from "vue-alertify";
 Vue.use(VueAlertify);
 
-import http from "@/common/axios.js";
-import { mapMutations } from "vuex";
+import { mapActions } from "vuex";
 
 const userStore = "userStore";
 
@@ -73,36 +72,8 @@ export default {
     [FormGroupInput.name]: FormGroupInput,
   },
   methods: {
-    ...mapMutations(userStore, ["SET_LOGIN"]),
-    async login() {
-      let loginObj = {
-        userEmail: this.$store.state.userStore.user.userEmail,
-        userPassword: this.$store.state.userStore.user.userPassword,
-      };
-      try {
-        let { data } = await http.post("/login", loginObj);
-        console.log(data);
-        if (data.result == "success") {
-          let dto = JSON.parse(data.userDto);
-          console.log(dto);
-          let payload = {
-            isLogin: true,
-            user: {
-              ...dto,
-            },
-          };
-          this.SET_LOGIN(payload);
-          this.$router.push("/main");
-        }
-      } catch (error) {
-        console.log(error);
-        if (error.response.status == "404") {
-          this.$alertify.error("이메일 또는 비밀번호를 확인하세요.");
-        } else {
-          this.$alertify.error("Opps!! 서버에 문제가 발생했습니다.");
-        }
-      }
-    },
+    
+    ...mapActions(userStore, ["login"]),
   },
 };
 </script>

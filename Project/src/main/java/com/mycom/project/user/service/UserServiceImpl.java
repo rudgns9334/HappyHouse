@@ -41,10 +41,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserResultDto userWithdraw(UserDto userDto) {
-		System.out.println(userDto);
+	public UserResultDto userWithdraw(int userSeq) {
 		UserResultDto userResultDto = new UserResultDto();
-		if (userDao.userWithdraw(userDto) == 1) {
+		if (userDao.userWithdraw(userSeq) == 1) {
 			userResultDto.setResult(SUCCESS);
 		} else {
 			userResultDto.setResult(FAIL);

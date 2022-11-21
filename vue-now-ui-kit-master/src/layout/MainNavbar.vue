@@ -34,16 +34,16 @@
         </router-link>
       </li>
       <li class="nav-item" v-show="isLogin">
-        <router-link class="nav-link" to="/main">
+        <a class="nav-link" @click="logout">
           <p>Logout</p>
-        </router-link>
+        </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" v-show="!isLogin">
         <router-link class="nav-link" to="/register">
           <p>Register</p>
         </router-link>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" v-show="isLogin">
         <router-link class="nav-link" to="/profile">
           <p>MyPage</p>
         </router-link>
@@ -69,7 +69,7 @@
 <script>
 import { Navbar } from "@/components";
 import { Popover } from "element-ui";
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 const userStore = "userStore";
 
@@ -86,6 +86,9 @@ export default {
   computed: {
     ...mapState(userStore, ["isLogin", "user"]),
   },
+  methods: {
+    ...mapActions(userStore, ["logout"]),
+  }
 };
 </script>
 

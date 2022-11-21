@@ -24,7 +24,11 @@ public class AptDto {
 	private String area;
 	private String floor;
 	private String jibun;
+	private String lat;
+	private String lng;
 	private String type;
 	private int houseNo;
+	
+	private String houseAddress;
 	
 }
