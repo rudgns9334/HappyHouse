@@ -15,16 +15,23 @@ public class UserServiceImpl implements UserService {
 
 	private final int SUCCESS = 1;
 	private final int FAIL = -1;
+	private final int DUPLICATE = -2;
 	
 	@Override
 	public UserResultDto userRegister(UserDto userDto) {
 		System.out.println(userDto);
 		UserResultDto userResultDto = new UserResultDto();
-		if (userDao.userRegister(userDto) == 1) {
-			userResultDto.setResult(SUCCESS);
-		} else {
-			userResultDto.setResult(FAIL);
+		int check = userDao.checkUserDuplicate(userDto);
+		if(check > 0) {
+			userResultDto.setResult(DUPLICATE);
+		}else {
+			if (userDao.userRegister(userDto) == 1) {
+				userResultDto.setResult(SUCCESS);
+			} else {
+				userResultDto.setResult(FAIL);
+			}
 		}
+		
 		return userResultDto;
 	}
 	

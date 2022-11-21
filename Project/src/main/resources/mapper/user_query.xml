@@ -19,4 +19,8 @@
     		where user_email = #{userEmail} and user_password = #{userPassword} and user_name = #{userName}
     </delete>
     
+    <select id="checkUserDuplicate" parameterType="com.mycom.project.user.dto.UserDto" resultType="int">
+    	select count(*) from users
+    		where user_email = #{userEmail}
+    </select>
 </mapper>

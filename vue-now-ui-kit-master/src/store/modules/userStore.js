@@ -107,14 +107,20 @@ export default {
                 body,
                 ({data}) => {
                     console.log(data);
-                    let $this = this;
                     console.log(this._vm);
-                    this._vm.$alertify.alert("회원가입을 축하합니다. 로그인 페이지로 이동합니다", function () {
-                    router.push("/login");
-                    });
+                    if(data.result=="success"){
+                        this._vm.$alertify.alert("회원가입을 축하합니다. 로그인 페이지로 이동합니다", function () {
+                            router.push("/login");
+                        });
+                    }
+                    else if(data.result == "duplicate"){
+                        this._vm.$alertify.error("중복된 이메일이 존재합니다.");
+                    }
+                    
                 },
                 (error) => {
                     console.error(error);
+                    console.log(data);
                     this._vm.$alertify.error("서버에 문제가 있습니다.");
                 }
             )

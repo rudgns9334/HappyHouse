@@ -9,4 +9,5 @@ public interface UserDao {
 	int userRegister(UserDto userDto);
 	int userModify(UserDto userDto);
 	int userWithdraw(UserDto userDto);
+	int checkUserDuplicate(UserDto userDto);
 }

@@ -31,6 +31,7 @@ public class UserController {
 	UserService userService;
 	
 	private final int SUCCESS = 1;
+	private final int DUPLICATE = -2;
 
 	@PostMapping(value="/register")
 	public ResponseEntity<Map<String, String>> register(@RequestBody UserDto dto) {
@@ -42,7 +43,10 @@ public class UserController {
 		if (userResultDto.getResult() == SUCCESS) {
 			map.put("result", "success");
 			return new ResponseEntity<Map<String, String>>(map, HttpStatus.OK);
-		} else {
+		}else if(userResultDto.getResult() == DUPLICATE) {
+			map.put("result", "duplicate");
+			return new ResponseEntity<Map<String, String>>(map, HttpStatus.OK);
+		}else {
 			map.put("result", "fail");
 			return new ResponseEntity<Map<String, String>>(map, HttpStatus.NOT_FOUND);
 		}
