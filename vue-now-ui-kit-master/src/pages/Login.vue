@@ -106,4 +106,8 @@ export default {
   },
 };
 </script>
-<style></style>
+<style scoped>
+.card >>> .card-body {
+  height: 250px;
+}
+</style>

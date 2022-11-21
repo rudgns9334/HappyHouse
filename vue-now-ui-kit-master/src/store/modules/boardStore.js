@@ -89,7 +89,7 @@ export default {
                 },
                 (error) => {
                     console.error(error);
-                    this.$alertify.error("서버에 문제가 있습니다.");
+                    this._vm.$alertify.error("서버에 문제가 있습니다.");
                 });
         }
     },

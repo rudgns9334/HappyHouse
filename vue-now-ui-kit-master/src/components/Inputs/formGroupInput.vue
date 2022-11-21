@@ -5,7 +5,7 @@
       { 'input-group': hasIcon },
       { 'has-danger': error },
       { 'input-group-focus': focused },
-      { 'has-label': label || $slots.label }
+      { 'has-label': label || $slots.label },
     ]"
   >
     <slot name="label">
@@ -32,32 +32,23 @@
         />
       </slot>
       <slot name="addonRight">
-        <span
-          v-if="addonRightIcon"
-          class="input-group-addon input-group-append"
-        >
+        <span v-if="addonRightIcon" class="input-group-addon input-group-append">
           <i class="input-group-text" :class="addonRightIcon"></i>
         </span>
       </slot>
-
-      <slot name="infoBlock"></slot>
-      <slot name="helpBlock">
-        <div
-          class="text-danger invalid-feedback"
-          style="display: block;"
-          :class="{ 'mt-2': hasIcon }"
-          v-if="error"
-        >
-          {{ error }}
-        </div>
-      </slot>
     </div>
+    <slot name="infoBlock"></slot>
+    <slot name="helpBlock">
+      <div class="text-danger invalid-feedback" style="display: block">
+        {{ error }}
+      </div>
+    </slot>
   </div>
 </template>
 <script>
 export default {
   inheritAttrs: false,
-  name: 'fg-input',
+  name: "fg-input",
   props: {
     required: Boolean,
     label: String,
@@ -66,14 +57,14 @@ export default {
     inputClasses: String,
     value: {
       type: [String, Number],
-      default: ''
+      default: "",
     },
     addonRightIcon: String,
-    addonLeftIcon: String
+    addonLeftIcon: String,
   },
   data() {
     return {
-      focused: false
+      focused: false,
     };
   },
   computed: {
@@ -82,7 +73,7 @@ export default {
         ...this.$listeners,
         input: this.updateValue,
         focus: this.onFocus,
-        blur: this.onBlur
+        blur: this.onBlur,
       };
     },
     hasIcon() {
@@ -93,22 +84,30 @@ export default {
         this.addonRightIcon !== undefined ||
         this.addonLeftIcon !== undefined
       );
-    }
+    },
   },
   methods: {
     updateValue(evt) {
       let value = evt.target.value;
-      this.$emit('input', value);
+      this.$emit("input", value);
     },
     onFocus(value) {
       this.focused = true;
-      this.$emit('focus', value);
+      this.$emit("focus", value);
     },
     onBlur(value) {
       this.focused = false;
-      this.$emit('blur', value);
-    }
-  }
+      this.$emit("blur", value);
+    },
+  },
 };
 </script>
-<style></style>
+<style>
+.login-page .card-login .input-group:last-child {
+  margin-bottom: 0px;
+}
+.invalid-feedback {
+  height: 20px;
+  margin-top: 0px;
+}
+</style>
