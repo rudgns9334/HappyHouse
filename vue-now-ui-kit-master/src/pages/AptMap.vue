@@ -56,14 +56,6 @@
         <div class="input-select">
           <apt-search-bar></apt-search-bar>
         </div>
-        <input class="searchBar" type="text" placeholder="Search by name" />
-        <button
-          type="button"
-          class="btn btn-primary btn-round"
-          style="width: 25%; padding-left: -20px; background-color: #005555"
-        >
-          SEARCH
-        </button>
       </div>
       <ul id="category">
         <li id="BK9" data-order="0">
@@ -114,18 +106,15 @@ import AptList from "./components/AptList.vue";
 import AptSearchBar from "./components/AptSearchBar";
 import {Navbar} from "@/components";
 import {mapState} from "vuex";
+const aptStore = "aptStore";
 
 export default {
   name: "App",
   data() {
     return {
-      mapOption: {
-        center: {
-          lat: 33.450701,
-          lng: 126.570667,
-        },
-        level: 3,
-      },
+      lat: 33.450701,
+      lng: 126.570667,
+      level: 5,
       kakaomap: "",
     };
   },
@@ -138,7 +127,7 @@ export default {
     this.mapInit();
   },
   computed: {
-    ...mapState(["sidos", "guguns", "houses"]),
+    ...mapState(aptStore, ["sidos", "guguns", "houses", "selLat", "selLng"]),
   },
   methods: {
     // 지도타입 컨트롤의 지도 또는 스카이뷰 버튼을 클릭하면 호출되어 지도타입을 바꾸는 함수입니다
@@ -170,16 +159,15 @@ export default {
     mapInit() {
       let kakao = window.kakao;
       var container = this.$refs.map;
-
       // 지도 생성
       const map = new kakao.maps.Map(container, {
-        center: new kakao.maps.LatLng(this.mapOption.center.lat, this.mapOption.center.lng),
-        level: 3,
+        center: new kakao.maps.LatLng(this.lat, this.lng),
+        level: this.level,
       });
 
       // 마커 생성
       // 마커가 표시될 위치입니다
-      var markerPosition = new kakao.maps.LatLng(this.mapOption.center.lat, this.mapOption.center.lng);
+      var markerPosition = new kakao.maps.LatLng(this.lat, this.lng);
 
       // 마커를 생성합니다
       var marker = new kakao.maps.Marker({

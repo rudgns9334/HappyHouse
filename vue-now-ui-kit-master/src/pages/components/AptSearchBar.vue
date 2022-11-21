@@ -1,11 +1,21 @@
 <template>
-  <b-row>
-    <b-col class="selectBox">
-      <b-form-select class="sidoSel" v-model="sidoCode" :options="sidos" @change="gugunList"></b-form-select>
-      <b-form-select class="gugunSel" v-model="gugunCode" :options="guguns" @change="dongList"></b-form-select>
-      <b-form-select class="dongSel" v-model="dongCode" :options="dongs" @change="searchApt"></b-form-select>
-    </b-col>
-  </b-row>
+  <div>
+    <b-row>
+      <b-col class="selectBox">
+        <b-form-select class="sidoSel" v-model="sidoCode" :options="sidos" @change="gugunList"></b-form-select>
+        <b-form-select class="gugunSel" v-model="gugunCode" :options="guguns" @change="dongList"></b-form-select>
+        <b-form-select class="dongSel" v-model="dongCode" :options="dongs"></b-form-select>
+      </b-col>
+    </b-row>
+    <input class="searchBar" type="text" placeholder="Search by name" style="width: 235px; margin-left: -2px;"/>
+    <button @click="searchApt"
+      type="button"
+      class="btn btn-primary"
+      style="width: 25%; padding-left: -20px; background-color: #005555"
+    >
+      SEARCH
+    </button>
+  </div>
 </template>
 
 <script>
@@ -36,7 +46,7 @@ export default {
   },
   methods: {
     ...mapActions(aptStore, ["getSido", "getGugun", "getDong", "getHouseList"]),
-    ...mapMutations(aptStore, ["CLEAR_SIDO_LIST", "CLEAR_GUGUN_LIST", "CLEAR_DONG_LIST", "CLEAR_APT_LIST"]),
+    ...mapMutations(aptStore, ["CLEAR_SIDO_LIST", "CLEAR_GUGUN_LIST", "CLEAR_DONG_LIST", "CLEAR_APT_LIST", "SHOW_IN_MAP"]),
     // sidoList() {
     //   this.getSido();
     // },
@@ -54,7 +64,9 @@ export default {
     searchApt() {
       this.CLEAR_APT_LIST();
       console.log(this.dongCode);
-      if (this.dongCode) this.getHouseList(this.dongCode);
+      if (this.dongCode) {
+        this.getHouseList(this.dongCode);        
+      }
     },
   },
 };

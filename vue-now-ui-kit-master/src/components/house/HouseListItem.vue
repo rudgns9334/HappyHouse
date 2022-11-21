@@ -14,7 +14,8 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import {mapActions} from "vuex";
+const aptStore = "aptStore";
 
 export default {
   name: "HouseListItem",
@@ -27,11 +28,9 @@ export default {
     house: Object,
   },
   methods: {
-    ...mapActions(["detailHouse"]),
+    ...mapActions(aptStore, ["detailApt"]),
     selectHouse() {
-      console.log("listRow : ", this.house);
-      // this.$store.dispatch("getHouse", this.house);
-      this.detailHouse(this.house);
+      this.detailApt(this.house.no);
     },
     colorChange(flag) {
       this.isColor = flag;
