@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,5 +50,14 @@ public class LoginController {
 		
 		map.put("result", "fail");
 		return new ResponseEntity<Map<String, String>>(map, HttpStatus.NOT_FOUND);
+	}
+	
+	@GetMapping(value="/logout")
+	public ResponseEntity<Map<String, String>> logout(HttpSession session){
+		session.invalidate();
+		Map<String, String> map = new HashMap<>();
+		map.put("result", "success");
+		return new ResponseEntity<Map<String, String>>(map, HttpStatus.OK);
+		
 	}
 }

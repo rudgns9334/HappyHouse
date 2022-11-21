@@ -4,9 +4,10 @@
 <mapper namespace="com.mycom.project.apt.dao.AptDao">
 	<!-- limit, offset -->
 	<select id="aptList" parameterType="map" resultType="com.mycom.project.apt.dto.AptDto">
-		select no, dong, AptName, code, dealAmount, buildYear, dealYear, dealMonth, dealDay, area, floor, jibun, type, house_no
-            from housedeal
-            order by no desc
+		select d.no, d.dong, d.AptName, d.code, d.dealAmount, d.buildYear, d.dealMonth, d.dealDay, d.area, d.floor, d.jibun, d.type, d.house_no, i.lat, i.lng
+            from housedeal d, houseinfo i
+            where d.house_no = i.no
+            order by d.no desc
             limit #{limit} offset #{offset}
 	</select>
 	<select id="aptListTotalCount" resultType="int">
@@ -15,10 +16,11 @@
 	
 	<!-- searchWord -->
 	<select id="aptListSearchWord" parameterType="map" resultType="com.mycom.project.apt.dto.AptDto">
-		select no, dong, AptName, code, dealAmount, buildYear, dealYear, dealMonth, dealDay, area, floor, jibun, type, house_no
-            from housedeal
-            where AptName like concat('%', #{searchWord}, '%')
-            order by no desc
+		select d.no, d.dong, d.AptName, d.code, d.dealAmount, d.buildYear, d.dealMonth, d.dealDay, d.area, d.floor, d.jibun, d.type, d.house_no, i.lat, i.lng
+            from housedeal d, houseinfo i
+            where d.house_no = i.no
+            and d.AptName like concat('%', #{searchWord}, '%')
+            order by d.no desc
             limit #{limit} offset #{offset}
 	</select>
 	<select id="aptListSearchWordTotalCount" parameterType="string" resultType="int">
@@ -28,10 +30,11 @@
 	
 	<!-- withDong -->
 	<select id="aptListWithDong" parameterType="map" resultType="com.mycom.project.apt.dto.AptDto">
-		select no, dong, AptName, code, dealAmount, buildYear, dealYear, dealMonth, dealDay, area, floor, jibun, type, house_no
-            from housedeal
-            where dong = (select name from dong_code where code = #{code})
-            order by no desc
+		select d.no, d.dong, d.AptName, d.code, d.dealAmount, d.buildYear, d.dealMonth, d.dealDay, d.area, d.floor, d.jibun, d.type, d.house_no, i.lat, i.lng
+            from housedeal d, houseinfo i
+            where d.house_no = i.no
+            and  d.dong = (select name from dong_code where code = #{code})
+            order by d.no desc
 	</select>
 	
 	<select id="aptListWithDongTotalCount" parameterType="string" resultType="int">
@@ -41,11 +44,12 @@
 	
 	<!-- withDongSearchWord -->
 	<select id="aptListWithDongSearchWord" parameterType="map" resultType="com.mycom.project.apt.dto.AptDto">
-		select no, dong, AptName, code, dealAmount, buildYear, dealYear, dealMonth, dealDay, area, floor, jibun, type, house_no
-            from housedeal
-            where dong = (select name from dong_code where code = #{code})
-            and AptName like concat('%', #{searchWord}, '%')
-            order by no desc
+		select d.no, d.dong, d.AptName, d.code, d.dealAmount, d.buildYear, d.dealMonth, d.dealDay, d.area, d.floor, d.jibun, d.type, d.house_no, i.lat, i.lng
+            from housedeal d, houseinfo i
+            where d.house_no = i.no
+            and d.dong = (select name from dong_code where code = #{code})
+            and d.AptName like concat('%', #{searchWord}, '%')
+            order by d.no desc
 	</select>
 	
 	<select id="aptListWithDongSearchWordTotalCount" parameterType="string" resultType="int">
@@ -56,23 +60,28 @@
 	
 	<!-- Detail -->
 	<select id="aptDetail" parameterType="int" resultType="com.mycom.project.apt.dto.AptDto">
-		select no, dong, AptName, code, dealAmount, buildYear, dealYear, dealMonth, dealDay, area, floor, jibun, type, house_no
-            from housedeal
-            where no = #{no}
+		select d.no, d.dong, d.AptName, d.code, d.dealAmount, d.buildYear, d.dealMonth, d.dealDay, d.area, d.floor, d.jibun, d.type, d.house_no, i.lat, i.lng
+            from housedeal d, houseinfo i
+            where d.house_no = i.no
+            and d.no = #{no}
 	</select>
 	
-	<select id="addressDetail" parameterType="map" resultType="com.mycom.project.apt.dto.SGDDto">
+	<resultMap type="com.mycom.project.apt.dto.SGDDto" id="sgdList">
+		<result column="name" property="dongName"></result>
+		<result column="code" property="dongCode"></result>
+		<result column="city_code" property="sidoCode"></result>
+		<result column="city_name" property="sidoName"></result>
+		<result column="gugun_code" property="gugunCode"></result>
+		<result column="gugun_name" property="gugunName"></result>
+	</resultMap>
+	
+	<select id="addressDetail" parameterType="map" resultMap="sgdList">
 		select code, name, city_code, city_name, gugun_code, gugun_name
 		from dong_code
 		where gugun_code = #{code}
 		and name = #{name}
 	</select>
 	
-	<select id="aptLatLng" parameterType="int" resultType="com.mycom.project.apt.dto.AptInfoDto">
-		select lat, lng
-		from houseinfo
-		where no = #{houseNo}
-	</select>
 	
 	<resultMap type="com.mycom.project.apt.dto.SGDDto" id="sidoList">
 		<result column="name" property="sidoName"></result>

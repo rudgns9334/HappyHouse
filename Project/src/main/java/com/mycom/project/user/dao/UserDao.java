@@ -8,5 +8,5 @@ import com.mycom.project.user.dto.UserDto;
 public interface UserDao {
 	int userRegister(UserDto userDto);
 	int userModify(UserDto userDto);
-	int userWithdraw(UserDto userDto);
+	int userWithdraw(int useSeq);
 }

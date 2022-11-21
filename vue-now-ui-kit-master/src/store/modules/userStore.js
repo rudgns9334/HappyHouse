@@ -9,6 +9,7 @@ export default {
     namespaced: true,
     state: {
         isLogin: false,
+        isModify: false,
         user:{
             userSeq: 0,
             userName: '',
@@ -18,6 +19,7 @@ export default {
             userRegisterDate: '',
             userState: '',
             userEventPart: '',
+            userComment: '',
         },
         regist:{
             userName: '',
@@ -46,6 +48,22 @@ export default {
         SET_LOGIN(state, payload){
             state.isLogin=payload.isLogin;
             state.user = payload.user;
+        },
+        SET_LOGOUT(state){
+            state.isLogin=false;
+        },
+        SET_MODIFY(state){
+            state.isModify=!state.isModify;
+        },
+        CLEAR_USER(state){
+            state.user.userSeq = 0;
+            state.user.userName = '';
+            state.user.userPassword = 'admin1234!';
+            state.user.userEmail = 'admin@ssafy.com';
+            state.user.ProfileImageUrl= '';
+            state.user.userRegisterDate = '';
+            state.user.userState = '';
+            state.user.userEventPart = '';
         },
         SET_ERR_USER_NAME(state, msg){
             state.regist.userNameErrMsg=msg;
@@ -92,6 +110,7 @@ export default {
             if(!this.getters["userStore/isUserPassword2FocusAndValid"]) commit("SET_ERR_USER_PASSWORD2", "비밀번호가 일치하지 않습니다.");
             else commit("SET_ERR_USER_PASSWORD2", "");
         },
+        
         register({commit}){
             if (!this.state.userStore.regist.isUserNameValid || 
                 !this.state.userStore.regist.isUserEmailValid ||
@@ -116,6 +135,97 @@ export default {
                 (error) => {
                     console.error(error);
                     this._vm.$alertify.error("서버에 문제가 있습니다.");
+                }
+            )
+        },
+        withdraw({commit}){
+            
+            userAxios.userWithdraw(
+                this.state.userStore.user.userSeq,
+                ({data}) => {
+                    console.log(data);
+                    if(data.result=="success"){
+                        commit("SET_LOGOUT");
+                        commit("CLEAR_USER");
+                        this._vm.$alertify.alert("회원탈퇴가 완료 되었습니다. 더 좋은 인연으로 만나요.", function () {
+                            router.push("/main");
+                        });
+                    }
+                    
+                },
+                (error) => {
+                    console.error(error);
+                    this._vm.$alertify.error("서버에 문제가 있습니다.");
+                }
+            )
+        },
+        modify({commit}){
+
+            let body = {
+                userSeq: this.state.userStore.user.userSeq,
+                userName: this.state.userStore.user.userName,
+                userComment: this.state.userStore.user.userComment,
+                userPassword: this.state.userStore.user.userPassword,
+            };
+            userAxios.userModify(
+                body,
+                ({data}) => {
+                    console.log(data);
+                    if(data.result=="success"){
+                        this._vm.$alertify.success("정보 수정이 완료 되었습니다.");
+                        commit("SET_MODIFY");
+                    }
+                    
+                },
+                (error) => {
+                    console.error(error);
+                    this._vm.$alertify.error("서버에 문제가 있습니다.");
+                }
+            )
+        },
+        toggleModify({commit}){
+            commit("SET_MODIFY");
+        },
+        login({commit}){
+            let body = {
+                userEmail: this.state.userStore.user.userEmail,
+                userPassword: this.state.userStore.user.userPassword,
+            };
+            console.log(body);
+            userAxios.login(
+                body,
+                ({data}) => {
+                    if(data.result == "success"){
+                        let dto = JSON.parse(data.userDto);
+                        let payload = {
+                            isLogin: true,
+                            user: {
+                                ...dto,
+                            }
+                        };
+                        commit("SET_LOGIN",payload);
+                        router.push("/main");
+                    }
+                },
+                (error) => {
+                    console.log(error);
+                    if (error.response.status == "404") {
+                        this._vm.$alertify.error("이메일 또는 비밀번호를 확인하세요.");
+                    } else {
+                        this._vm.$alertify.error("Opps!! 서버에 문제가 발생했습니다.");
+                    }
+                }
+            )
+        },
+        logout({commit}){
+            userAxios.logout(
+                ({data}) => {
+                    if(data.result == "success"){
+                        commit("SET_LOGOUT");
+                        commit("CLEAR_USER");
+                        this._vm.$alertify.success("로그아웃에 성공하였습니다.");
+                        router.push("/main");
+                    }
                 }
             )
         }
