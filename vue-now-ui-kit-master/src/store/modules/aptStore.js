@@ -14,6 +14,8 @@ export default {
         dongs: [{ value: null, text: "동 구분" }],
         houses: [],
         house: null,
+        selLat: null,
+        selLng: null,
     },
     mutations: {
         SET_SIDO_LIST(state, sidos) {
@@ -29,8 +31,8 @@ export default {
         SET_DONG_LIST(state, dongs) {
           dongs.forEach((dong) => {
               state.dongs.push({ value: dong.dongCode, text: dong.dongName });
-      });
-      },
+        });
+        },
         CLEAR_SIDO_LIST(state) {
             state.sidos = [{ value: null, text: "시/도 구분" }];
         },
@@ -53,6 +55,12 @@ export default {
         // console.log("Mutations", house);
             state.house = house;
         },
+        SET_LAT(state, lat) {
+          state.selLat = lat;
+        },
+        SET_LNG(state, lng) {
+          state.selLng = lng;
+        }
     },
     actions: {
         getSido({ commit }) {
@@ -116,10 +124,17 @@ export default {
                 console.log(error);
               });
           },
-          detailHouse({ commit }, house) {
-            // 나중에 house.일련번호를 이용하여 API 호출
-            console.log(house);
-            commit("SET_DETAIL_HOUSE", house);
+          detailApt({commit}, no) {
+            console.log(no);
+            http
+              .get("/apts/detail/" + no)
+              .then(({data}) => {
+                commit("SET_LAT", data.infoDto.lat);
+                commit("SET_LNG", data.infoDto.lng);
+              })
+              .catch(error => {
+                console.log(error);
+              });
           },
     },
     modules: {},
