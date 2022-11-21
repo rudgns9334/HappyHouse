@@ -10,10 +10,21 @@
         <div class="photo-container">
           <img src="img/ryan.jpg" alt="" />
         </div>
-        <h3 class="title">Ryan Scheinder</h3>
-        <p class="category">Photographer</p>
+        <h3 class="title whiteFont" v-if="!isModify">{{user.userName}}</h3>
+        <p class="category" v-if="!isModify">{{user.userComment}}</p>
+        <fg-input
+         v-model="$store.state.userStore.user.userName"
+          v-if="isModify"></fg-input>
+        
+        <fg-input
+         v-model="$store.state.userStore.user.userComment"
+          v-if="isModify"></fg-input>
+
+          <fg-input
+         v-model="$store.state.userStore.user.userPassword"
+          v-if="isModify"></fg-input>
         <div class="content">
-          <div class="social-description">
+          <!-- <div class="social-description">
             <h2>26</h2>
             <p>Comments</p>
           </div>
@@ -24,7 +35,8 @@
           <div class="social-description">
             <h2>48</h2>
             <p>Bookmarks</p>
-          </div>
+          </div> -->
+
         </div>
       </div>
     </div>
@@ -33,20 +45,24 @@
         <div class="button-container">
           <a href="#button" class="btn btn-primary btn-round btn-lg">Follow</a>
           <a
-            href="#button"
             class="btn btn-default btn-round btn-lg btn-icon"
-            rel="tooltip"
-            title="Follow me on Twitter"
+            @click="toggleModify"
+            v-if="!isModify"
           >
-            <i class="fab fa-twitter"></i>
+            <p>수정</p>
           </a>
           <a
-            href="#button"
             class="btn btn-default btn-round btn-lg btn-icon"
-            rel="tooltip"
-            title="Follow me on Instagram"
+            @click="modify"
+            v-if="isModify"
           >
-            <i class="fab fa-instagram"></i>
+            <p>완료</p>
+          </a>
+          <a
+            class="btn btn-default btn-round btn-lg btn-icon"
+            @click="withdraw"
+          >
+            <p>삭제</p>
           </a>
         </div>
         <h3 class="title">About me</h3>
@@ -124,15 +140,30 @@
   </div>
 </template>
 <script>
-import { Tabs, TabPane } from '@/components';
+import { Tabs, TabPane, FormGroupInput } from '@/components';
+import { mapActions, mapState } from 'vuex';
+
+const userStore = "userStore";
 
 export default {
   name: 'profile',
   bodyClass: 'profile-page',
   components: {
     Tabs,
-    TabPane
+    TabPane,
+    [FormGroupInput.name]: FormGroupInput,
+  },
+  computed:{
+    ...mapState(userStore, ["isModify","user"]),
+  },
+  methods:{
+    ...mapActions(userStore,["withdraw", "toggleModify", "modify"]),
+    
   }
 };
 </script>
-<style></style>
+<style>
+.whiteFont {
+  color: #fff;
+}
+</style>

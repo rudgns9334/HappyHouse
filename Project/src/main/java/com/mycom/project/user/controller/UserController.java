@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,7 +55,7 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/modify")
-	public ResponseEntity<Map<String, String>> modify(UserDto dto) {
+	public ResponseEntity<Map<String, String>> modify(@RequestBody UserDto dto) {
 
 		System.out.println(dto);
 		UserResultDto userResultDto = userService.userModify(dto);
@@ -68,11 +70,10 @@ public class UserController {
 		}
 	}
 	
-	@PostMapping(value="/withdraw")
-	public ResponseEntity<Map<String, String>> withdraw(UserDto dto) {
+	@DeleteMapping(value="/withdraw/{userSeq}")
+	public ResponseEntity<Map<String, String>> withdraw(@PathVariable int userSeq) {
 
-		System.out.println(dto);
-		UserResultDto userResultDto = userService.userWithdraw(dto);
+		UserResultDto userResultDto = userService.userWithdraw(userSeq);
 		Map<String, String> map = new HashMap<>();
 		
 		if (userResultDto.getResult() == SUCCESS) {

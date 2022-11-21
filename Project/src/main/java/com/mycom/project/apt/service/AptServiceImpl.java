@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.mycom.project.apt.dao.AptDao;
 import com.mycom.project.apt.dto.AptDto;
-import com.mycom.project.apt.dto.AptInfoDto;
 import com.mycom.project.apt.dto.AptParamDto;
 import com.mycom.project.apt.dto.AptResultDto;
 import com.mycom.project.apt.dto.SGDDto;
@@ -27,6 +26,13 @@ public class AptServiceImpl implements AptService{
 		try {
 			List<AptDto> list = dao.aptList(aptParamDto);
 			int count = dao.aptListTotalCount();
+			for (AptDto aptDto : list) {
+				String code = aptDto.getCode();
+				String dong = aptDto.getDong();
+				SGDDto dongDto = dao.addressDetail(code, dong);
+				
+				aptDto.setHouseAddress(dongDto.getSidoName() + " " + dongDto.getGugunName() + " " + dongDto.getDongName() + " " + aptDto.getJibun());
+			}
 			aptResultDto.setList(list);
 			aptResultDto.setCount(count);
 			aptResultDto.setResult(SUCCESS);
@@ -43,6 +49,13 @@ public class AptServiceImpl implements AptService{
 		try {
 			List<AptDto> list = dao.aptListSearchWord(aptParamDto);
 			int count = dao.aptListSearchWordTotalCount(aptParamDto);
+			for (AptDto aptDto : list) {
+				String code = aptDto.getCode();
+				String dong = aptDto.getDong();
+				SGDDto dongDto = dao.addressDetail(code, dong);
+				
+				aptDto.setHouseAddress(dongDto.getSidoName() + " " + dongDto.getGugunName() + " " + dongDto.getDongName() + " " + aptDto.getJibun());
+			}
 			aptResultDto.setList(list);
 			aptResultDto.setCount(count);
 			aptResultDto.setResult(SUCCESS);
@@ -59,6 +72,13 @@ public class AptServiceImpl implements AptService{
 		try {
 			List<AptDto> list = dao.aptListWithDong(aptParamDto);
 			int count = dao.aptListWithDongTotalCount(aptParamDto);
+			for (AptDto aptDto : list) {
+				String code = aptDto.getCode();
+				String dong = aptDto.getDong();
+				SGDDto dongDto = dao.addressDetail(code, dong);
+				
+				aptDto.setHouseAddress(dongDto.getSidoName() + " " + dongDto.getGugunName() + " " + dongDto.getDongName() + " " + aptDto.getJibun());
+			}
 			aptResultDto.setList(list);
 			aptResultDto.setCount(count);
 			aptResultDto.setResult(SUCCESS);
@@ -75,6 +95,13 @@ public class AptServiceImpl implements AptService{
 		try {
 			List<AptDto> list = dao.aptListWithDongSearchWord(aptParamDto);
 			int count = dao.aptListWithDongSearchWordTotalCount(aptParamDto);
+			for (AptDto aptDto : list) {
+				String code = aptDto.getCode();
+				String dong = aptDto.getDong();
+				SGDDto dongDto = dao.addressDetail(code, dong);
+				
+				aptDto.setHouseAddress(dongDto.getSidoName() + " " + dongDto.getGugunName() + " " + dongDto.getDongName() + " " + aptDto.getJibun());
+			}
 			aptResultDto.setList(list);
 			aptResultDto.setCount(count);
 			aptResultDto.setResult(SUCCESS);
@@ -91,27 +118,14 @@ public class AptServiceImpl implements AptService{
 		try {
 			
 			AptDto aptDto = dao.aptDetail(aptParamDto);
-			AptInfoDto infoDto = dao.aptLatLng(aptDto.getHouseNo());
-			
-			infoDto.setAptNo(aptDto.getNo());
-			infoDto.setAptName(aptDto.getAptName());
-			infoDto.setDealAmount(aptDto.getDealAmount());
-			infoDto.setBuildYear(aptDto.getBuildYear());
-			infoDto.setHouseDealDate(aptDto.getDealYear() + "." + aptDto.getDealMonth() + "." + aptDto.getDealDay());
-			infoDto.setArea(aptDto.getArea());
-			infoDto.setFloor(aptDto.getFloor());
-			infoDto.setType(aptDto.getType());
-			infoDto.setHouseNo(aptDto.getHouseNo());
 			
 			String code = aptDto.getCode();
 			String dong = aptDto.getDong();
 			SGDDto dongDto = dao.addressDetail(code, dong);
 			
-			infoDto.setHouseAddress(dongDto.getSidoName() + " " + dongDto.getGugunName() + " " + dongDto.getDongName() + " " + aptDto.getJibun());
-			
+			aptDto.setHouseAddress(dongDto.getSidoName() + " " + dongDto.getGugunName() + " " + dongDto.getDongName() + " " + aptDto.getJibun());
 			
 			aptResultDto.setDto(aptDto);
-			aptResultDto.setInfoDto(infoDto);
 			
 			aptResultDto.setResult(SUCCESS);
 			

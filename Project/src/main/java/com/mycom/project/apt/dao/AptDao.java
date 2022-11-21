@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.mycom.project.apt.dto.AptDto;
-import com.mycom.project.apt.dto.AptInfoDto;
 import com.mycom.project.apt.dto.AptParamDto;
 import com.mycom.project.apt.dto.SGDDto;
 
@@ -26,7 +25,6 @@ public interface AptDao {
 	
 	AptDto aptDetail(AptParamDto aptParamDto);
 	SGDDto addressDetail(@Param("code") String code, @Param("name") String dong);
-	AptInfoDto aptLatLng(int houseNo);
 	
 	List<SGDDto> sidoList();
 	List<SGDDto> gugunList(AptParamDto aptParamDto);

@@ -6,5 +6,5 @@ import com.mycom.project.user.dto.UserResultDto;
 public interface UserService {
 	UserResultDto userRegister(UserDto userDto);
 	UserResultDto userModify(UserDto userDto);
-	UserResultDto userWithdraw(UserDto userDto);
+	UserResultDto userWithdraw(int userSeq);
 }

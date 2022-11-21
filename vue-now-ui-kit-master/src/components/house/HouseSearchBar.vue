@@ -57,6 +57,7 @@ export default {
     },
     searchApt() {
       if (this.gugunCode) this.getHouseList(this.gugunCode);
+      console.log(houses);
     },
   },
 };

@@ -14,7 +14,8 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import {mapState, mapActions} from "vuex";
+const aptStore = "aptStore";
 
 export default {
   name: "HouseListItem",
@@ -26,12 +27,14 @@ export default {
   props: {
     house: Object,
   },
+  computed: {
+    ...mapState(aptStore, ["selLat", "selLng"])
+  },
   methods: {
-    ...mapActions(["detailHouse"]),
+    ...mapActions(aptStore, ["detailApt"]),
     selectHouse() {
-      console.log("listRow : ", this.house);
-      // this.$store.dispatch("getHouse", this.house);
-      this.detailHouse(this.house);
+      this.detailApt(this.house.no);
+      console.log(this.selLat, this.selLng);
     },
     colorChange(flag) {
       this.isColor = flag;

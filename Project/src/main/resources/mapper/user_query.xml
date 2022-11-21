@@ -4,19 +4,19 @@
 <mapper namespace="com.mycom.project.user.dao.UserDao">
     
         <insert id="userRegister" parameterType="com.mycom.project.user.dto.UserDto">
-    	insert into users( user_name, user_password, user_email, user_profile_image_url, user_register_date, user_state )
-    		values ( #{userName}, #{userPassword}, #{userEmail}, '', now(), #{userState} )
+    	insert into users( user_name, user_password, user_email, user_profile_image_url, user_register_date, user_state, user_comment )
+    		values ( #{userName}, #{userPassword}, #{userEmail}, '', now(), #{userState}, '' )
     </insert>
     
     <update id="userModify" parameterType="com.mycom.project.user.dto.UserDto">
     	update users
-    		set user_name = #{userName}, user_password = #{userPassword}
-    		where user_email = #{userEmail}
+    		set user_name = #{userName}, user_password = #{userPassword}, user_comment = #{userComment}
+    		where user_seq = #{userSeq}
     </update>
     
-    <delete id="userWithdraw" parameterType="com.mycom.project.user.dto.UserDto">
+    <delete id="userWithdraw" parameterType="int">
     	delete from users
-    		where user_email = #{userEmail} and user_password = #{userPassword} and user_name = #{userName}
+    		where user_seq = #{userSeq}
     </delete>
     
     <select id="checkUserDuplicate" parameterType="com.mycom.project.user.dto.UserDto" resultType="int">
