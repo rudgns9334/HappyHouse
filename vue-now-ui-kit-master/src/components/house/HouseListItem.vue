@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import {mapState, mapActions} from "vuex";
 const aptStore = "aptStore";
 
 export default {
@@ -27,10 +27,14 @@ export default {
   props: {
     house: Object,
   },
+  computed: {
+    ...mapState(aptStore, ["selLat", "selLng"])
+  },
   methods: {
     ...mapActions(aptStore, ["detailApt"]),
     selectHouse() {
       this.detailApt(this.house.no);
+      console.log(this.selLat, this.selLng);
     },
     colorChange(flag) {
       this.isColor = flag;
