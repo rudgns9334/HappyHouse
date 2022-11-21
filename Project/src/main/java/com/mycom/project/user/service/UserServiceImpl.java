@@ -30,7 +30,6 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public UserResultDto userModify(UserDto userDto) {
-		System.out.println(userDto);
 		UserResultDto userResultDto = new UserResultDto();
 		if (userDao.userModify(userDto) == 1) {
 			userResultDto.setResult(SUCCESS);
