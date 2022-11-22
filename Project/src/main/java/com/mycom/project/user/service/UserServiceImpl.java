@@ -25,6 +25,8 @@ public class UserServiceImpl implements UserService {
 		if(check > 0) {
 			userResultDto.setResult(DUPLICATE);
 		}else {
+			userDto.setUserProfileImageUrl(userDto.getUserProfileImageUrl());
+			System.out.println(userDto);
 			if (userDao.userRegister(userDto) == 1) {
 				userResultDto.setResult(SUCCESS);
 			} else {

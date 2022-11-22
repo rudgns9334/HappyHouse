@@ -5,7 +5,7 @@
     
         <insert id="userRegister" parameterType="com.mycom.project.user.dto.UserDto">
     	insert into users( user_name, user_password, user_email, user_profile_image_url, user_register_date, user_state, user_comment )
-    		values ( #{userName}, #{userPassword}, #{userEmail}, '', now(), #{userState}, '' )
+    		values ( #{userName}, #{userPassword}, #{userEmail}, #{userProfileImageUrl}, now(), #{userState}, '' )
     </insert>
     
     <update id="userModify" parameterType="com.mycom.project.user.dto.UserDto">
