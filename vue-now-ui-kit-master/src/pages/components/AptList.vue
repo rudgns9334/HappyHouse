@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-container v-if="houses && houses.length != 0" class="bv-example-row mt-3">
-      <house-list-item v-for="(house, index) in houses" :key="index" :house="house" :idx="index" />
+      <house-list-item @detail="passToAptMap" v-for="(house, index) in houses" :key="index" :house="house" :idx="index" />
     </b-container>
     <b-container v-else class="bv-example-row mt-3">
       <b-row>
@@ -27,6 +27,12 @@ export default {
   computed: {
     ...mapState(aptStore, ["houses"]),
   },
+  methods: {
+    passToAptMap(idx) {
+      this.$emit('detail', idx);
+    }
+  }
+
 };
 </script>
 

@@ -29,6 +29,7 @@ export default {
   },
   props: {
     house: Object,
+    idx: Number,
   },
   computed: {},
   methods: {
@@ -43,6 +44,7 @@ export default {
     },
     selectHouse() {
       this.SET_CLICK_HOUSE(this.house);
+      this.$emit('detail', this.idx);
     },
   },
 };

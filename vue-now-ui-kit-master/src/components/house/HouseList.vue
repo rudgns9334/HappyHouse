@@ -1,6 +1,6 @@
 <template>
   <b-container v-if="houses && houses.length != 0" class="bv-example-row mt-3">
-    <house-list-item v-for="(house, index) in houses" :key="index" :house="house" />
+    <house-list-item v-for="(house, index) in houses" :key="index" :house="house" :idx="index"/>
   </b-container>
   <b-container v-else class="bv-example-row mt-3">
     <b-row>
