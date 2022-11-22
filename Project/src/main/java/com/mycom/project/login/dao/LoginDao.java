@@ -6,5 +6,8 @@ import com.mycom.project.user.dto.UserDto;
 
 @Mapper
 public interface LoginDao {
-	UserDto login(String userEmail);
+	public UserDto login(String userEmail);
+	public int saveRefreshToken(UserDto userDto);
+	public String getRefreshToken(int userSeq);
+	public int deleteRefreshToken(int userSeq);
 }

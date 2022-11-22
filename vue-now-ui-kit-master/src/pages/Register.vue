@@ -77,7 +77,7 @@ import MainFooter from "@/layout/MainFooter";
 
 import Vue from "vue";
 import VueAlertify from "vue-alertify";
-import { mapActions } from "vuex";
+import { mapActions, mapMutations } from "vuex";
 Vue.use(VueAlertify);
 
 const userStore = "userStore";
@@ -92,6 +92,7 @@ export default {
     [FormGroupInput.name]: FormGroupInput,
   },
   methods: {
+    ...mapMutations(userStore, ["CLEAR_REGISTER"]),
     ...mapActions(userStore, [
       "validateUserName",
       "validateUserEmail",
@@ -99,6 +100,9 @@ export default {
       "validateUserPassword2",
       "register",
     ]),
+  },
+  mounted() {
+    this.CLEAR_REGISTER();
   },
 };
 </script>

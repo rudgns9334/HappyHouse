@@ -26,6 +26,7 @@ public class UserDto {
     private String userState;
     private String userEventPart;
     private String userComment;
+    private String token;
   
 	public void setUserProfileImageUrl(String userProfileImageUrl) {
 		if( userProfileImageUrl == null || "null".equals(userProfileImageUrl) || "".equals(userProfileImageUrl)) {

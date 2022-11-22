@@ -10,14 +10,36 @@ import MainFooter from "./layout/MainFooter.vue";
 import Apt from "./pages/AptMap.vue";
 import Notice from "./pages/Notice.vue";
 
+import store from "./store/store.js";
+
 Vue.use(Router);
+
+const onlyAuthUser = async (to, from, next) => {
+  const checkUserInfo = store.getters["userStore/checkUserInfo"];
+  const checkToken = store.getters["userStore/checkToken"];
+  let token = sessionStorage.getItem("access-token");
+  console.log("로그인 처리 전", checkUserInfo, token);
+
+  if (checkUserInfo != null && token) {
+    console.log("토큰 유효성 체크하러 가자!!!!");
+    await store.dispatch("userStore/checkToken", token);
+  }
+  if (!checkToken || checkUserInfo === null) {
+    alert("로그인이 필요한 페이지입니다..");
+    
+    next({ name: "login" });
+    // this.push("/login");
+  } else {
+    console.log("로그인 했다!!!!!!!!!!!!!.");
+    next();
+  }
+};
 
 export default new Router({
   linkExactActiveClass: "active",
   routes: [
     {
       path: "/",
-      name: "main",
       components: {default: Main, header: MainNavbar, footer: MainFooter},
       props: {
         header: {colorOnScroll: 400},
@@ -62,6 +84,7 @@ export default new Router({
       path: "/profile",
       name: "profile",
       components: {default: Profile, header: MainNavbar, footer: MainFooter},
+      beforeEnter: onlyAuthUser,
       props: {
         header: {colorOnScroll: 400},
         footer: {backgroundColor: "black"},
@@ -71,6 +94,7 @@ export default new Router({
       path: "/apt",
       name: "apt",
       components: {default: Apt},
+      beforeEnter: onlyAuthUser,
       props: {
         header: {colorOnScroll: 400},
       },
@@ -79,6 +103,7 @@ export default new Router({
       path: "/notice",
       name: "notice",
       components: {default: Notice, header: MainNavbar, footer: MainFooter},
+      beforeEnter: onlyAuthUser,
       props: {
         header: {colorOnScroll: 400},
         footer: {backgroundColor: "black"},

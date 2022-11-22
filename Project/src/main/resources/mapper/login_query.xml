@@ -8,4 +8,22 @@
     		from users
     		where user_email = #{userEmail}
     </select>
+    
+    <select id="getRefreshToken" parameterType="int" resultType="string">
+		select token
+		from users
+		where user_seq = #{userSeq}
+	</select>
+	
+	<update id="saveRefreshToken" parameterType="map">
+		update users
+		set token = #{token}
+		where user_seq = #{userSeq}
+	</update>
+	
+	<update id="deleteRefreshToken" parameterType="map">
+		update users
+		set token = null
+		where user_seq = #{userSeq}
+	</update>
 </mapper>

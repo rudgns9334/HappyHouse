@@ -1,5 +1,6 @@
 import userAxios from "@/common/axios/user.js";
 
+import jwtDecode from "jwt-decode";
 import router from "../../router";
 import Vue from "vue";
 import VueAlertify from "vue-alertify";
@@ -9,6 +10,7 @@ export default {
     namespaced: true,
     state: {
         isLogin: false,
+        isValidToken: false,
         isModify: false,
         user:{
             userSeq: 0,
@@ -45,15 +47,21 @@ export default {
         }
     },
     mutations: {
-        SET_LOGIN(state, payload){
+        SET_LOGIN_INFO(state, payload){
             state.isLogin=payload.isLogin;
             state.user = payload.user;
         },
-        SET_LOGOUT(state){
-            state.isLogin=false;
+        SET_IS_VALID_TOKEN: (state, isValidToken) => {
+            state.isValidToken = isValidToken;
+        },
+        SET_LOGIN(state, isLogin){
+            state.isLogin = isLogin;
         },
         SET_MODIFY(state){
             state.isModify=!state.isModify;
+        },
+        INIT_MODIFY(state){
+            state.isModify=false;
         },
         CLEAR_USER(state){
             state.user.userSeq = 0;
@@ -64,6 +72,13 @@ export default {
             state.user.userRegisterDate = '';
             state.user.userState = '';
             state.user.userEventPart = '';
+            state.user.userComment = '';
+        },
+        CLEAR_REGISTER(state){
+            state.regist.userName = '';
+            state.regist.userPassword = '';
+            state.regist.userPassword2 = '';
+            state.regist.userEmail = '';
         },
         SET_ERR_USER_NAME(state, msg){
             state.regist.userNameErrMsg=msg;
@@ -151,8 +166,9 @@ export default {
                 ({data}) => {
                     console.log(data);
                     if(data.result=="success"){
-                        commit("SET_LOGOUT");
+                        commit("SET_LOGIN",false);
                         commit("CLEAR_USER");
+                        commit("SET_IS_VALID_TOKEN", false);
                         this._vm.$alertify.alert("회원탈퇴가 완료 되었습니다. 더 좋은 인연으로 만나요.", function () {
                             router.push("/main");
                         });
@@ -202,6 +218,8 @@ export default {
                 body,
                 ({data}) => {
                     if(data.result == "success"){
+                        let accessToken = data["access-token"];
+                        let refreshToken = data["refresh-token"];
                         let dto = JSON.parse(data.userDto);
                         let payload = {
                             isLogin: true,
@@ -209,26 +227,93 @@ export default {
                                 ...dto,
                             }
                         };
-                        commit("SET_LOGIN",payload);
+                        commit("SET_LOGIN_INFO",payload);
+                        commit("SET_IS_VALID_TOKEN", true);
+                        sessionStorage.setItem("access-token", accessToken);
+                        sessionStorage.setItem("refresh-token", refreshToken);
+                        userAxios.setHeader();
                         router.push("/main");
+                    }else{
+                        commit("SET_LOGIN", false);
+                        commit("CLEAR_USER");
+                        commit("SET_IS_VALID_TOKEN", false);
                     }
                 },
                 (error) => {
                     console.log(error);
-                    if (error.response.status == "404") {
+                    if (error.code == "404") {
                         this._vm.$alertify.error("이메일 또는 비밀번호를 확인하세요.");
                     } else {
                         this._vm.$alertify.error("Opps!! 서버에 문제가 발생했습니다.");
                     }
                 }
             )
+        },checkToken({commit, dispatch, state}, token){
+            let decodeToken = jwtDecode(token);
+            if(decodeToken.userSeq === state.user.userSeq){
+                userAxios.setHeader();
+                userAxios.checkToken(
+                    ({data}) => {
+                        if(data.result==="success"){
+                            console.log("www");
+                        }
+                    },
+                    (error) => {
+                        commit("SET_IS_VALID_TOKEN", false);
+                        dispatch("tokenRegeneration");
+                    }
+                );
+            }
+            
         },
-        logout({commit}){
+        tokenRegeneration({ commit, state }) {
+            userAxios.tokenRegeneration(
+              state.user,
+              ({ data }) => {
+                if (data.result === "success") {
+                  let accessToken = data["access-token"];
+                  console.log("재발급 완료 >> 새로운 토큰 : {}", accessToken);
+                  sessionStorage.setItem("access-token", accessToken);
+                  commit("SET_IS_VALID_TOKEN", true);
+                }
+              },
+              (error) => {
+                // HttpStatus.UNAUTHORIZE(401) : RefreshToken 기간 만료 >> 다시 로그인!!!!
+                if (error.response.status === 401) {
+                  console.log("갱신 실패");
+                  // 다시 로그인 전 DB에 저장된 RefreshToken 제거.
+                  userAxios.logout(
+                    state.user.userSeq,
+                    ({ data }) => {
+                      if (data.message === "success") {
+                        console.log("리프레시 토큰 제거 성공");
+                      } else {
+                        console.log("리프레시 토큰 제거 실패");
+                      }
+                      this._vm.$alertify.alert("RefreshToken 기간 만료!!! 다시 로그인해 주세요.");
+                      commit("SET_IS_LOGIN", false);
+                      commit("CLEAR_USER");
+                      commit("SET_IS_VALID_TOKEN", false);
+                      router.push("/login");
+                    },
+                    (error) => {
+                      console.log(error);
+                      commit("SET_IS_LOGIN", false);
+                      commit("SET_USER_INFO", null);
+                    }
+                  );
+                }
+              }
+            );
+          },
+        logout({commit, state}){
             userAxios.logout(
+                state.user.userSeq,
                 ({data}) => {
                     if(data.result == "success"){
-                        commit("SET_LOGOUT");
+                        commit("SET_LOGIN", false);
                         commit("CLEAR_USER");
+                        commit("SET_IS_VALID_TOKEN", false);
                         this._vm.$alertify.success("로그아웃에 성공하였습니다.");
                         router.push("/main");
                     }
@@ -256,5 +341,11 @@ export default {
          isUserPassword2FocusAndValid(state) {
             return state.regist.isUserPassword2Focus && state.regist.isUserPassword2Valid;
          },
+         checkUserInfo: function (state) {
+            return state.user;
+          },
+          checkToken: function (state) {
+            return state.isValidToken;
+          },
     }
 };

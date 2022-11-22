@@ -1,28 +1,14 @@
 <template>
   <div>
     <div class="page-header clear-filter" filter-color="orange">
-      <parallax
-        class="page-header-image"
-        style="background-image:url('img/bg5.jpg')"
-      >
-      </parallax>
+      <parallax class="page-header-image" style="background-image: url('img/bg5.jpg')"> </parallax>
       <div class="container">
         <div class="photo-container">
-          <img src="img/ryan.jpg" alt="" />
+          <img :src="user.userProfileImageUrl" alt="" />
         </div>
-        <h3 class="title whiteFont" v-if="!isModify">{{user.userName}}</h3>
-        <p class="category" v-if="!isModify">{{user.userComment}}</p>
-        <fg-input
-         v-model="$store.state.userStore.user.userName"
-          v-if="isModify"></fg-input>
-        
-        <fg-input
-         v-model="$store.state.userStore.user.userComment"
-          v-if="isModify"></fg-input>
+        <span class="material-symbols-outlined" v-if="isModify"> add </span>
+        <h3 class="title whiteFont" v-if="!isModify">{{ user.userName }}</h3>
 
-          <fg-input
-         v-model="$store.state.userStore.user.userPassword"
-          v-if="isModify"></fg-input>
         <div class="content">
           <!-- <div class="social-description">
             <h2>26</h2>
@@ -36,7 +22,6 @@
             <h2>48</h2>
             <p>Bookmarks</p>
           </div> -->
-
         </div>
       </div>
     </div>
@@ -51,27 +36,28 @@
           >
             <p>수정</p>
           </a>
-          <a
-            class="btn btn-default btn-round btn-lg btn-icon"
-            @click="modify"
-            v-if="isModify"
-          >
+          <a class="btn btn-default btn-round btn-lg btn-icon" @click="modify" v-if="isModify">
             <p>완료</p>
           </a>
-          <a
-            class="btn btn-default btn-round btn-lg btn-icon"
-            @click="withdraw"
-          >
+          <a class="btn btn-default btn-round btn-lg btn-icon" @click="withdraw">
             <p>삭제</p>
           </a>
         </div>
-        <h3 class="title">About me</h3>
-        <h5 class="description">
-          An artist of considerable range, Ryan — the name taken by
-          Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and
-          records all of his own music, giving it a warm, intimate feel with a
-          solid groove structure. An artist of considerable range.
-        </h5>
+        <div v-if="!isModify">
+          <h3 class="title">한줄평</h3>
+          <h5 class="description">
+            {{ user.userComment }}
+          </h5>
+        </div>
+        <div v-if="isModify">
+          <p class="category">이름</p>
+          <fg-input v-model="$store.state.userStore.user.userName"></fg-input>
+          <p class="category">한줄평</p>
+          <fg-input v-model="$store.state.userStore.user.userComment"></fg-input>
+          <p class="category">비밀번호</p>
+          <fg-input v-model="$store.state.userStore.user.userPassword"></fg-input>
+        </div>
+
         <div class="row">
           <div class="col-md-6 ml-auto mr-auto">
             <h4 class="title text-center">My Portfolio</h4>
@@ -140,26 +126,29 @@
   </div>
 </template>
 <script>
-import { Tabs, TabPane, FormGroupInput } from '@/components';
-import { mapActions, mapState } from 'vuex';
+import { Tabs, TabPane, FormGroupInput } from "@/components";
+import { mapActions, mapMutations, mapState } from "vuex";
 
 const userStore = "userStore";
 
 export default {
-  name: 'profile',
-  bodyClass: 'profile-page',
+  name: "profile",
+  bodyClass: "profile-page",
   components: {
     Tabs,
     TabPane,
     [FormGroupInput.name]: FormGroupInput,
   },
-  computed:{
-    ...mapState(userStore, ["isModify","user"]),
+  computed: {
+    ...mapState(userStore, ["isModify", "user"]),
   },
-  methods:{
-    ...mapActions(userStore,["withdraw", "toggleModify", "modify"]),
-    
-  }
+  methods: {
+    ...mapMutations(userStore, ["INIT_MODIFY"]),
+    ...mapActions(userStore, ["withdraw", "toggleModify", "modify"]),
+  },
+  mounted() {
+    this.INIT_MODIFY();
+  },
 };
 </script>
 <style>

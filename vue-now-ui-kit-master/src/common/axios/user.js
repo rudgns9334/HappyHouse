@@ -13,7 +13,19 @@ export default {
   async login(body, success, fail){
     await http.post("/login", JSON.stringify(body)).then(success).catch(fail);
   },
-  async logout(success, fail){
-    await http.get("/logout").then(success).catch(fail);
+  async checkToken(success, fail){
+    http.defaults.headers["access-token"] = sessionStorage.getItem("access-token");
+    await http.get("/check").then(success).catch(fail);
   },
+  async tokenRegeneration(body, success, fail) {
+    http.defaults.headers["refresh-token"] = sessionStorage.getItem("refresh-token"); //axios header에 refresh-token 셋팅
+    await http.post(`/refresh`, body).then(success).catch(fail);
+  },
+  async logout(userSeq,success, fail){
+    await http.get("/logout/"+userSeq).then(success).catch(fail);
+  },
+  setHeader(){
+    http.defaults.headers["access-token"] = sessionStorage.getItem("access-token");
+    http.defaults.headers["refresh-token"] = sessionStorage.getItem("refresh-token");
+  }
 };

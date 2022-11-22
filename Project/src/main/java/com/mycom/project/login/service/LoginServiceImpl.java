@@ -24,4 +24,25 @@ public class LoginServiceImpl implements LoginService{
 		}
 		return null;
 	}
+
+	@Override
+	public int saveRefreshToken(UserDto userDto) {
+		
+		return loginDao.saveRefreshToken(userDto);
+	}
+
+	@Override
+	public String getRefreshToken(int userSeq) {
+		
+		return loginDao.getRefreshToken(userSeq);
+	}
+
+	@Override
+	public int deleteRefreshToken(int userSeq) {
+		
+		return loginDao.deleteRefreshToken(userSeq);
+	}
+
+
+
 }
