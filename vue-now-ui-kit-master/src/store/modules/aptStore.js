@@ -112,15 +112,16 @@ export default {
           console.log(error);
         });
     },
-    getHouseList({commit}, dongCode) {
-      console.log(dongCode);
+    getHouseList({commit}, searchData) {
+      console.log("###", searchData);
       const params = {
-        code: dongCode,
+        code: searchData.code,
+        searchWord: searchData.searchWord,
       };
       http
         .get("/apts", {params})
         .then(({data}) => {
-          console.log(data);
+          console.log("@@@", data);
           commit("SET_HOUSE_LIST", data.list);
         })
         .catch(error => {
