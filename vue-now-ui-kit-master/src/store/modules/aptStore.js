@@ -17,6 +17,8 @@ export default {
     container: null,
     clickHouse: [],
     isCenter: false,
+    lats: [],
+    lngs: [],
   },
   mutations: {
     SET_SIDO_LIST(state, sidos) {
