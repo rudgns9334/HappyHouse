@@ -25,13 +25,13 @@ public class LoginInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response,Object handler) throws Exception {
 		System.out.println("LoginInterceptor : preHandle !!!");
-//		return true;
-		final String token = request.getHeader(HEADER_AUTH);
-		System.out.println(token);
-		if(token != null && jwtService.checkToken(token)){
-			return true;
-		}else{
-			throw new UnAuthorizedException();
-		}	
+		return true;
+//		final String token = request.getHeader(HEADER_AUTH);
+//		System.out.println(token);
+//		if(token != null && jwtService.checkToken(token)){
+//			return true;
+//		}else{
+//			throw new UnAuthorizedException();
+//		}	
 	}
 }

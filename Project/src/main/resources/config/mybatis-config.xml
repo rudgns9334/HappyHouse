@@ -12,6 +12,7 @@
 		<mapper resource="mapper/user_query.xml"></mapper>
 		<mapper resource="mapper/review_query.xml"></mapper>
 		<mapper resource="mapper/login_query.xml"></mapper>
+		<mapper resource="mapper/friend_query.xml"></mapper>
 		<mapper resource="mapper/apt_query.xml"></mapper>
 		<mapper resource="mapper/board_query.xml"></mapper>
 	</mappers>

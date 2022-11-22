@@ -62,6 +62,11 @@
           <p>Event</p>
         </a>
       </li>
+      <li class="nav-item" v-show="isLogin">
+        <span class="material-symbols-outlined">
+          circle_notifications
+        </span>
+      </li>
     </template>
   </navbar>
 </template>

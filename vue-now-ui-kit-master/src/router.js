@@ -22,11 +22,11 @@ const onlyAuthUser = async (to, from, next) => {
 
   if (checkUserInfo != null && token) {
     console.log("토큰 유효성 체크하러 가자!!!!");
-    await store.dispatch("userStore/checkToken", token);
+    store.dispatch("userStore/checkToken", token);
   }
   if (!checkToken || checkUserInfo === null) {
     alert("로그인이 필요한 페이지입니다..");
-    
+    store.dispatch("userStore/logout");
     next({ name: "login" });
     // this.push("/login");
   } else {

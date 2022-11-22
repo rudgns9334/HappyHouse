@@ -28,22 +28,24 @@
     <div class="section">
       <div class="container">
         <div class="button-container">
-          <a href="#button" class="btn btn-primary btn-round btn-lg">Follow</a>
+          <a @click="callFriendList" class="btn btn-primary btn-round btn-lg">친구 목록</a>
           <a
             class="btn btn-default btn-round btn-lg btn-icon"
             @click="toggleModify"
-            v-if="!isModify"
+            v-if="!isModify && !isFriendList"
           >
             <p>수정</p>
           </a>
-          <a class="btn btn-default btn-round btn-lg btn-icon" @click="modify" v-if="isModify">
+          <a class="btn btn-default btn-round btn-lg btn-icon" @click="modify" v-if="isModify && !isFriendList">
             <p>완료</p>
           </a>
-          <a class="btn btn-default btn-round btn-lg btn-icon" @click="withdraw">
+          <a class="btn btn-default btn-round btn-lg btn-icon" @click="withdraw" v-if="!isFriendList">
             <p>삭제</p>
           </a>
         </div>
-        <div v-if="!isModify">
+        <friends-list v-if="isFriendList"></friends-list>
+        <div v-if="!isFriendList">
+          <div v-if="!isModify">
           <h3 class="title">한줄평</h3>
           <h5 class="description">
             {{ user.userComment }}
@@ -60,7 +62,7 @@
 
         <div class="row">
           <div class="col-md-6 ml-auto mr-auto">
-            <h4 class="title text-center">My Portfolio</h4>
+            <h4 class="title text-center">관심지역</h4>
           </div>
           <tabs
             pills
@@ -121,6 +123,8 @@
             </tab-pane>
           </tabs>
         </div>
+        </div>
+        
       </div>
     </div>
   </div>
@@ -128,8 +132,10 @@
 <script>
 import { Tabs, TabPane, FormGroupInput } from "@/components";
 import { mapActions, mapMutations, mapState } from "vuex";
+import FriendsList from './components/FriendsList.vue';
 
 const userStore = "userStore";
+const friendStore = "friendStore";
 
 export default {
   name: "profile",
@@ -137,14 +143,23 @@ export default {
   components: {
     Tabs,
     TabPane,
+    FriendsList,
     [FormGroupInput.name]: FormGroupInput,
   },
   computed: {
     ...mapState(userStore, ["isModify", "user"]),
+    ...mapState(friendStore, ["isFriendList"]),
   },
   methods: {
     ...mapMutations(userStore, ["INIT_MODIFY"]),
     ...mapActions(userStore, ["withdraw", "toggleModify", "modify"]),
+    ...mapMutations(friendStore, ["SET_IS_FRIEND_LIST"]),
+    ...mapActions(friendStore, ["friendList"]),
+    
+    callFriendList(){
+      this.SET_IS_FRIEND_LIST(!this.isFriendList);
+      this.friendList(this.user.userSeq);
+    }
   },
   mounted() {
     this.INIT_MODIFY();
