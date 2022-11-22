@@ -7,7 +7,7 @@
         <b-form-select class="dongSel" v-model="dongCode" :options="dongs"></b-form-select>
       </b-col>
     </b-row>
-    <input class="searchBar" type="text" placeholder="Search by name" style="width: 235px; margin-left: -2px" />
+    <input class="searchBar" v-model="searchWord" type="text" placeholder="Search by name" style="width: 235px; margin-left: -2px" />
     <button
       @click="searchApt"
       type="button"
@@ -31,6 +31,7 @@ export default {
       sidoCode: null,
       gugunCode: null,
       dongCode: null,
+      searchWord: null,
       positoins: [],
     };
   },
@@ -64,9 +65,13 @@ export default {
     },
     searchApt() {
       this.CLEAR_APT_LIST();
-      console.log(this.dongCode);
+      console.log(this.dongCode, this.searchWord);
+      const searchData = {
+        code: this.dongCode,
+        searchWord: this.searchWord
+      }
       if (this.dongCode) {
-        this.getHouseList(this.dongCode);
+        this.getHouseList(searchData);
       }
     },
   },
