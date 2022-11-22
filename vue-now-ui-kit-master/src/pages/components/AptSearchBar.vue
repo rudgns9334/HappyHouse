@@ -7,11 +7,13 @@
         <b-form-select class="dongSel" v-model="dongCode" :options="dongs"></b-form-select>
       </b-col>
     </b-row>
-    <input class="searchBar" type="text" placeholder="Search by name" style="width: 235px; margin-left: -2px;"/>
-    <button @click="searchApt"
+    <input class="searchBar" type="text" placeholder="Search by name" style="width: 235px; margin-left: -2px" />
+    <button
+      @click="searchApt"
       type="button"
       class="btn btn-primary"
       style="width: 25%; padding-left: -20px; background-color: #005555"
+      ref="selectBtn"
     >
       SEARCH
     </button>
@@ -29,27 +31,26 @@ export default {
       sidoCode: null,
       gugunCode: null,
       dongCode: null,
+      positoins: [],
     };
   },
   computed: {
-    ...mapState(aptStore, ["sidos", "guguns", "dongs", "houses"]),
-    // sidos() {
-    //   return this.$store.state.sidos;
-    // },
+    ...mapState(aptStore, ["sidos", "guguns", "dongs", "houses", "container"]),
   },
   created() {
-    // this.$store.dispatch("getSido");
-    // this.sidoList();
     this.CLEAR_SIDO_LIST();
     this.CLEAR_APT_LIST();
     this.getSido();
   },
   methods: {
     ...mapActions(aptStore, ["getSido", "getGugun", "getDong", "getHouseList"]),
-    ...mapMutations(aptStore, ["CLEAR_SIDO_LIST", "CLEAR_GUGUN_LIST", "CLEAR_DONG_LIST", "CLEAR_APT_LIST", "SHOW_IN_MAP"]),
-    // sidoList() {
-    //   this.getSido();
-    // },
+    ...mapMutations(aptStore, [
+      "CLEAR_SIDO_LIST",
+      "CLEAR_GUGUN_LIST",
+      "CLEAR_DONG_LIST",
+      "CLEAR_APT_LIST",
+      "SHOW_IN_MAP",
+    ]),
     gugunList() {
       this.CLEAR_GUGUN_LIST();
       this.gugunCode = null;
@@ -65,7 +66,7 @@ export default {
       this.CLEAR_APT_LIST();
       console.log(this.dongCode);
       if (this.dongCode) {
-        this.getHouseList(this.dongCode);        
+        this.getHouseList(this.dongCode);
       }
     },
   },
@@ -74,7 +75,8 @@ export default {
 
 <style>
 .sidoSel,
-.gugunSel, .dongSel {
+.gugunSel,
+.dongSel {
   width: 30% !important;
   margin: 5px;
 }
