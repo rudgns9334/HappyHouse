@@ -52,12 +52,9 @@
           <p>Event</p>
         </a>
       </li>
-<<<<<<< Updated upstream
-=======
       <li class="nav-item" v-show="isLogin">
         <span class="material-symbols-outlined" style="padding-top: 7px; color: #fff"> circle_notifications </span>
       </li>
->>>>>>> Stashed changes
     </template>
   </navbar>
 </template>
