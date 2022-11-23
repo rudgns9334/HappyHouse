@@ -126,6 +126,7 @@ export default {
       latAvg: 0.0,
       lngAvg: 0.0,
       iwContents: [],
+      index: 0,
     };
   },
   components: {
@@ -425,16 +426,16 @@ export default {
                       <p>${this.aptAddress}</p>
                       <hr>
                       <p>거래 금액 : ${this.aptPrice}</p>
-                      <p>전용 면적 : ${this.aptArea}</p>
+                      <p>전용 면적 : ${this.aptArea}m<sup>2</sup></p>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">WISH</button>
+                        <button type="button" class="btn btn-primary test" data-no="${h.no}">WISH</button>
                       </div>
                     </div>`;
         this.iwContents.push(iwContent);
       });
+
       this.$store.state.aptStore.lats = lats;
       this.$store.state.aptStore.lngs = lngs;
-
       var markers = [];
       for (let i = 0; i < positions.length; i++) {
         var marker = new kakao.maps.Marker({
@@ -675,7 +676,7 @@ export default {
     // 지도타입 컨트롤의 지도 또는 스카이뷰 버튼을 클릭하면 호출되어 지도타입을 바꾸는 함수입니다
     setMapType(maptype) {
       let kakao = window.kakao;
-
+      idx;
       var roadmapControl = document.getElementById("btnMap");
       var skyviewControl = document.getElementById("btnSkyview");
       if (maptype === "roadmap") {
@@ -690,6 +691,7 @@ export default {
       }
     },
     showAptDetail(idx) {
+      this.index = idx;
       let kakao = window.kakao;
       var lat = this.$store.state.aptStore.lats[idx];
       var lng = this.$store.state.aptStore.lngs[idx];
@@ -709,14 +711,26 @@ export default {
         content: iwContent,
         removable: iwRemoveable,
       });
-
+      var $this = this;
       infowindow.open(this.kakaomap, marker);
+      document.querySelectorAll(".test").forEach(t => {
+        // console.log(t);
+        t.addEventListener("click", function (e) {
+          console.log(e.target.dataset.no);
+          $this.AddWishList(e.target.dataset.no);
+        });
+      });
     },
     zoomIn() {
       this.kakaomap.setLevel(this.kakaomap.getLevel() - 1);
     },
     zoomOut() {
       this.kakaomap.setLevel(this.kakaomap.getLevel() + 1);
+    },
+    AddWishList(idx) {
+      // 위시리스트
+
+      console.log(idx);
     },
   },
 };
