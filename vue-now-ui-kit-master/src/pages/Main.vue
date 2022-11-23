@@ -2,8 +2,7 @@
   <div>
     <mobile-menu></mobile-menu>
     <div class="page-header clear-filter" filter-color="orange">
-      <parallax class="page-header-image" style="background-image: url('img/hero_bg_3.jpg')">
-      </parallax>
+      <parallax class="page-header-image" style="background-image: url('img/hero_bg_3.jpg')"> </parallax>
       <div class="container">
         <div class="content-center brand">
           <h1 class="heading" data-aos="fade-up">The Easiest Way To Find My Home</h1>
@@ -19,7 +18,7 @@
   </div>
 </template>
 <script>
-import { Parallax } from "@/components";
+import {Parallax} from "@/components";
 // import SearchBar from "./components/SearchBar.vue";
 import PopularApt from "./components/PopularApt.vue";
 import ReviewList from "./components/ReviewList.vue";
