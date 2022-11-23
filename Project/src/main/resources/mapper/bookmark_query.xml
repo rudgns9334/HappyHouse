@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycom.project.bookmark.dao.BookMarkDao">
+	
+	<select id="bookMarkList" parameterType="map" resultType="com.mycom.project.bookmark.dto.BookMarkDto">
+		select bookmark_id, user_seq, deal_no
+			from bookmark
+			where user_seq = #{userSeq}
+	</select>
+	
+	<insert id="bookMarkInsert" parameterType="map">
+		insert into bookmark (user_seq, deal_no)
+			values (#{userSeq}, #{dealNo})
+	</insert>
+	
+	<delete id="bookMarkDelete" parameterType="map">
+		delete from bookmark
+		where bookmark_id = #{bookmarkId}
+	</delete>
+	
+	
+</mapper>
