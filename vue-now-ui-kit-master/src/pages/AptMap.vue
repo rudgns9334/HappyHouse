@@ -20,56 +20,32 @@
       </template>
       <template slot="navbar-menu">
         <li class="nav-item">
-          <a
-            class="nav-link"
-            href="https://www.creative-tim.com/product/vue-now-ui-kit"
-            target="_blank"
-          >
+          <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
             <p>Login</p>
           </a>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            href="https://www.creative-tim.com/product/vue-now-ui-kit"
-            target="_blank"
-          >
+          <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
             <p>Logout</p>
           </a>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            href="https://www.creative-tim.com/product/vue-now-ui-kit"
-            target="_blank"
-          >
+          <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
             <p>Register</p>
           </a>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            href="https://www.creative-tim.com/product/vue-now-ui-kit"
-            target="_blank"
-          >
+          <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
             <p>MyPage</p>
           </a>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            href="https://www.creative-tim.com/product/vue-now-ui-kit"
-            target="_blank"
-          >
+          <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
             <p>Notice</p>
           </a>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            href="https://www.creative-tim.com/product/vue-now-ui-kit"
-            target="_blank"
-          >
+          <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
             <p>Event</p>
           </a>
         </li>
@@ -129,9 +105,10 @@
 import AptList from "./components/AptList.vue";
 import AptSearchBar from "./components/AptSearchBar";
 
-import { Navbar } from "@/components";
-import { mapState, mapMutations } from "vuex";
+import {Navbar} from "@/components";
+import {mapState, mapMutations, mapActions} from "vuex";
 const aptStore = "aptStore";
+const userStore = "userStore";
 
 export default {
   name: "App",
@@ -145,6 +122,7 @@ export default {
       aptAddress: "",
       aptPrice: "",
       aptArea: "",
+      aptFloor: "",
       latAvg: 0.0,
       lngAvg: 0.0,
       iwContents: [],
@@ -154,6 +132,9 @@ export default {
     Navbar,
     AptList,
     AptSearchBar,
+  },
+  mounted() {
+    this.SET_ISCENTER();
   },
   computed: {
     ...mapState(aptStore, ["sidos", "guguns", "houses", "clickHouse", "isCenter", "lats", "lngs"]),
@@ -173,7 +154,7 @@ export default {
         this.kakaomap = map;
 
         // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
-        var placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
+        var placeOverlay = new kakao.maps.CustomOverlay({zIndex: 1}),
           contentNode = document.createElement("div"), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다
           markers = [], // 마커를 담을 배열입니다
           currCategory = ""; // 현재 선택된 카테고리를 가지고 있을 변수입니다
@@ -227,7 +208,7 @@ export default {
           // 지도에 표시되고 있는 마커를 제거합니다
           removeMarker();
 
-          ps.categorySearch(currCategory, placesSearchCB, { useMapBounds: true });
+          ps.categorySearch(currCategory, placesSearchCB, {useMapBounds: true});
         }
 
         // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
@@ -264,8 +245,7 @@ export default {
 
         // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
         function addMarker(position, order) {
-          var imageSrc =
-              "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png", // 마커 이미지 url, 스프라이트 이미지를 씁니다
+          var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png", // 마커 이미지 url, 스프라이트 이미지를 씁니다
             imageSize = new kakao.maps.Size(27, 28), // 마커 이미지의 크기
             imgOptions = {
               spriteSize: new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
@@ -355,16 +335,10 @@ export default {
               place.address_name +
               ")</span>";
           } else {
-            content +=
-              '    <span title="' + place.address_name + '">' + place.address_name + "</span>";
+            content += '    <span title="' + place.address_name + '">' + place.address_name + "</span>";
           }
 
-          content +=
-            '    <span class="tel">' +
-            place.phone +
-            "</span>" +
-            "</div>" +
-            '<div class="after"></div>';
+          content += '    <span class="tel">' + place.phone + "</span>" + "</div>" + '<div class="after"></div>';
 
           contentNode.innerHTML = content;
           placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
@@ -405,7 +379,7 @@ export default {
       var latSum = 0.0;
       var lngSum = 0.0;
 
-      house.forEach((h) => {
+      house.forEach(h => {
         latSum += parseFloat(h.lat);
         lngSum += parseFloat(h.lng);
       });
@@ -427,7 +401,7 @@ export default {
       var iwContent = [];
       var lats = [];
       var lngs = [];
-      house.forEach((h) => {
+      house.forEach(h => {
         positions.push({
           latlng: new kakao.maps.LatLng(h.lat, h.lng),
           clickable: true,
@@ -438,18 +412,20 @@ export default {
         this.aptName = h.aptName;
         this.aptAddress = h.houseAddress;
         this.aptPrice = h.dealAmount;
-        /* 
+        this.aptFloor = h.floor;
+        this.aptArea = h.area;
+        /*
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         */
         this.aptArea = h.area;
-        iwContent = `<div class="modal-body" style="width: 450px; height: 300px">
-                      <h5>{{ aptName }}</h5>
-                      <p>{{ aptAddress }}</p>
+        iwContent = `<div class="modal-body" style="width: 400px; height: 280px">
+                      <h5>${this.aptName}아파트 ${this.aptFloor}층</h5>
+                      <p>${this.aptAddress}</p>
                       <hr>
-                      <p>{{ aptPrice }}</p>
-                      <p>{{ aptArea }}</p>
+                      <p>거래 금액 : ${this.aptPrice}</p>
+                      <p>전용 면적 : ${this.aptArea}</p>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-primary">WISH</button>
                       </div>
@@ -470,7 +446,7 @@ export default {
       }
 
       // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
-      var placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
+      var placeOverlay = new kakao.maps.CustomOverlay({zIndex: 1}),
         contentNode = document.createElement("div"), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다
         markers = [], // 마커를 담을 배열입니다
         currCategory = ""; // 현재 선택된 카테고리를 가지고 있을 변수입니다
@@ -524,7 +500,7 @@ export default {
         // 지도에 표시되고 있는 마커를 제거합니다
         removeMarker();
 
-        ps.categorySearch(currCategory, placesSearchCB, { useMapBounds: true });
+        ps.categorySearch(currCategory, placesSearchCB, {useMapBounds: true});
       }
 
       // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
@@ -561,8 +537,7 @@ export default {
 
       // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
       function addMarker(position, order) {
-        var imageSrc =
-            "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png", // 마커 이미지 url, 스프라이트 이미지를 씁니다
+        var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png", // 마커 이미지 url, 스프라이트 이미지를 씁니다
           imageSize = new kakao.maps.Size(27, 28), // 마커 이미지의 크기
           imgOptions = {
             spriteSize: new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
@@ -652,16 +627,10 @@ export default {
             place.address_name +
             ")</span>";
         } else {
-          content +=
-            '    <span title="' + place.address_name + '">' + place.address_name + "</span>";
+          content += '    <span title="' + place.address_name + '">' + place.address_name + "</span>";
         }
 
-        content +=
-          '    <span class="tel">' +
-          place.phone +
-          "</span>" +
-          "</div>" +
-          '<div class="after"></div>';
+        content += '    <span class="tel">' + place.phone + "</span>" + "</div>" + '<div class="after"></div>';
 
         contentNode.innerHTML = content;
         placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
@@ -701,7 +670,8 @@ export default {
   },
 
   methods: {
-    ...mapMutations(aptStore, ["SET_CONTAINER"]),
+    ...mapMutations(aptStore, ["SET_CONTAINER", "SET_ISCENTER"]),
+    ...mapActions(userStore, ["logout"]),
     // 지도타입 컨트롤의 지도 또는 스카이뷰 버튼을 클릭하면 호출되어 지도타입을 바꾸는 함수입니다
     setMapType(maptype) {
       let kakao = window.kakao;
@@ -991,8 +961,8 @@ export default {
   padding: 10px;
   color: #fff;
   background: #005555;
-  background: #005555 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png)
-    no-repeat right 14px center;
+  background: #005555 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px
+    center;
 }
 .placeinfo .tel {
   color: #0f7833;

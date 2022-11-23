@@ -40,6 +40,9 @@ export default {
       state.container = container;
       console.log(container);
     },
+    SET_ISCENTER(state) {
+      state.isCenter = false;
+    },
     CLEAR_SIDO_LIST(state) {
       state.sidos = [{value: null, text: "시/도 구분"}];
     },
