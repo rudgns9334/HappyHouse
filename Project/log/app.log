@@ -330,3 +330,36 @@ Caused by: java.lang.ClassNotFoundException: Cannot find class: com.mycom.projec
 2022-11-23 09:19:39.431  INFO 1560 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
 2022-11-23 09:19:43.659  INFO 1560 --- [RMI TCP Connection(37)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
 2022-11-23 09:19:43.723  INFO 1560 --- [RMI TCP Connection(37)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-23 10:28:25.625  INFO 4008 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_192 on DESKTOP-KVCQHCD with PID 4008 (C:\SSAFY\final\HappyHouse\Project\bin\main started by SSAFY in C:\SSAFY\final\HappyHouse\Project)
+2022-11-23 10:28:25.626  INFO 4008 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-23 10:28:25.651  INFO 4008 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-11-23 10:28:25.651  INFO 4008 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-11-23 10:28:26.303  INFO 4008 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-23 10:28:26.308  INFO 4008 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-23 10:28:26.308  INFO 4008 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-23 10:28:26.351  INFO 4008 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-23 10:28:26.351  INFO 4008 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 700 ms
+2022-11-23 10:28:26.654  INFO 4008 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-23 10:28:26.864  INFO 4008 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-23 10:28:26.885  INFO 4008 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-23 10:28:26.892  INFO 4008 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 1.488 seconds (JVM running for 1.942)
+2022-11-23 10:28:33.660  INFO 4008 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-23 10:28:33.660  INFO 4008 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-23 10:28:33.661  INFO 4008 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-23 10:28:33.702  INFO 4008 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-23 10:28:33.842  INFO 4008 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-23 10:30:00.020  INFO 4008 --- [RMI TCP Connection(11)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-11-23 10:30:00.102  INFO 4008 --- [RMI TCP Connection(11)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-23 10:30:00.103  INFO 4008 --- [RMI TCP Connection(11)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-23 10:30:00.106  WARN 4008 --- [RMI TCP Connection(11)-127.0.0.1] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:215)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2078)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1093)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+ java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+2022-11-23 10:30:00.111  INFO 4008 --- [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-23 10:30:00.119  INFO 4008 --- [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
