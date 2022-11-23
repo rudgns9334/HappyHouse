@@ -12,6 +12,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FriendDto {
-	private int userSeq;
+	private int friendId;
+	private int sendUserSeq;
+	private int receiveUserSeq;
 	private String userName;
+	private int userSeq;
+	private String friendState;
 }

@@ -12,7 +12,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FriendParamDto {
-	private int mySeq;
-	private int friendSeq;
+	private int friendId;
+	
+	private int seq;
+	
+	private int sendSeq;
+	private int receiveSeq;
+	
+	private String searchWord;
 
 }
