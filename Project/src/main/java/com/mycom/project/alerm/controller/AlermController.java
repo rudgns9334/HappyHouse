@@ -93,6 +93,22 @@ public class AlermController {
 		}
 	}
 	
+	@DeleteMapping(value="/delete2")
+	private ResponseEntity<AlermResultDto> alermDelete(@RequestParam("sendUserSeq") int sendUserSeq, @RequestParam("receiveUserSeq") int receiveUserSeq) {
+		AlermResultDto alermResultDto;
+
+		AlermDto alermDto = new AlermDto();
+		alermDto.setSendUserSeq(sendUserSeq);
+		alermDto.setReceiveUserSeq(receiveUserSeq);
+		alermResultDto = alermService.alermDelete(alermDto);
+		
+		if (alermResultDto.getResult() == SUCCESS) {
+			return new ResponseEntity<AlermResultDto>(alermResultDto, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<AlermResultDto>(alermResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 	@DeleteMapping(value="/deleteAll")
 	private ResponseEntity<AlermResultDto> alermDeleteAll(@RequestParam("receiveUserSeq") int receiveUserSeq) {
 		AlermResultDto alermResultDto;
