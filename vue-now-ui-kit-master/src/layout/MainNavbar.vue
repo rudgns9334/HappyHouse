@@ -55,13 +55,9 @@
           </router-link>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            href="https://www.creative-tim.com/product/vue-now-ui-kit"
-            target="_blank"
-          >
+          <router-link class="nav-link" to="/event">
             <p>Event</p>
-          </a>
+          </router-link>
         </li>
         <li class="nav-item" v-show="isLogin">
           <span class="material-symbols-outlined" style="padding-top: 7px; color: #fff">

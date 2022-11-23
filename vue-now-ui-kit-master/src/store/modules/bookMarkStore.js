@@ -9,8 +9,12 @@ export default {
   state: {
     list: [],
     selectedIdx: 0,
+    isEmpty: false
   },
   mutations: {
+    SET_IS_EMPTY(state, is){
+      state.isEmpty = is;
+    },
     SET_BOOKMARK_LIST(state, list) {
       state.list = list;
     },
@@ -30,6 +34,11 @@ export default {
         ({data}) => {
           if (data.result == 1) {
             console.log("북마크목록불러오기 성공");
+            if(data.list.length == 0){
+              commit("SET_IS_EMPTY",true);
+            }else{
+              commit("SET_IS_EMPTY",false);
+            }
             commit("SET_BOOKMARK_LIST", data.list);
           }
         },
@@ -39,30 +48,34 @@ export default {
         },
       );
     },
-    bookMarkInsert(body) {
+    bookMarkInsert({dispatch}, body) {
       bookMarkAxios.bookMarkInsert(
         body,
         ({data}) => {
+          console.log(data);
           if (data.result == 1) {
-            console.log("관심지역 등록 성공");
+            alertify.alert("Add in WishList!!").setHeader("<em> SUCCESS! </em> ");
+            dispatch("bookMarkList", this.state.userStore.user.userSeq);
           }
         },
         error => {
-          console.log("등록 실패");
+          alertify.alert("Server Error").setHeader("<em> ERROR </em> ");
           console.log(error);
         },
       );
     },
-    bookMarkDelete(id) {
+    bookMarkDelete({commit, dispatch}, id) {
+      console.log(id);
       bookMarkAxios.bookMarkDelete(
         `/${id}`,
         ({data}) => {
           if (data.result == 1) {
-            console.log("관심지역 삭제 성공");
+            alertify.alert("Delete this Wish Item!!").setHeader("<em> SUCCESS! </em> ");
+            dispatch("bookMarkList", this.state.userStore.user.userSeq);
           }
         },
         error => {
-          console.log("삭제 실패");
+          alertify.alert("Server Error").setHeader("<em> ERROR </em> ");
           console.log(error);
         },
       );

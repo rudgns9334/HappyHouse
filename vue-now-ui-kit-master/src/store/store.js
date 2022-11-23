@@ -8,6 +8,7 @@ import boardStore from "@/store/modules/boardStore.js";
 import aptStore from "@/store/modules/aptStore.js";
 import friendStore from "@/store/modules/friendStore.js";
 import bookMarkStore from "@/store/modules/bookMarkStore.js";
+import eventStore from "@/store/modules/eventStore.js";
 
 export default new Vuex.Store({
     modules : {
@@ -15,7 +16,8 @@ export default new Vuex.Store({
         boardStore,
         aptStore,
         friendStore,
-        bookMarkStore
+        bookMarkStore,
+        eventStore
     },
     plugins: [
         createPersistedState({
