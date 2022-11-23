@@ -1,8 +1,11 @@
 <template>
   <div>
     <h3 class="title">친구목록</h3>
+    <div class="text-lg-end">
+      <span class="material-symbols-outlined" @click="showModal"> person_add </span>
+    </div>
     <table class="table">
-        <thead>
+      <thead>
         <tr>
           <th scope="col"></th>
           <th scope="col"></th>
@@ -17,51 +20,54 @@
       </thead>
       <tbody>
         <tr v-for="(friend, index) in list" :key="index">
-        <td></td>
-        <td></td>
-        <td></td>
-          <td>{{ friend.userName }} # {{friend.userSeq}}</td>
           <td></td>
           <td></td>
-          <td style="cursor: pointer">
-            <span class="material-symbols-outlined">
-                home
-            </span>
+          <td></td>
+          <td>{{ friend.userName }} # {{ friend.userSeq }}</td>
+          <td></td>
+          <td></td>
+          <td>
+            <span class="material-symbols-outlined" style="cursor: pointer"> home </span>
           </td>
           <td></td>
-          <td style="cursor: pointer">
-            <span class="material-symbols-outlined">
-                delete
-            </span>
-        </td>
-        
+          <td>
+            <span class="material-symbols-outlined" style="cursor: pointer"> delete </span>
+          </td>
         </tr>
       </tbody>
     </table>
+    <friend-find-modal></friend-find-modal>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { Modal } from "bootstrap";
+import { mapState } from "vuex";
+import FriendFindModal from "../modals/FriendFindModal.vue";
 
 const friendStore = "friendStore";
 export default {
-    data() {
+  components: {
+    FriendFindModal,
+  },
+  data() {
     return {
       isColor: false,
+      friendFindModal: null,
     };
   },
   computed: {
     ...mapState(friendStore, ["list"]),
   },
   methods: {
-    
-    colorChange(flag) {
-      this.isColor = flag;
+    showModal() {
+      this.friendFindModal.show();
     },
-    
   },
-}
+  mounted() {
+    this.friendFindModal = new Modal(document.getElementById("friendFindModal"));
+  },
+};
 </script>
 
 <style>

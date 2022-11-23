@@ -10,9 +10,12 @@ import com.mycom.project.user.dto.UserDto;
 
 @Mapper
 public interface FriendDao {
+	List<FriendDto> friendListSearchWord(FriendParamDto friendParamDto);
+	String friendState(FriendParamDto friendParamDto);
+	
 	List<FriendDto> friendList(FriendParamDto friendParamDto);
 	UserDto friendDetail(FriendParamDto friendParamDto);
 	
-	int friendRegister(FriendParamDto friendParamDto);
+	int friendRequest(FriendParamDto friendParamDto);
 	int friendDelete(FriendParamDto friendParamDto);
 }

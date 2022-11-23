@@ -1,6 +1,7 @@
 package com.mycom.project.friend.service;
 
 import java.util.List;
+import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,37 @@ public class FriendServiceImpl implements FriendService{
 	
 	private final int SUCCESS = 1;
 	private final int FAIL = -1;
+	private final int NOSEARCHWORD = -2;
+	
+	@Override
+	public FriendResultDto friendListSearchWord(FriendParamDto friendParamDto) {
+		FriendResultDto friendResultDto = new FriendResultDto();
+		try {
+			String searchWord = friendParamDto.getSearchWord();
+			if(searchWord == null || searchWord.equals("")) {
+				friendResultDto.setResult(NOSEARCHWORD);
+			}else {
+				friendParamDto.setSearchWord(searchWord);
+				List<FriendDto> list = friendDao.friendListSearchWord(friendParamDto);
+				
+				for (FriendDto dto : list) {
+					friendParamDto.setReceiveSeq(dto.getUserSeq());
+					System.out.println(friendParamDto);
+					String state = friendDao.friendState(friendParamDto);
+					System.out.println(state);
+					if(state==null) dto.setFriendState("000");
+					else dto.setFriendState(state);
+				}
+				friendResultDto.setList(list);
+				friendResultDto.setResult(SUCCESS);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			friendResultDto.setResult(FAIL);
+		}
+		return friendResultDto;
+	}
 	
 	@Override
 	public FriendResultDto friendList(FriendParamDto friendParamDto) {
@@ -49,10 +81,10 @@ public class FriendServiceImpl implements FriendService{
 	}
 
 	@Override
-	public FriendResultDto friendRegister(FriendParamDto friendParamDto) {
+	public FriendResultDto friendRequest(FriendParamDto friendParamDto) {
 		FriendResultDto friendResultDto = new FriendResultDto();
 		try {
-			if(friendDao.friendRegister(friendParamDto) == 1) {
+			if(friendDao.friendRequest(friendParamDto) == 1) {
 				friendResultDto.setResult(SUCCESS);
 			}
 		}catch(Exception e) {
@@ -75,5 +107,7 @@ public class FriendServiceImpl implements FriendService{
 		}
 		return friendResultDto;
 	}
+
+	
 
 }

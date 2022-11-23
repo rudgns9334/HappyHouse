@@ -3,27 +3,41 @@
 
 <mapper namespace="com.mycom.project.friend.dao.FriendDao">
     
-    <select id="friendList" parameterType="map" resultType="com.mycom.project.friend.dto.FriendDto">
+    <select id="friendListSearchWord" parameterType="map" resultType="com.mycom.project.friend.dto.FriendDto">
     	select user_seq, user_name
     		from users
-    		where user_seq in (select user_seq1 from user_friend where user_seq2 = #{mySeq})
-    		or user_seq in (select user_seq2 from user_friend where user_seq1 = #{mySeq})
+    		where user_seq != #{sendSeq}
+    		and user_name like concat('%', #{searchWord},'%')
+    </select>
+    
+    <select id="friendState" parameterType="map" resultType="string">
+    	select distinct friend_state
+    		from user_friend
+    		where (send_user_seq = #{sendSeq} and receive_user_seq = #{receiveSeq})
+    		or (send_user_seq = #{receiveSeq} and receive_user_seq = #{sendSeq})
+    </select>
+    
+    <select id="friendList" parameterType="map" resultType="com.mycom.project.friend.dto.FriendDto">
+    	select friend_id, send_user_seq, receive_user_seq, friend_state
+    		from user_friend
+    		where friend_state = '002'
+    		and (send_user_seq = #{seq} or receive_user_seq = #{seq})
+    		
     </select>
     
     <select id="friendDetail" parameterType="map" resultType="com.mycom.project.user.dto.UserDto">
     	select user_seq, user_name, user_profile_image_url, user_comment
     		from users
-    		where user_seq = #{friendSeq}
+    		where user_seq = #{seq}
     </select>
     
-    <insert id="friendRegister" parameterType="map">
-    	insert into user_friend
-    		values (#{mySeq}, #{friendSeq})
+    <insert id="friendRequest" parameterType="map">
+    	insert into user_friend (send_user_seq, receive_user_seq, friend_state)
+    		values (#{sendSeq}, #{receiveSeq}, '001')
     </insert>
     
     <delete id="friendDelete" parameterType="map">
     	delete from user_friend 
-    		where (user_seq1 = #{mySeq} and user_seq2 = #{friendSeq})
-    		or (user_seq2 = #{mySeq} and user_seq1 = #{friendSeq})
+    		where friend_id = #{friendId}
     </delete>
 </mapper>
