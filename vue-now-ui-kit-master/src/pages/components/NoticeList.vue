@@ -106,7 +106,7 @@ export default {
 }
 #inputSearchWord {
   float: left;
-  width: 90%;
+  width: 80%;
   height: 52px;
 }
 #btnInsertPage,
