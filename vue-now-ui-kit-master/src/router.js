@@ -25,10 +25,9 @@ const onlyAuthUser = async (to, from, next) => {
     store.dispatch("userStore/checkToken", token);
   }
   if (!checkToken || checkUserInfo === null) {
-    alert("로그인이 필요한 페이지입니다..");
+    alertify.alert("Go to Login Page").setHeader("<em> Non-Member Access </em> ");
     store.dispatch("userStore/logout");
-    next({ name: "login" });
-    // this.push("/login");
+    next({name: "login"});
   } else {
     console.log("로그인 했다!!!!!!!!!!!!!.");
     next();

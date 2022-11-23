@@ -45,7 +45,7 @@
               type="password"
               class="no-border"
               addon-left-icon="now-ui-icons objects_key-25"
-              placeholder="비밀번호를 한번더 입력해주세요."
+              placeholder="Confirm"
               v-model="$store.state.userStore.regist.userPassword2"
               v-on:focus="$store.state.userStore.regist.isUserPassword2Focus = true"
               :error="$store.state.userStore.regist.userPassword2ErrMsg"
@@ -54,9 +54,7 @@
             </fg-input>
             <template slot="raw-content">
               <div class="card-footer text-center">
-                <button @click="register" class="btn btn-primary btn-round btn-lg btn-block">
-                  Get Started
-                </button>
+                <button @click="register" class="btn btn-primary btn-round btn-lg btn-block">Get Started</button>
               </div>
               <div class="pull-right">
                 <h6>
@@ -72,12 +70,12 @@
   </div>
 </template>
 <script>
-import { Card, Button, FormGroupInput } from "@/components";
+import {Card, Button, FormGroupInput} from "@/components";
 import MainFooter from "@/layout/MainFooter";
 
 import Vue from "vue";
 import VueAlertify from "vue-alertify";
-import { mapActions, mapMutations } from "vuex";
+import {mapActions, mapMutations} from "vuex";
 Vue.use(VueAlertify);
 
 const userStore = "userStore";
