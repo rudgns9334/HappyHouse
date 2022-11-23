@@ -10,13 +10,7 @@
       <router-link v-popover:popover1 class="navbar-brand" to="/">
         <img src="img/main-logo.png" alt="" style="width: 100px" />
       </router-link>
-      <el-popover
-        ref="popover1"
-        popper-class="popover"
-        placement="bottom"
-        width="200"
-        trigger="hover"
-      >
+      <el-popover ref="popover1" popper-class="popover" placement="bottom" width="200" trigger="hover">
         <div class="popover-body">Designed by Invision. Coded by Creative Tim</div>
       </el-popover>
       <div
@@ -54,22 +48,24 @@
         </router-link>
       </li>
       <li class="nav-item">
-        <a
-          class="nav-link"
-          href="https://www.creative-tim.com/product/vue-now-ui-kit"
-          target="_blank"
-        >
+        <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
           <p>Event</p>
         </a>
       </li>
+<<<<<<< Updated upstream
+=======
+      <li class="nav-item" v-show="isLogin">
+        <span class="material-symbols-outlined" style="padding-top: 7px; color: #fff"> circle_notifications </span>
+      </li>
+>>>>>>> Stashed changes
     </template>
   </navbar>
 </template>
 
 <script>
-import { Navbar } from "@/components";
-import { Popover } from "element-ui";
-import { mapActions, mapState } from "vuex";
+import {Navbar} from "@/components";
+import {Popover} from "element-ui";
+import {mapActions, mapState} from "vuex";
 
 const userStore = "userStore";
 
@@ -88,7 +84,7 @@ export default {
   },
   methods: {
     ...mapActions(userStore, ["logout"]),
-  }
+  },
 };
 </script>
 

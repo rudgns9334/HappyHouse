@@ -18,12 +18,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="<%= webpackConfig.output.publicPath %>favicon.png"
-    />
+    <link rel="icon" type="image/png" sizes="96x96" href="<%= webpackConfig.output.publicPath %>favicon.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta
       content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=1, shrink-to-fit=no"
@@ -43,7 +38,12 @@
       href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="fonts/icomoon/style.css" />
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css" />
 
@@ -60,13 +60,25 @@
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c4abecfe34bbef96f1f42b7b449500f9&libraries=services"
     ></script>
-    
+
+    <!-- Alertify -->
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
   </head>
   <body class="sidebar-collapse index-page">
     <noscript>
       <strong
-        >We're sorry but vue-now-ui-kit doesn't work properly without JavaScript enabled. Please
-        enable it to continue.</strong
+        >We're sorry but vue-now-ui-kit doesn't work properly without JavaScript enabled. Please enable it to
+        continue.</strong
       >
     </noscript>
     <div id="app"></div>

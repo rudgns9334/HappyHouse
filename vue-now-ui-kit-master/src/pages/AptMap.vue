@@ -19,11 +19,17 @@
         </router-link>
       </template>
       <template slot="navbar-menu">
+<<<<<<< Updated upstream
         <li class="nav-item">
           <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
+=======
+        <li class="nav-item" v-show="!isLogin">
+          <router-link class="nav-link" to="/login">
+>>>>>>> Stashed changes
             <p>Login</p>
-          </a>
+          </router-link>
         </li>
+<<<<<<< Updated upstream
         <li class="nav-item">
           <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
             <p>Logout</p>
@@ -31,23 +37,44 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
+=======
+        <li class="nav-item" v-show="isLogin">
+          <a class="nav-link" @click="logout">
+            <p>Logout</p>
+          </a>
+        </li>
+        <li class="nav-item" v-show="!isLogin">
+          <router-link class="nav-link" to="/register">
+>>>>>>> Stashed changes
             <p>Register</p>
-          </a>
+          </router-link>
         </li>
+<<<<<<< Updated upstream
         <li class="nav-item">
           <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
+=======
+        <li class="nav-item" v-show="isLogin">
+          <router-link class="nav-link" to="/profile">
+>>>>>>> Stashed changes
             <p>MyPage</p>
-          </a>
+          </router-link>
         </li>
         <li class="nav-item">
+<<<<<<< Updated upstream
           <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
+=======
+          <router-link class="nav-link" to="/notice">
+>>>>>>> Stashed changes
             <p>Notice</p>
-          </a>
+          </router-link>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
             <p>Event</p>
           </a>
+        </li>
+        <li class="nav-item" v-show="isLogin">
+          <span class="material-symbols-outlined" style="padding-top: 7px; color: #fff"> circle_notifications </span>
         </li>
       </template>
     </navbar>
@@ -106,8 +133,13 @@ import AptList from "./components/AptList.vue";
 import AptSearchBar from "./components/AptSearchBar";
 
 import {Navbar} from "@/components";
+<<<<<<< Updated upstream
 import {mapState, mapMutations} from "vuex";
+=======
+import {mapState, mapMutations, mapActions} from "vuex";
+>>>>>>> Stashed changes
 const aptStore = "aptStore";
+const userStore = "userStore";
 
 export default {
   name: "App",
@@ -121,6 +153,7 @@ export default {
       aptAddress: "",
       aptPrice: "",
       aptArea: "",
+      aptFloor: "",
       latAvg: 0.0,
       lngAvg: 0.0,
       iwContents: [],
@@ -131,8 +164,12 @@ export default {
     AptList,
     AptSearchBar,
   },
+  mounted() {
+    this.SET_ISCENTER();
+  },
   computed: {
     ...mapState(aptStore, ["sidos", "guguns", "houses", "clickHouse", "isCenter", "lats", "lngs"]),
+    ...mapState(userStore, ["isLogin"]),
   },
   watch: {
     houses(house) {
@@ -149,6 +186,7 @@ export default {
         this.kakaomap = map;
         
         // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
+<<<<<<< Updated upstream
         var placeOverlay = new kakao.maps.CustomOverlay({zIndex:1}), 
             contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다 
             markers = [], // 마커를 담을 배열입니다
@@ -157,6 +195,21 @@ export default {
             // 카테고리별 마커
             var BKMarkers = [], MTMarkers = [], PMMarkers = [], OLMarkers = [], CEMarkers = [], CSMarkers = [];
         
+=======
+        var placeOverlay = new kakao.maps.CustomOverlay({zIndex: 1}),
+          contentNode = document.createElement("div"), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다
+          markers = [], // 마커를 담을 배열입니다
+          currCategory = ""; // 현재 선택된 카테고리를 가지고 있을 변수입니다
+        var selectedCategory = [];
+        // 카테고리별 마커
+        var BKMarkers = [],
+          MTMarkers = [],
+          PMMarkers = [],
+          OLMarkers = [],
+          CEMarkers = [],
+          CSMarkers = [];
+
+>>>>>>> Stashed changes
         // 장소 검색 객체를 생성합니다
         var ps = new kakao.maps.services.Places(map); 
 
@@ -195,10 +248,20 @@ export default {
             // 커스텀 오버레이를 숨깁니다 
             placeOverlay.setMap(null);
 
+<<<<<<< Updated upstream
             // 지도에 표시되고 있는 마커를 제거합니다
             removeMarker();
             
             ps.categorySearch(currCategory, placesSearchCB, {useMapBounds:true}); 
+=======
+          // 커스텀 오버레이를 숨깁니다
+          placeOverlay.setMap(null);
+
+          // 지도에 표시되고 있는 마커를 제거합니다
+          removeMarker();
+
+          ps.categorySearch(currCategory, placesSearchCB, {useMapBounds: true});
+>>>>>>> Stashed changes
         }
 
         // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
@@ -242,6 +305,7 @@ export default {
 
         // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
         function addMarker(position, order) {
+<<<<<<< Updated upstream
             var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
                 imageSize = new kakao.maps.Size(27, 28),  // 마커 이미지의 크기
                 imgOptions =  {
@@ -254,6 +318,20 @@ export default {
                     position: position, // 마커의 위치
                     image: markerImage 
                 });
+=======
+          var imageSrc = "images/map-category.png", // 마커 이미지 url, 스프라이트 이미지를 씁니다
+            imageSize = new kakao.maps.Size(27, 28), // 마커 이미지의 크기
+            imgOptions = {
+              spriteSize: new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
+              spriteOrigin: new kakao.maps.Point(46, order * 36), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+              offset: new kakao.maps.Point(11, 28), // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+            },
+            markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+            marker = new kakao.maps.Marker({
+              position: position, // 마커의 위치
+              image: markerImage,
+            });
+>>>>>>> Stashed changes
 
             marker.setMap(map); // 지도 위에 마커를 표출합니다
             if (currCategory == "BK9") {
@@ -312,6 +390,7 @@ export default {
             var content = '<div class="placeinfo">' +
                             '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.place_name + '">' + place.place_name + '</a>';   
 
+<<<<<<< Updated upstream
             if (place.road_address_name) {
                 content += '    <span title="' + place.road_address_name + '">' + place.road_address_name + '</span>' +
                             '  <span class="jibun" title="' + place.address_name + '">(지번 : ' + place.address_name + ')</span>';
@@ -326,6 +405,29 @@ export default {
             contentNode.innerHTML = content;
             placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
             placeOverlay.setMap(map);  
+=======
+          if (place.road_address_name) {
+            content +=
+              '    <span title="' +
+              place.road_address_name +
+              '">' +
+              place.road_address_name +
+              "</span>" +
+              '  <span class="jibun" title="' +
+              place.address_name +
+              '">(지번 : ' +
+              place.address_name +
+              ")</span>";
+          } else {
+            content += '    <span title="' + place.address_name + '">' + place.address_name + "</span>";
+          }
+
+          content += '    <span class="tel">' + place.phone + "</span>" + "</div>" + '<div class="after"></div>';
+
+          contentNode.innerHTML = content;
+          placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
+          placeOverlay.setMap(map);
+>>>>>>> Stashed changes
         }
 
 
@@ -396,18 +498,20 @@ export default {
         this.aptName = h.aptName;
         this.aptAddress = h.houseAddress;
         this.aptPrice = h.dealAmount;
+        this.aptFloor = h.floor;
+        this.aptArea = h.area;
         /* 
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         */
         this.aptArea = h.area;
-        iwContent = `<div class="modal-body" style="width: 450px; height: 300px">
-                      <h5>{{ aptName }}</h5>
-                      <p>{{ aptAddress }}</p>
+        iwContent = `<div class="modal-body" style="width: 400px; height: 280px">
+                      <h5>${this.aptName}아파트 ${this.aptFloor}층</h5>
+                      <p>${this.aptAddress}</p>
                       <hr>
-                      <p>{{ aptPrice }}</p>
-                      <p>{{ aptArea }}</p>
+                      <p>거래 금액 : ${this.aptPrice}</p>
+                      <p>전용 면적 : ${this.aptArea}</p>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-primary">WISH</button>
                       </div>
@@ -423,6 +527,7 @@ export default {
           position: positions[i].latlng,
           index: i,
         });
+        console.log(JSON.parse(JSON.stringify(marker)));
         markers.push(marker);
         marker.setMap(map);
       }
@@ -431,6 +536,7 @@ export default {
       
       
       // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
+<<<<<<< Updated upstream
         var placeOverlay = new kakao.maps.CustomOverlay({zIndex:1}), 
             contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다 
             markers = [], // 마커를 담을 배열입니다
@@ -441,6 +547,20 @@ export default {
         
         // 장소 검색 객체를 생성합니다
         var ps = new kakao.maps.services.Places(map); 
+=======
+      var placeOverlay = new kakao.maps.CustomOverlay({zIndex: 1}),
+        contentNode = document.createElement("div"), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다
+        markers = [], // 마커를 담을 배열입니다
+        currCategory = ""; // 현재 선택된 카테고리를 가지고 있을 변수입니다
+      var selectedCategory = [];
+      // 카테고리별 마커
+      var BKMarkers = [],
+        MTMarkers = [],
+        PMMarkers = [],
+        OLMarkers = [],
+        CEMarkers = [],
+        CSMarkers = [];
+>>>>>>> Stashed changes
 
         // 지도에 idle 이벤트를 등록합니다
         kakao.maps.event.addListener(map, 'idle', searchPlaces);
@@ -477,10 +597,79 @@ export default {
             // 커스텀 오버레이를 숨깁니다 
             placeOverlay.setMap(null);
 
+<<<<<<< Updated upstream
             // 지도에 표시되고 있는 마커를 제거합니다
             removeMarker();
             
             ps.categorySearch(currCategory, placesSearchCB, {useMapBounds:true}); 
+=======
+        // 지도에 표시되고 있는 마커를 제거합니다
+        removeMarker();
+
+        ps.categorySearch(currCategory, placesSearchCB, {useMapBounds: true});
+      }
+
+      // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+      function placesSearchCB(data, status, pagination) {
+        if (status === kakao.maps.services.Status.OK) {
+          // 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
+          displayPlaces(data);
+        } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+          // 검색결과가 없는경우 해야할 처리가 있다면 이곳에 작성해 주세요
+        } else if (status === kakao.maps.services.Status.ERROR) {
+          // 에러로 인해 검색결과가 나오지 않은 경우 해야할 처리가 있다면 이곳에 작성해 주세요
+        }
+      }
+
+      // 지도에 마커를 표출하는 함수입니다
+      function displayPlaces(places) {
+        // 몇번째 카테고리가 선택되어 있는지 얻어옵니다
+        // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
+        var order = document.getElementById(currCategory).getAttribute("data-order");
+
+        for (var i = 0; i < places.length; i++) {
+          // 마커를 생성하고 지도에 표시합니다
+          var marker = addMarker(new kakao.maps.LatLng(places[i].y, places[i].x), order);
+
+          // 마커와 검색결과 항목을 클릭 했을 때
+          // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
+          (function (marker, place) {
+            kakao.maps.event.addListener(marker, "click", function () {
+              displayPlaceInfo(place);
+            });
+          })(marker, places[i]);
+        }
+      }
+
+      // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+      function addMarker(position, order) {
+        var imageSrc = "images/map-category.png", // 마커 이미지 url, 스프라이트 이미지를 씁니다
+          imageSize = new kakao.maps.Size(27, 28), // 마커 이미지의 크기
+          imgOptions = {
+            spriteSize: new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
+            spriteOrigin: new kakao.maps.Point(46, order * 36), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+            offset: new kakao.maps.Point(11, 28), // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+          },
+          markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+          marker = new kakao.maps.Marker({
+            position: position, // 마커의 위치
+            image: markerImage,
+          });
+
+        marker.setMap(map); // 지도 위에 마커를 표출합니다
+        if (currCategory == "BK9") {
+          BKMarkers.push(marker); // 배열에 생성된 마커를 추가합니다
+        } else if (currCategory == "MT1") {
+          MTMarkers.push(marker); // 배열에 생성된 마커를 추가합니다
+        } else if (currCategory == "PM9") {
+          PMMarkers.push(marker); // 배열에 생성된 마커를 추가합니다
+        } else if (currCategory == "OL7") {
+          OLMarkers.push(marker); // 배열에 생성된 마커를 추가합니다
+        } else if (currCategory == "CE7") {
+          CEMarkers.push(marker); // 배열에 생성된 마커를 추가합니다
+        } else if (currCategory == "CS2") {
+          CSMarkers.push(marker); // 배열에 생성된 마커를 추가합니다
+>>>>>>> Stashed changes
         }
 
         // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
@@ -594,6 +783,7 @@ export default {
             var content = '<div class="placeinfo">' +
                             '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.place_name + '">' + place.place_name + '</a>';   
 
+<<<<<<< Updated upstream
             if (place.road_address_name) {
                 content += '    <span title="' + place.road_address_name + '">' + place.road_address_name + '</span>' +
                             '  <span class="jibun" title="' + place.address_name + '">(지번 : ' + place.address_name + ')</span>';
@@ -610,6 +800,25 @@ export default {
             placeOverlay.setMap(map);  
         }
 
+=======
+        if (place.road_address_name) {
+          content +=
+            '    <span title="' +
+            place.road_address_name +
+            '">' +
+            place.road_address_name +
+            "</span>" +
+            '  <span class="jibun" title="' +
+            place.address_name +
+            '">(지번 : ' +
+            place.address_name +
+            ")</span>";
+        } else {
+          content += '    <span title="' + place.address_name + '">' + place.address_name + "</span>";
+        }
+
+        content += '    <span class="tel">' + place.phone + "</span>" + "</div>" + '<div class="after"></div>';
+>>>>>>> Stashed changes
 
         // 각 카테고리에 클릭 이벤트를 등록합니다
         function addCategoryClickEvent() {
@@ -639,12 +848,17 @@ export default {
                 selectedCategory.push(id);
             }
         }
+<<<<<<< Updated upstream
       return;
       },
+=======
+      }
+>>>>>>> Stashed changes
     },
     
   methods: {
-    ...mapMutations(aptStore, ["SET_CONTAINER"]),
+    ...mapMutations(aptStore, ["SET_CONTAINER", "SET_ISCENTER"]),
+    ...mapActions(userStore, ["logout"]),
     // 지도타입 컨트롤의 지도 또는 스카이뷰 버튼을 클릭하면 호출되어 지도타입을 바꾸는 함수입니다
     setMapType(maptype) {
       let kakao = window.kakao;
@@ -880,6 +1094,7 @@ export default {
 #category li.on .category_bg {
   background-position-x: -46px;
 }
+<<<<<<< Updated upstream
 .placeinfo_wrap {position:absolute;bottom:28px;left:-150px;width:300px;}
 .placeinfo {position:relative;width:100%;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;padding-bottom: 10px;background: #fff;}
 .placeinfo:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
@@ -890,4 +1105,71 @@ export default {
 .placeinfo .title {font-weight: bold; font-size:14px;border-radius: 6px 6px 0 0;margin: -1px -1px 0 -1px;padding:10px; color: #fff;background: #005555;background: #005555 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
 .placeinfo .tel {color:#0f7833;}
 .placeinfo .jibun {color:#999;font-size:11px;margin-top:0;}
+=======
+.placeinfo_wrap {
+  position: absolute;
+  bottom: 28px;
+  left: -150px;
+  width: 300px;
+}
+.placeinfo {
+  position: relative;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+  background: #fff;
+}
+.placeinfo:nth-of-type(n) {
+  border: 0;
+  box-shadow: 0px 1px 2px #888;
+}
+.placeinfo_wrap .after {
+  content: "";
+  position: relative;
+  margin-left: -12px;
+  left: 50%;
+  width: 22px;
+  height: 12px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png");
+}
+.placeinfo a,
+.placeinfo a:hover,
+.placeinfo a:active {
+  color: #fff;
+  text-decoration: none;
+}
+.placeinfo a,
+.placeinfo span {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.placeinfo span {
+  margin: 5px 5px 0 5px;
+  cursor: default;
+  font-size: 13px;
+}
+.placeinfo .title {
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 6px 6px 0 0;
+  margin: -1px -1px 0 -1px;
+  padding: 10px;
+  color: #fff;
+  background: #005555;
+  background: #005555 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px
+    center;
+}
+.placeinfo .tel {
+  color: #0f7833;
+}
+.placeinfo .jibun {
+  color: #999;
+  font-size: 11px;
+  margin-top: 0;
+}
+>>>>>>> Stashed changes
 </style>
