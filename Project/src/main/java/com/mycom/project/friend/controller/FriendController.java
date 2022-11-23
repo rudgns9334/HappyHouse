@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -95,13 +96,27 @@ public class FriendController {
 		}
 	}
 	
-	@DeleteMapping(value="/delete/{seq}")
-	private ResponseEntity<FriendResultDto> friendDelete(@PathVariable int seq) {
+	@DeleteMapping(value="/delete")
+	private ResponseEntity<FriendResultDto> friendDelete(@RequestParam("sendSeq") int sendSeq, @RequestParam("receiveSeq") int receiveSeq) {
 		FriendResultDto friendResultDto;
 
 		FriendParamDto friendParamDto = new FriendParamDto();
-		friendParamDto.setSeq(seq);
+		friendParamDto.setSendSeq(sendSeq);
+		friendParamDto.setReceiveSeq(receiveSeq);
 		friendResultDto = friendService.friendDelete(friendParamDto);
+		
+		if (friendResultDto.getResult() == SUCCESS) {
+			return new ResponseEntity<FriendResultDto>(friendResultDto, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<FriendResultDto>(friendResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@PutMapping(value="/accept")
+	private ResponseEntity<FriendResultDto> friendAccept(@RequestBody FriendParamDto friendParamDto) {
+		FriendResultDto friendResultDto;
+
+		friendResultDto = friendService.friendAccept(friendParamDto);
 		
 		if (friendResultDto.getResult() == SUCCESS) {
 			return new ResponseEntity<FriendResultDto>(friendResultDto, HttpStatus.OK);

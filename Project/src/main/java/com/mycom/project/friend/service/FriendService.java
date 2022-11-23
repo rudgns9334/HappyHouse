@@ -8,5 +8,6 @@ public interface FriendService {
 	FriendResultDto friendList(FriendParamDto friendParamDto);
 	FriendResultDto friendDetail(FriendParamDto friendParamDto);
 	FriendResultDto friendRequest(FriendParamDto friendParamDto);
+	FriendResultDto friendAccept(FriendParamDto friendParamDto);
 	FriendResultDto friendDelete(FriendParamDto friendParamDto);
 }

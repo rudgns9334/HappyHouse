@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycom.project.alerm.dao.AlermDao">
+	
+	<insert id="alermSend" parameterType="map">
+		insert into alerm (send_user_seq, receive_user_seq, content_type, reg_dt, isRead)
+			values (#{sendUserSeq}, #{receiveUserSeq}, #{contentType}, now(), 0)
+	</insert>
+	
+	<select id="alermList" parameterType="map" resultType="com.mycom.project.alerm.dto.AlermDto">
+		select a.alerm_id, a.send_user_seq, a.receive_user_seq, a.content_type, a.reg_dt, a.isRead, u.user_name
+			from alerm a, users u
+			where a.send_user_seq = u.user_seq
+			and receive_user_seq = #{receiveUserSeq}
+			order by a.reg_dt desc
+	</select>
+	
+	<update id="alermAllRead" parameterType="map">
+		update alerm
+			set isRead = 1
+			where receive_user_seq = #{receiveUserSeq}
+	</update>
+	
+	<select id="alermCount" parameterType="map" resultType="int">
+		select count(*)
+				from alerm
+				where receive_user_seq = #{receiveUserSeq}
+	</select>
+	
+	<delete id="alermDelete" parameterType="map">
+		delete from alerm
+		where alerm_id = #{alermId}
+		or (send_user_seq = #{sendUserSeq} and receive_user_seq = #{receiveUserSeq})
+	</delete>
+	
+	<delete id="alermDeleteAll" parameterType="map">
+		delete from alerm
+		where receive_user_seq = #{receiveUserSeq}
+	</delete>
+	
+	
+	
+	
+</mapper>

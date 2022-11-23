@@ -8,6 +8,7 @@ import com.mycom.project.user.dto.UserDto;
 public interface UserDao {
 	int userRegister(UserDto userDto);
 	int userModify(UserDto userDto);
-	int userWithdraw(int useSeq);
+	int userWithdraw(int userSeq);
+	UserDto userDetail(int userSeq);
 	int checkUserDuplicate(UserDto userDto);
 }

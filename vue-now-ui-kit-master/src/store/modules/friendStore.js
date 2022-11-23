@@ -53,7 +53,6 @@ export default {
             )
         },
        friendList({commit}, userSeq){
-        commit("SET_SEQ", userSeq);
         friendAxios.friendList(
             `/${userSeq}`,
             ({data}) => {
@@ -70,7 +69,7 @@ export default {
        },
        friendDetail({commit, state}, friendSeq){
         friendAxios.friendDetail(
-            `/${state.mySeq}/${friendSeq}`,
+            `/${this.state.userStore.user.userSeq}/${friendSeq}`,
             ({data}) => {
                 if(data.result == 1){
                     console.log("친구불러오기 성공");
@@ -103,14 +102,39 @@ export default {
             }
         )
        },
-       friendDelete({dispatch, state}, friendSeq){
+       friendAccept({dispatch}, sendSeq){
+        let body = {
+            sendSeq,
+            receiveSeq: this.state.userStore.user.userSeq
+        }
+        friendAxios.friendRequest(
+            body,
+            ({data}) => {
+                if(data.result == 1){
+                    console.log("친구 수락 성공");
+                    this._vm.$alertify.success("친구 등록이 되었습니다.");
+                    dispatch("friendList", this.state.userStore.user.userSeq);
+                }
+            },
+            (error) => {
+                console.log(error);
+                this._vm.$alertify.error("서버에 문제가 있습니다.");
+            }
+        )
+       },
+       friendDelete({dispatch, state}, sendSeq){
+        let params = {
+            sendSeq,
+            receiveSeq: this.state.userStore.user.userSeq
+        }
         friendAxios.friendDelete(
-            `/${state.mySeq}/${friendSeq}`,
+            params,
             ({data}) => {
                 if(data.result == 1){
                     console.log("친구 삭제 성공");
                     this._vm.$alertify.success("친구 삭제 성공");
-                    dispatch("friendList", state.mySeq);
+                    dispatch("friendList", this.state.userStore.user.userSeq);
+                    dispatch("friendListSearchWord");
                 }
             },
             (error) => {

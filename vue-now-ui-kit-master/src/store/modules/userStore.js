@@ -1,5 +1,6 @@
 import userAxios from "@/common/axios/user.js";
 
+import store from "@/store/store.js";
 import jwtDecode from "jwt-decode";
 import router from "../../router";
 import Vue from "vue";
@@ -238,6 +239,7 @@ export default {
             sessionStorage.setItem("access-token", accessToken);
             sessionStorage.setItem("refresh-token", refreshToken);
             userAxios.setHeader();
+            store.dispatch("alermStore/alermList");
             console.log(dto.userName);
             alertify
               .alert("Hello, " + dto.userName, function () {

@@ -54,6 +54,7 @@
                       class="material-symbols-outlined"
                       style="cursor: pointer"
                       v-if="user.friendState == '001'"
+                      @click="cancelFriend(user.userSeq)"
                     >
                       minimize
                     </span>
@@ -67,7 +68,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-round btn-primary" type="button">닫기</button>
+          <button class="btn btn-round btn-primary" type="button" @click="hide">닫기</button>
         </div>
       </div>
     </div>
@@ -78,22 +79,34 @@
 import { mapActions, mapGetters, mapMutations } from "vuex";
 
 const friendStore = "friendStore";
+const alermStore = "alermStore";
+
 export default {
   computed: {
     ...mapGetters(friendStore, ["getUserList"]),
   },
   methods: {
     ...mapMutations(friendStore, ["INIT_SEARCH"]),
-    ...mapActions(friendStore, ["friendListSearchWord", "friendRequest"]),
+    ...mapActions(friendStore, ["friendListSearchWord", "friendRequest", "friendDelete"]),
+    ...mapActions(alermStore, ["alermSend", "alermDeleteWithSeq"]),
+
     requestFriend(userSeq) {
       this.friendRequest(userSeq);
+      let params = {
+        receiveUserSeq: userSeq,
+        contentType: "002"
+      };
+      this.alermSend(params);
     },
-  },
-  mounted() {
-    let $this = this;
-    this.$el.addEventListener("show.bs.modal", function () {
-      $this.INIT_SEARCH();
-    });
+
+    cancelFriend(userSeq){
+      this.friendDelete(userSeq);
+      this.alermDeleteWithSeq(userSeq);
+    },
+
+    hide(){
+      this.$emit("hide");
+    }
   },
 };
 </script>
