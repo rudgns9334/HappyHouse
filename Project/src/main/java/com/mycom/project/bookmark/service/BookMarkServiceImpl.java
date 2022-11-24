@@ -70,6 +70,7 @@ public class BookMarkServiceImpl implements BookMarkService{
 	@Override
 	public BookMarkResultDto bookMarkDelete(BookMarkDto bookMarkDto) {
 		BookMarkResultDto bookMarkResultDto = new BookMarkResultDto();
+		System.out.println(bookMarkDto);
 		try {
 			if(bookMarkDao.bookMarkDelete(bookMarkDto) == 1) {
 				bookMarkResultDto.setResult(SUCCESS);
