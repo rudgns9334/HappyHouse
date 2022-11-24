@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-    <div class="limiter">
+    <div class="limiter" style="padding: 20px; margin-bottom: 50px">
       <div class="container-login100">
         <div class="input-form col-md-8 mx-auto">
           <form class="login100-form validate-form">
@@ -20,23 +20,30 @@
             </span>
 
             <form novalidate>
-              <div class="mb-6">
-                <input type="text" class="form-control" id="userEmail" placeholder="Email" />
-              </div>
               <br />
               <div id="stars">
                 <fieldset>
-                  <input type="radio" name="rating" value="5" id="rate5" /><label id="star" for="rate5">⭐</label>
-                  <input type="radio" name="rating" value="4" id="rate4" /><label id="star" for="rate4">⭐</label>
-                  <input type="radio" name="rating" value="3" id="rate3" /><label id="star" for="rate3">⭐</label>
-                  <input type="radio" name="rating" value="2" id="rate2" /><label id="star" for="rate2">⭐</label>
-                  <input type="radio" name="rating" value="1" id="rate1" /><label id="star" for="rate1">⭐</label>
+                  <input class="star" type="radio" name="rating" value="5" id="rate5" /><label id="star" for="rate5"
+                    >⭐</label
+                  >
+                  <input class="star" type="radio" name="rating" value="4" id="rate4" /><label id="star" for="rate4"
+                    >⭐</label
+                  >
+                  <input class="star" type="radio" name="rating" value="3" id="rate3" /><label id="star" for="rate3"
+                    >⭐</label
+                  >
+                  <input class="star" type="radio" name="rating" value="2" id="rate2" /><label id="star" for="rate2"
+                    >⭐</label
+                  >
+                  <input class="star" type="radio" name="rating" value="1" id="rate1" /><label id="star" for="rate1"
+                    >⭐</label
+                  >
                 </fieldset>
               </div>
               <br />
               <div class="mb-6">
-                <label for="review">Review</label>
-                <textarea class="form-control" id="review" rows="5"></textarea>
+                <label for="review">Content</label>
+                <textarea class="form-control" id="review" rows="20"></textarea>
               </div>
               <br />
             </form>
@@ -44,7 +51,7 @@
               <div class="wrap-login100-form-btn">
                 <div class="login100-form-bgbtn"></div>
                 <br />
-                <a class="login100-form-btn register-btn" id="btnRegist" style="width: 300px">
+                <a class="login100-form-btn register-btn" id="btnRegist" style="width: 300px" @click="addReview">
                   <span style="color: white">Register</span>
                 </a>
               </div>
@@ -58,12 +65,42 @@
 <script>
 import {Parallax} from "@/components";
 import MobileMenu from "./components/MobileMenu.vue";
+import {mapActions, mapState} from "vuex";
 
+const userStore = "userStore";
+const reviewStore = "reviewStore";
 export default {
   name: "event",
   components: {
     Parallax,
     MobileMenu,
+  },
+  computed: {
+    ...mapState(userStore, ["user"]),
+  },
+  methods: {
+    ...mapActions(reviewStore, ["reviewRegister"]),
+
+    addReview() {
+      var length = 5;
+      var stars = 0;
+
+      for (let i = 0; i < length; i++) {
+        if (document.getElementsByName("rating")[i].checked == true)
+          stars = document.getElementsByName("rating")[i].value;
+      }
+
+      stars *= 1;
+
+      var content = document.querySelector(".form-control").value;
+      const param = {
+        userSeq: this.user.userSeq,
+        stars: stars,
+        content: content,
+      };
+
+      this.reviewRegister(param);
+    },
   },
 };
 </script>
