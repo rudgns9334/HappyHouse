@@ -59,9 +59,6 @@ import {mapActions, mapMutations, mapState} from "vuex";
 import FriendsList from "./components/FriendsList.vue";
 import WishList from "./components/WishList.vue";
 
-import custom from "@/common/custom.js";
-import menu from "@/common/menu.js";
-
 const userStore = "userStore";
 const friendStore = "friendStore";
 
@@ -90,8 +87,6 @@ export default {
   },
   mounted() {
     this.INIT_MODIFY();
-    custom.init();
-    menu.init();
   },
 };
 </script>
