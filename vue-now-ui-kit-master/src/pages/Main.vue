@@ -1,6 +1,5 @@
 <template>
   <div>
-    
     <div class="page-header clear-filter" filter-color="orange">
       <parallax class="page-header-image" style="background-image: url('img/hero_bg_3.jpg')"> </parallax>
       <div class="container">
@@ -13,8 +12,6 @@
     <popular-apt></popular-apt>
     <review-list></review-list>
     <img src="img/bg11.jpg" alt="" />
-
-    
   </div>
 </template>
 <script>
