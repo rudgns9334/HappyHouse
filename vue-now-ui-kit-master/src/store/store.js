@@ -8,7 +8,7 @@ import boardStore from "@/store/modules/boardStore.js";
 import aptStore from "@/store/modules/aptStore.js";
 import friendStore from "@/store/modules/friendStore.js";
 import bookMarkStore from "@/store/modules/bookMarkStore.js";
-import alermStore from "@/store/modules/AlermStore.js";
+import alermStore from "@/store/modules/alermStore.js";
 
 export default new Vuex.Store({
     modules : {

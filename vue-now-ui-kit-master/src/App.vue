@@ -24,5 +24,9 @@ export default {
     custom.init();
     menu.init();
   },
+  updated() {
+    custom.init();
+    menu.init();
+  },
 };
 </script>

@@ -76,6 +76,7 @@ public class AlermServiceImpl implements AlermService{
 	@Override
 	public AlermResultDto alermDelete(AlermDto alermDto) {
 		AlermResultDto alermResultDto = new AlermResultDto();
+		System.out.println("암커밍");
 		try {
 			if(alermDao.alermDelete(alermDto) == 1) {
 				alermResultDto.setResult(SUCCESS);
