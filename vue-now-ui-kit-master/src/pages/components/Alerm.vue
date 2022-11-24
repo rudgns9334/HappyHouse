@@ -1,42 +1,5 @@
 <template>
-  <div class="alerm" v-bind:class="{ animation: isAnimation }">
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-    <p>ㅇㅇㅇㅇ</p>
-  </div>
+  <div class="alerm" v-bind:class="{ animation: isAnimation }"></div>
 </template>
 
 <script>
