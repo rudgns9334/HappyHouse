@@ -18,10 +18,21 @@
     </select>
     
     <select id="friendList" parameterType="map" resultType="com.mycom.project.friend.dto.FriendDto">
-    	select friend_id, send_user_seq, receive_user_seq, friend_state
-    		from user_friend
-    		where friend_state = '002'
-    		and (send_user_seq = #{seq} or receive_user_seq = #{seq})
+    	select f.friend_id, f.user_seq, f.send_user_seq, f.receive_user_seq, f.friend_state, u.user_name
+    		from users u, (
+    			select
+    				friend_id,
+    				case
+		    			when (send_user_seq = #{seq}) then receive_user_seq
+		    			when (receive_user_seq = #{seq}) then send_user_seq
+		    		else null
+    				end as user_seq, send_user_seq, receive_user_seq, friend_state
+    			from user_friend
+    			where friend_state = '002'
+    			and (send_user_seq = #{seq} or receive_user_seq = #{seq})
+    			group by friend_id
+    			) as f
+    		where f.user_seq = u.user_seq
     		
     </select>
     

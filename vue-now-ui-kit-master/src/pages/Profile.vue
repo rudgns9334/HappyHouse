@@ -15,8 +15,15 @@
     <div class="section">
       <div class="container">
         <div class="button-container">
-          <a @click="callFriendList" class="btn btn-primary btn-lg" style="color: #fff">My Friends</a>
-          <a class="btn" @click="toggleModify" v-if="!isModify && !isFriendList" title="Edit Profile">
+          <a @click="callFriendList" class="btn btn-primary btn-lg" style="color: #fff"
+            >My Friends</a
+          >
+          <a
+            class="btn"
+            @click="toggleModify"
+            v-if="!isModify && !isFriendList"
+            title="Edit Profile"
+          >
             <span class="material-symbols-outlined" style="color: #fff"> edit_square </span>
           </a>
           <a class="btn" @click="modify" v-if="isModify && !isFriendList" title="Finish Edit">
@@ -30,9 +37,15 @@
         <div v-if="!isFriendList" style="margin-top: 20px">
           <div v-if="isModify">
             <p class="category">Name</p>
-            <fg-input v-model="$store.state.userStore.user.userName" style="margin: auto; width: 500px"></fg-input>
+            <fg-input
+              v-model="$store.state.userStore.user.userName"
+              style="margin: auto; width: 500px"
+            ></fg-input>
             <p class="category">Comment</p>
-            <fg-input v-model="$store.state.userStore.user.userComment" style="margin: auto; width: 500px"></fg-input>
+            <fg-input
+              v-model="$store.state.userStore.user.userComment"
+              style="margin: auto; width: 500px"
+            ></fg-input>
             <p class="category">Password</p>
             <fg-input
               v-model="$store.state.userStore.user.userPassword"
@@ -54,13 +67,10 @@
   </div>
 </template>
 <script>
-import {FormGroupInput} from "@/components";
-import {mapActions, mapMutations, mapState} from "vuex";
+import { FormGroupInput } from "@/components";
+import { mapActions, mapMutations, mapState } from "vuex";
 import FriendsList from "./components/FriendsList.vue";
 import WishList from "./components/WishList.vue";
-
-import custom from "@/common/custom.js";
-import menu from "@/common/menu.js";
 
 const userStore = "userStore";
 const friendStore = "friendStore";
@@ -80,7 +90,7 @@ export default {
   methods: {
     ...mapMutations(userStore, ["INIT_MODIFY"]),
     ...mapActions(userStore, ["withdraw", "toggleModify", "modify"]),
-    ...mapMutations(friendStore, ["SET_IS_FRIEND_LIST"]),
+    ...mapMutations(friendStore, ["SET_IS_FRIEND_LIST", "INIT"]),
     ...mapActions(friendStore, ["friendList"]),
 
     callFriendList() {
@@ -89,9 +99,8 @@ export default {
     },
   },
   mounted() {
+    this.INIT();
     this.INIT_MODIFY();
-    custom.init();
-    menu.init();
   },
 };
 </script>

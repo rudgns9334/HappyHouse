@@ -8,22 +8,23 @@ import boardStore from "@/store/modules/boardStore.js";
 import aptStore from "@/store/modules/aptStore.js";
 import friendStore from "@/store/modules/friendStore.js";
 import bookMarkStore from "@/store/modules/bookMarkStore.js";
+import eventStore from "@/store/modules/eventStore.js";
 import alermStore from "@/store/modules/alermStore.js";
 
 export default new Vuex.Store({
-    modules : {
-        userStore,
-        boardStore,
-        aptStore,
-        friendStore,
-        bookMarkStore,
-        alermStore
-    },
-    plugins: [
-        createPersistedState({
-          // 브라우저 종료시 제거하기 위해 localStorage가 아닌 sessionStorage로 변경. (default: localStorage)
-          storage: sessionStorage,
-        }),
-      ],
+  modules: {
+    userStore,
+    boardStore,
+    aptStore,
+    friendStore,
+    bookMarkStore,
+    eventStore,
+    alermStore,
+  },
+  plugins: [
+    createPersistedState({
+      // 브라우저 종료시 제거하기 위해 localStorage가 아닌 sessionStorage로 변경. (default: localStorage)
+      storage: sessionStorage,
+    }),
+  ],
 });
-
