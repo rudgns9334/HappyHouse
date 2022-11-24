@@ -21,11 +21,9 @@
           <div class="property-slider-wrap">
             <div class="property-slider">
               <div class="property-item" v-for="(apt, index) in list" :key="index">
-                <p>{{ apt.no }}</p>
                 <a href="/properties?propNum=1" class="img">
                   <img src="/images/img_1.jpg" alt="Image" class="img-fluid" />
                 </a>
-
                 <div class="property-content">
                   <div class="price mb-2">
                     <span>{{ apt.dealAmount }}</span>
@@ -33,7 +31,6 @@
                   <div>
                     <span class="d-block mb-2 text-black-50">{{ apt.houseAddress }}</span>
                     <span class="city d-block mb-3">{{ apt.aptName }} {{ apt.floor }}층</span>
-
                     <div class="specs d-flex mb-4">
                       <span class="d-block d-flex align-items-center me-3">
                         <span class="caption">전용 면적 : {{ apt.area }}m<sup>2</sup></span>
