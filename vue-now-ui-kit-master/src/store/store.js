@@ -10,6 +10,7 @@ import friendStore from "@/store/modules/friendStore.js";
 import bookMarkStore from "@/store/modules/bookMarkStore.js";
 import eventStore from "@/store/modules/eventStore.js";
 import alermStore from "@/store/modules/alermStore.js";
+import adminStore from "@/store/modules/adminStore.js";
 
 export default new Vuex.Store({
   modules: {
@@ -20,6 +21,7 @@ export default new Vuex.Store({
     bookMarkStore,
     eventStore,
     alermStore,
+    adminStore
   },
   plugins: [
     createPersistedState({

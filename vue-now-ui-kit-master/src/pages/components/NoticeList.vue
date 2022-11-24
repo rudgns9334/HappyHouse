@@ -95,7 +95,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .ck-content {
   height: 400px;
 }
@@ -106,7 +106,7 @@ export default {
 }
 #inputSearchWord {
   float: left;
-  width: 80%;
+  width: 90%;
   height: 52px;
 }
 #btnInsertPage,

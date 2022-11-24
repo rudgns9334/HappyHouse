@@ -20,17 +20,20 @@ export default {
     PreLoader,
     MobileMenu,
   },
-  created() {
-    custom.init();
-    menu.init();
+  computed: {},
+  methods: {
+    init() {
+      this.$nextTick(() => {
+        custom.init();
+        menu.init();
+      });
+    },
   },
-  mounted() {
-    custom.init();
-    menu.init();
+  created() {
+    this.init();
   },
   updated() {
-    custom.init();
-    menu.init();
+    this.init();
   },
 };
 </script>
