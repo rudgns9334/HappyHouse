@@ -22,7 +22,7 @@
         <span slot="label" class="material-symbols-outlined"> manage_accounts </span>
 
         <div class="col-md-10 ml-auto mr-auto">
-          <admin-user-list></admin-user-list>
+          <admin-user></admin-user>
         </div>
       </tab-pane>
 
@@ -40,7 +40,7 @@
 <script>
 import { Tabs, TabPane } from "@/components";
 import AdminNotice from "./AdminNotice.vue";
-import AdminUserList from "./AdminUserList.vue";
+import AdminUser from "./AdminUser.vue";
 import AdminEventList from "./AdminEventList.vue";
 export default {
   name: "adminclass",
@@ -49,7 +49,7 @@ export default {
     Tabs,
     TabPane,
     AdminNotice,
-    AdminUserList,
+    AdminUser,
     AdminEventList,
   },
 };

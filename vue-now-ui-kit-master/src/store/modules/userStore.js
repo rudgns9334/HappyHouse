@@ -1,3 +1,4 @@
+import util from "@/common/util.js";
 import userAxios from "@/common/axios/user.js";
 
 import store from "@/store/store.js";
@@ -46,6 +47,33 @@ export default {
       userPasswordErrMsg: "",
       userPassword2ErrMsg: "",
     },
+    admin:{
+      list: [],
+         countCurrentList: 0,
+         limit: 8,
+         offset: 0,
+         searchWord: "",
+
+         // pagination
+         listRowCount: 8,
+         pageLinkCount: 8,
+         currentPageIndex: 1,
+
+         totalListItemCount: 0,
+
+         // detail, update, delete
+         user: {
+          userSeq: 0,
+          userName: "",
+          userPassword: "",
+          userEmail: "",
+          userProfileImageUrl: "",
+          userRegisterDate: "",
+          userState: "",
+          userEventPart: "",
+          userComment: "",
+        },
+    }
   },
   mutations: {
     SET_LOGIN_INFO(state, payload) {
@@ -93,6 +121,32 @@ export default {
     SET_ERR_USER_PASSWORD2(state, msg) {
       state.regist.userPassword2ErrMsg = msg;
     },
+    SET_USER_LIST(state, list){
+      state.admin.list = list;
+      state.admin.countCurrentList = list.length;
+  },
+  SET_USER_TOTAL_LIST_ITEM_COUNT(state, count) {
+      state.admin.totalListItemCount = count;
+      // store.state.boardStore.totalListItemCount = count;
+   },
+
+   SET_USER_MOVE_PAGE(state, pageIndex) {
+      state.admin.offset = (pageIndex - 1) * state.listRowCount;
+      state.admin.currentPageIndex = pageIndex;
+      // store.state.boardStore.offset = (pageIndex - 1) * state.listRowCount;
+      // store.state.boardStore.currentPageIndex = pageIndex;
+   },
+   SET_USER_DETAIL(state, payload) {
+      state.admin.user.userSeq = payload.userSeq;
+      state.admin.user.userName = payload.userName;
+      state.admin.user.userPassword = payload.userPassword;
+      state.admin.user.userEmail = payload.userEmail;
+      state.admin.user.regDate = util.makeDateStr(payload.userRegisterDate.date.year, payload.userRegisterDate.date.month, payload.userRegisterDate.date.day, ".");
+      state.admin.user.regTime = util.makeTimeStr(payload.userRegisterDate.time.hour, payload.userRegisterDate.time.minute, payload.userRegisterDate.time.second, ":");
+      state.admin.user.userProfileImageUrl = payload.userProfileImageUrl;
+      state.admin.user.userState = payload.userState;
+      state.admin.user.userComment = payload.userComment;
+   },
   },
   actions: {
     validateUserName({commit}, value) {
@@ -339,6 +393,54 @@ export default {
         }
       });
     },
+
+    userList({commit}){
+      let params = {
+        limit: this.state.userStore.admin.limit,
+        offset: this.state.userStore.admin.offset,
+        searchWord: this.state.userStore.admin.searchWord,
+      };
+      userAxios.userList(
+        params,
+        ({data}) => {
+          commit("SET_USER_LIST", data.list);
+          commit("SET_USER_TOTAL_LIST_ITEM_COUNT", data.count);
+        },
+        (error) => {
+            console.error(error);
+            this._vm.$alertify.error("서버에 문제가 있습니다.");
+        });
+    },
+    userDetail({commit}, userSeq){
+      let params = {
+          userSeq
+       };
+       userAxios.userDetail(
+          params,
+          ({data}) => {
+              let { dto } = data;
+              console.log(dto);
+              commit("SET_USER_DETAIL", dto);
+          },
+          (error) => {
+              console.log("UserMainVue: error : ");
+              console.log(error);
+          }
+      )
+  },
+    userDelete({dispatch}, userSeq){
+      userAxios.userDelete(
+        userSeq,
+        ({data}) => {
+          this._vm.$alertify.success("회원삭제");
+          dispatch("userList")
+        },
+        (error) => {
+          console.log("UserMainVue: error : ");
+          console.log(error);
+        }
+      )
+    }
   },
   getters: {
     isLogin: function (state) {
@@ -365,5 +467,49 @@ export default {
     checkToken: function (state) {
       return state.isValidToken;
     },
+    getList(state){
+      return state.admin.list;
+    },
+    getAdminUser(state){
+      return state.admin.user;
+    },
+     // pagination
+    getPageCount: function (state) {
+      return Math.ceil(state.admin.totalListItemCount / state.admin.listRowCount);
+  },
+  getStartPageIndex: function (state) {
+      if (state.admin.currentPageIndex % state.admin.pageLinkCount == 0) {
+      //10, 20...맨마지막
+      return (state.admin.currentPageIndex / state.admin.pageLinkCount - 1) * state.admin.pageLinkCount + 1;
+      } else {
+      return Math.floor(state.admin.currentPageIndex / state.admin.pageLinkCount) * state.admin.pageLinkCount + 1;
+      }
+  },
+  getEndPageIndex: function (state, getters) {
+      let ret = 0;
+      if (state.admin.currentPageIndex % state.admin.pageLinkCount == 0) {
+      //10, 20...맨마지막
+      
+      ret = (state.admin.currentPageIndex / state.admin.pageLinkCount - 1) * state.admin.pageLinkCount + state.admin.pageLinkCount;
+      } else {
+      ret = Math.floor(state.admin.currentPageIndex / state.admin.pageLinkCount) * state.admin.pageLinkCount + state.admin.pageLinkCount;
+      }
+      // 위 오류나는 코드를 아래와 같이 비교해서 처리
+      return ret > getters.getPageCount ? getters.getPageCount : ret;
+  },
+  getPrev: function (state) {
+      if (state.admin.currentPageIndex <= state.admin.pageLinkCount) {
+      return false;
+      } else {
+      return true;
+      }
+  },
+  getNext: function (state, getters) {
+      if (Math.floor(getters.getPageCount / state.admin.pageLinkCount) * state.admin.pageLinkCount < state.admin.currentPageIndex) {
+      return false;
+      } else {
+      return true;
+      }
+  },
   },
 };

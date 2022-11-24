@@ -22,6 +22,7 @@ import Parallax from './Parallax.vue';
 import Slider from './Slider.vue';
 
 import Pagination from './Pagination.vue';
+import PaginationUser from './PaginationUser.vue';
 
 export {
   Alert,
@@ -32,6 +33,7 @@ export {
   Badge,
   Progress,
   Pagination,
+  PaginationUser,
   Radio,
   FormGroupInput,
   Card,

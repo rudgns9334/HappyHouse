@@ -1,5 +1,5 @@
 <template>
-  <div class="container notice-list" style="margin-top: 50px">
+  <div class="container notice-list" style="margin-top: 20px">
     <div class="container">
       <input
         type="text"
@@ -29,7 +29,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr style="cursor: pointer" v-for="(board, index) in listGetters" :key="index">
+        <tr style="cursor: pointer" v-for="(board, index) in listGetters" @click="detailBoard(board)" :key="index" >
           <td>{{ board.boardId }}</td>
           <td>{{ board.userName }}</td>
           <td>{{ board.title }}</td>
@@ -46,15 +46,24 @@
     <div class="navbar-fixed-bottom">
       <n-pagination type="default" v-on:call-parent="movePage"> </n-pagination>
     </div>
+
+    <button
+        class="btn btn-round btn-primary"
+        type="button"
+        @click="boardInsert"
+      >
+        글 작성
+      </button>
   </div>
 </template>
 
 <script>
 import util from "@/common/util.js";
 import { Pagination } from "@/components";
-import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 
 const boardStore = "boardStore";
+const adminStore = "adminStore";
 
 export default {
   components: {
@@ -68,8 +77,18 @@ export default {
     },
   },
   methods: {
-    ...mapActions(boardStore, ["boardList"]),
+    ...mapActions(boardStore, ["boardList", "boardDetail"]),
     ...mapMutations(boardStore, ["SET_BOARD_MOVE_PAGE"]),
+    ...mapMutations(adminStore, ["INIT_NOTICE", "SET_NOTICE_INSERT", "SET_NOTICE_DETAIL"]),
+
+    detailBoard(board){
+      console.log(board);
+      this.boardDetail(board);
+      this.SET_NOTICE_DETAIL();
+    },
+    boardInsert(){
+      this.SET_NOTICE_INSERT();
+    },
     callBoardList() {
       this.boardList("001");
     },
@@ -85,6 +104,7 @@ export default {
     },
   },
   created() {
+    console.log("나는 notice");
     this.callBoardList();
   },
   filters: {
