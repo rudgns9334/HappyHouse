@@ -5,6 +5,7 @@ import jwtDecode from "jwt-decode";
 import router from "../../router";
 import Vue from "vue";
 import VueAlertify from "vue-alertify";
+
 Vue.use(VueAlertify);
 
 export default {

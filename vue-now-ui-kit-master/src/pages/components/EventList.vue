@@ -1,7 +1,9 @@
 <template>
   <div class="container notice-list" style="margin-top: 50px">
     <div class="event-list-div" v-for="(event, index) in list" :key="index">
-      <img class="event-img" :src="event.imgUrl" alt="" />
+      <router-link to="/review">
+        <img class="event-img" :src="event.imgUrl" alt="" />
+      </router-link>
     </div>
     <div style="height: 46px" v-for="idx in 8 - $store.state.eventStore.countCurrentList" :key="idx + 'blank'"></div>
     <div class="navbar-fixed-bottom">
@@ -119,7 +121,6 @@ export default {
   margin: 30px;
 }
 .event-img {
-  width: 1000px;
   cursor: pointer;
 }
 </style>
