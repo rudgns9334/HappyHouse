@@ -1,7 +1,5 @@
 package com.mycom.project.user.dto;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +12,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserParamDto {
-	private UserDto dto;
-	private List<UserDto> list;
+	private int limit;
+	private int offset;
+	private String searchWord;
+
 	private int userSeq;
+	private String userState;
 }

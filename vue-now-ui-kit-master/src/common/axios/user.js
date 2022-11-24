@@ -24,6 +24,15 @@ export default {
   async logout(userSeq,success, fail){
     await http.get("/logout/"+userSeq).then(success).catch(fail);
   },
+  async userList(params, success, fail){
+    await http.get('/users', {params}).then(success).catch(fail);
+},
+async userDetail(params, success, fail){
+    await http.get('/users/detail', {params}).then(success).catch(fail);
+},
+async userDelete(params, success, fail){
+    await http.delete('/users/' + params).then(success).catch(fail);
+},
   setHeader(){
     http.defaults.headers["access-token"] = sessionStorage.getItem("access-token");
     http.defaults.headers["refresh-token"] = sessionStorage.getItem("refresh-token");

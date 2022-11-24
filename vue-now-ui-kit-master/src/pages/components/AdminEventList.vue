@@ -1,31 +1,39 @@
 <template>
-  <div class="container notice-list" style="margin-top: 50px">
-    <div class="event-list-div" v-for="(event, index) in list" :key="index">
-      <router-link to="/review">
-        <img class="event-img" :src="event.imgUrl" alt="" />
-      </router-link>
-    </div>
-    <div style="height: 46px" v-for="idx in 8 - $store.state.eventStore.countCurrentList" :key="idx + 'blank'"></div>
-    <div class="navbar-fixed-bottom">
-      <n-pagination type="default" v-on:call-parent="movePage"> </n-pagination>
-    </div>
-  </div>
+  <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Start Time</th>
+          <th scope="col">End Time</th>
+          <th scope="col">State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="cursor: pointer" v-for="(event, index) in listGetters" :key="index" >
+          <td>{{ event.eventId }}</td>
+          <td>{{ event.eventName }}</td>
+          <td>{{ event.startDt.date | makeDateStr(".") }} {{event.startDt.time | makeTimeStr(":")}}</td>
+          <td>{{ event.endDt.date | makeDateStr(".") }}  {{event.endDt.time | makeTimeStr(":")}}</td>
+          <td>{{ event.eventState }}</td>
+        </tr>
+      </tbody>
+    </table>
+    
 </template>
 
 <script>
 import util from "@/common/util.js";
-import {Pagination} from "@/components";
 import {mapActions, mapGetters, mapMutations, mapState} from "vuex";
 const eventStore = "eventStore";
 export default {
-  components: {
-    [Pagination.name]: Pagination,
-  },
+  
   name: "eventList",
   computed: {
     ...mapState(eventStore, ["list"]),
     ...mapGetters(eventStore, ["getEventList"]),
     listGetters() {
+      console.log(this.getEventList);
       return this.getEventList;
     },
   },
@@ -46,6 +54,9 @@ export default {
   filters: {
     makeDateStr: function (date, type) {
       return util.makeDateStr(date.year, date.month, date.day, type);
+    },
+    makeTimeStr: function (time, type) {
+      return util.makeTimeStr(time.hour, time.minute, time.second, type);
     },
   },
 };

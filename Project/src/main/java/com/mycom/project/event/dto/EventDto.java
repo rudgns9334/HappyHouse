@@ -19,4 +19,5 @@ public class EventDto {
 	private LocalDateTime startDt;
 	private LocalDateTime endDt;
 	private String imgUrl;	
+	private String eventState;
 }

@@ -11,6 +11,18 @@ export default {
             isInsert: false,
             isDetail: false,
             isUpdate: false,
+        },
+        user:{
+            isList: true,
+            isInsert: false,
+            isDetail: false,
+            isUpdate: false,
+        },
+        event:{
+            isList: true,
+            isInsert: false,
+            isDetail: false,
+            isUpdate: false,
         }
     },
     mutations: {
@@ -38,6 +50,54 @@ export default {
             state.notice.isInsert = false;
             state.notice.isDetail = false;
             state.notice.isUpdate = true;
+        },
+        INIT_USER(state){
+            state.user.isList = true;
+            state.user.isInsert = false;
+            state.user.isDetail = false;
+            state.user.isUpdate = false;
+        },
+        SET_USER_INSERT(state){
+            state.user.isList = false;
+            state.user.isInsert = true;
+            state.user.isDetail = false;
+            state.user.isUpdate = false;
+        },
+        SET_USER_DETAIL(state){
+            state.user.isList = false;
+            state.user.isInsert = false;
+            state.user.isDetail = true;
+            state.user.isUpdate = false;
+        },
+        SET_USER_UPDATE(state){
+            state.user.isList = false;
+            state.user.isInsert = false;
+            state.user.isDetail = false;
+            state.user.isUpdate = true;
+        },
+        INIT_EVENT(state){
+            state.user.isList = true;
+            state.user.isInsert = false;
+            state.user.isDetail = false;
+            state.user.isUpdate = false;
+        },
+        SET_EVENT_INSERT(state){
+            state.user.isList = false;
+            state.user.isInsert = true;
+            state.user.isDetail = false;
+            state.user.isUpdate = false;
+        },
+        SET_EVENT_DETAIL(state){
+            state.user.isList = false;
+            state.user.isInsert = false;
+            state.user.isDetail = true;
+            state.user.isUpdate = false;
+        },
+        SET_EVENT_UPDATE(state){
+            state.user.isList = false;
+            state.user.isInsert = false;
+            state.user.isDetail = false;
+            state.user.isUpdate = true;
         },
         
        
