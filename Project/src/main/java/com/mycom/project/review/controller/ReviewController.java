@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,17 +33,17 @@ public class ReviewController {
 	private final int SUCCESS = 1;
 	
 	@PostMapping(value="/review")
-	public ResponseEntity<Map<String, String>> register(ReviewDto dto) {
+	public ResponseEntity<ReviewResultDto> register(@RequestBody ReviewDto dto) {
 		System.out.println(dto);
-		ReviewResultDto reviewResultDto = reviewService.reviewRegister(dto);
-		Map<String, String> map = new HashMap<>();
+		ReviewResultDto reviewResultDto;
+		
+		reviewResultDto = reviewService.reviewRegister(dto);
+		
 		
 		if (reviewResultDto.getResult() == SUCCESS) {
-			map.put("result", "success");
-			return new ResponseEntity<Map<String, String>>(map, HttpStatus.OK);
+			return new ResponseEntity<ReviewResultDto>(reviewResultDto, HttpStatus.OK);
 		} else {
-			map.put("result", "fail");
-			return new ResponseEntity<Map<String, String>>(map, HttpStatus.NOT_FOUND);
+			return new  ResponseEntity<ReviewResultDto>(reviewResultDto, HttpStatus.NOT_FOUND);
 		}
 	}
 }
