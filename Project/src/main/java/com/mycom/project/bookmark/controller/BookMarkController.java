@@ -60,12 +60,12 @@ public class BookMarkController {
 		}
 	}
 	
-	@DeleteMapping(value="/delete/{bookmarkId}")
-	private ResponseEntity<BookMarkResultDto> bookMarkDelete(@PathVariable int bookmarkId) {
+	@DeleteMapping(value="/delete/{dealNo}")
+	private ResponseEntity<BookMarkResultDto> bookMarkDelete(@PathVariable int dealNo) {
 		BookMarkResultDto bookMarkResultDto;
 		
 		BookMarkDto bookMarkDto = new BookMarkDto();
-		bookMarkDto.setBookmarkId(bookmarkId);
+		bookMarkDto.setDealNo(dealNo);
 		bookMarkResultDto = bookMarkService.bookMarkDelete(bookMarkDto);
 		
 		if (bookMarkResultDto.getResult() == SUCCESS) {

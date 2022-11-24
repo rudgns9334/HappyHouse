@@ -18,4 +18,5 @@ public class EventResultDto {
 	private EventDto dto;
 	private List<EventDto> list;
 	private int count;
+	
 }

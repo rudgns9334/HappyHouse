@@ -97,7 +97,6 @@ public class AlermController {
 	private ResponseEntity<AlermResultDto> alermDelete(@RequestParam("sendUserSeq") int sendUserSeq, @RequestParam("receiveUserSeq") int receiveUserSeq) {
 		AlermResultDto alermResultDto;
 
-		System.out.println("여기 delete2");
 		AlermDto alermDto = new AlermDto();
 		alermDto.setSendUserSeq(sendUserSeq);
 		alermDto.setReceiveUserSeq(receiveUserSeq);
