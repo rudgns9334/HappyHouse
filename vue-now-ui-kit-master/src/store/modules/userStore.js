@@ -150,8 +150,12 @@ export default {
         body,
         ({data}) => {
           console.log(data);
-          console.log(this._vm);
-          if (data.result == "success") {
+          if (data.result == 1) {
+            let params = {
+              receiveUserSeq: data.userSeq,
+              contentType: "001"
+            }
+            store.dispatch("alermStore/alermSend",params);
             alertify
               .alert("Congratulation! Go to Login Page", function () {
                 router.push("/login");

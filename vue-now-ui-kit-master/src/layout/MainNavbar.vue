@@ -64,13 +64,18 @@
           </a>
         </li>
         <li class="nav-item" v-show="isLogin">
-          <span @click="callAlerm" class="material-symbols-outlined" :class="[{newIcon: isNew},{noNewIcon: !isNew}]" style="cursor: pointer; padding-top: 7px;">
+          <span
+            @click="callAlerm"
+            class="material-symbols-outlined"
+            :class="[{ newIcon: isNew }, { noNewIcon: !isNew }]"
+            style="cursor: pointer; padding-top: 7px"
+          >
             circle_notifications
           </span>
         </li>
       </template>
     </navbar>
-    <alerm v-if="isAlerm"></alerm>
+    <alerm></alerm>
   </div>
 </template>
 
@@ -96,36 +101,44 @@ export default {
   },
   computed: {
     ...mapState(userStore, ["isLogin", "user"]),
-    ...mapState(alermStore,["isAlerm", "isNew"]),
+    ...mapState(alermStore, ["isAlerm", "isNew"]),
   },
   methods: {
     ...mapActions(userStore, ["logout"]),
-    ...mapActions(alermStore,["alermList", "alermReadAll"]),
-    ...mapMutations(alermStore,["SET_IS_ALERM","INIT"]),
-    callAlerm(){
+    ...mapActions(alermStore, ["alermList", "alermReadAll"]),
+    ...mapMutations(alermStore, ["SET_IS_ALERM", "INIT"]),
+
+    callAlerm() {
       this.SET_IS_ALERM(!this.isAlerm);
-      if(!this.isAlerm){
+      if (!this.isAlerm) {
         this.alermReadAll();
+        // 닫힐 때 -> close 있어야 -> class 추가
+        document.querySelector(".alerm").classList.add("close");
+      } else {
+        // 열릴 때 -> close 없어 -> classlist 제거
+        document.querySelector(".alerm").classList.remove("close");
       }
     },
-    goLogout(){
+    goLogout() {
       this.INIT();
       this.logout();
+      this.SET_IS_ALERM(false);
+      document.querySelector(".alerm").classList.add("close");
     },
-    checkAlarm(){
-      if(this.isLogin){
+    checkAlarm() {
+      if (this.isLogin) {
         this.alermList();
       }
-      setInterval(()=>{
-        if(this.isLogin){
+      setInterval(() => {
+        if (this.isLogin) {
           this.alermList();
         }
       }, 10000);
-    }
+    },
   },
-  created(){
+  created() {
     this.checkAlarm();
-  }
+  },
 };
 </script>
 
@@ -134,7 +147,7 @@ export default {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
 }
 
-.noNewIcon{
+.noNewIcon {
   color: #fff;
 }
 .newIcon {

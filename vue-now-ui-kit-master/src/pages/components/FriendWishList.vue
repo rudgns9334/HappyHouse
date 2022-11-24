@@ -15,7 +15,7 @@
         <div class="col-12">
           <div class="property-slider-wrap">
             <div class="property-slider">
-              <div class="property-item" v-for="(apt, index) in listGetters" :key="index">
+              <div class="property-item" v-for="(apt, index) in list" :key="index">
                 <a href="/properties?propNum=1" class="img">
                   <img src="/images/img_1.jpg" alt="Image" class="img-fluid" />
                 </a>
@@ -61,27 +61,26 @@ import { mapState, mapActions, mapGetters } from "vuex";
 import custom from "@/common/custom.js";
 import menu from "@/common/menu.js";
 
-const userStore = "userStore";
+const friendStore = "friendStore";
 const bookMarkStore = "bookMarkStore";
 export default {
-  name: "wishList",
+  name: "friendwishList",
   computed: {
-    ...mapState(userStore, ["user"]),
+    ...mapState(friendStore, ["user"]),
     ...mapState(bookMarkStore, ["list"]),
     ...mapGetters(bookMarkStore, ["getWishList"]),
+
     listGetters() {
       return this.getWishList;
     },
   },
   created() {
-    console.log("created");
     this.callBookMarkList();
-    console.log(this.list);
   },
   mounted() {
-    console.log("mounted");
     console.log(this.list);
   },
+  updated() {},
   methods: {
     ...mapActions(bookMarkStore, ["bookMarkList"]),
 
