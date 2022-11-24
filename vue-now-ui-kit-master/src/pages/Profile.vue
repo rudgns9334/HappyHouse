@@ -32,6 +32,9 @@
           <a class="btn" @click="withdraw" v-if="!isFriendList" title="Remove Account">
             <span class="material-symbols-outlined" style="color: #fff"> person_remove </span>
           </a>
+          <a class="btn" @click="goAdmin" v-if="user.userState == '003'" title="Admin Page">
+            <span class="material-symbols-outlined" style="color: #fff"> settings </span>
+          </a>
         </div>
         <friends-list v-if="isFriendList"></friends-list>
         <div v-if="!isFriendList" style="margin-top: 20px">
@@ -71,6 +74,7 @@ import { FormGroupInput } from "@/components";
 import { mapActions, mapMutations, mapState } from "vuex";
 import FriendsList from "./components/FriendsList.vue";
 import WishList from "./components/WishList.vue";
+import router from "../router";
 
 const userStore = "userStore";
 const friendStore = "friendStore";
@@ -96,6 +100,10 @@ export default {
     callFriendList() {
       this.SET_IS_FRIEND_LIST(!this.isFriendList);
       this.friendList(this.user.userSeq);
+    },
+
+    goAdmin() {
+      router.push("/admin");
     },
   },
   mounted() {

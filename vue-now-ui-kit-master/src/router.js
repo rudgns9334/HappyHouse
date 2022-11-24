@@ -12,6 +12,8 @@ import Apt from "./pages/AptMap.vue";
 import Notice from "./pages/Notice.vue";
 import Event from "./pages/Event.vue";
 import Review from "./pages/Review.vue";
+import Admin from "./pages/Admin.vue";
+import AdminNoticeList from "./pages/components/AdminNoticeList.vue";
 
 import store from "./store/store.js";
 
@@ -141,6 +143,16 @@ export default new Router({
         header: {colorOnScroll: 400},
         footer: {backgroundColor: "black"},
       },
+    },
+    {
+      path: "/admin",
+      name: "admin",
+      components: {default: Admin, header: MainNavbar, footer: MainFooter},
+      beforeEnter: onlyAuthUser,
+      props: {
+        header: {colorOnScroll: 400},
+        footer: {backgroundColor: "black"},
+      }
     },
   ],
   scrollBehavior: to => {

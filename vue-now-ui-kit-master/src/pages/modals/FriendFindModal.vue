@@ -94,24 +94,24 @@ export default {
       this.friendRequest(userSeq);
       let params = {
         receiveUserSeq: userSeq,
-        contentType: "002"
+        contentType: "002",
       };
       this.alermSend(params);
     },
 
-    cancelFriend(userSeq){
+    cancelFriend(userSeq) {
       this.friendDelete(userSeq);
       this.alermDeleteWithSeq(userSeq);
     },
 
-    hide(){
+    hide() {
       this.$emit("hide");
-    }
+    },
   },
 };
 </script>
 
-<style>
+<style scoped>
 #inputFriendSearch {
   float: left;
   width: 79%;
