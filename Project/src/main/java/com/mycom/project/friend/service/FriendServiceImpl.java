@@ -58,6 +58,11 @@ public class FriendServiceImpl implements FriendService{
 		FriendResultDto friendResultDto = new FriendResultDto();
 		try {
 			List<FriendDto> list = friendDao.friendList(friendParamDto);
+			
+			for (FriendDto friendDto : list) {
+				System.out.println("friendList"+friendDto);
+			}
+			
 			friendResultDto.setList(list);
 			friendResultDto.setResult(SUCCESS);
 		}catch(Exception e) {

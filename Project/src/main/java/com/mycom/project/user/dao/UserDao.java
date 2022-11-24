@@ -11,4 +11,5 @@ public interface UserDao {
 	int userWithdraw(int userSeq);
 	UserDto userDetail(int userSeq);
 	int checkUserDuplicate(UserDto userDto);
+	UserDto userDetailWithEmail(String userEmail);
 }

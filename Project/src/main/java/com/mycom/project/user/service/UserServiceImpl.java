@@ -28,6 +28,8 @@ public class UserServiceImpl implements UserService {
 			userDto.setUserProfileImageUrl(userDto.getUserProfileImageUrl());
 			System.out.println(userDto);
 			if (userDao.userRegister(userDto) == 1) {
+				UserDto dto = userDao.userDetailWithEmail(userDto.getUserEmail());
+				userResultDto.setUserSeq(dto.getUserSeq());
 				userResultDto.setResult(SUCCESS);
 			} else {
 				userResultDto.setResult(FAIL);

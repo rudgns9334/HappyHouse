@@ -27,11 +27,23 @@
           <td></td>
           <td></td>
           <td>
-            <span class="material-symbols-outlined" style="cursor: pointer"> home </span>
+            <span
+              class="material-symbols-outlined"
+              style="cursor: pointer"
+              @click="goFriendProfile(friend.userSeq)"
+            >
+              home
+            </span>
           </td>
           <td></td>
           <td>
-            <span class="material-symbols-outlined" style="cursor: pointer" @click="deleteFriend(friend)"> delete </span>
+            <span
+              class="material-symbols-outlined"
+              style="cursor: pointer"
+              @click="deleteFriend(friend)"
+            >
+              delete
+            </span>
           </td>
         </tr>
       </tbody>
@@ -44,6 +56,7 @@
 import { Modal } from "bootstrap";
 import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
 import FriendFindModal from "../modals/FriendFindModal.vue";
+import router from "../../router";
 
 const friendStore = "friendStore";
 const userStore = "userStore";
@@ -60,16 +73,20 @@ export default {
   computed: {
     ...mapState(userStore, ["user"]),
 
-    ...mapGetters(friendStore,["getFriendList"]),
+    ...mapGetters(friendStore, ["getFriendList"]),
   },
   methods: {
     ...mapMutations(friendStore, ["INIT_SEARCH"]),
-    ...mapActions(friendStore,["friendDelete"]),
+    ...mapActions(friendStore, ["friendDelete", "friendDetail"]),
 
-    deleteFriend(friend){
-      if(friend.sendUserSeq == this.user.userSeq){
+    goFriendProfile(userSeq) {
+      this.friendDetail(userSeq);
+      router.push("/friendprofile");
+    },
+    deleteFriend(friend) {
+      if (friend.sendUserSeq == this.user.userSeq) {
         this.friendDelete(friend.receiveUserSeq);
-      }else if(friend.receiveUserSeq == this.user.userSeq){
+      } else if (friend.receiveUserSeq == this.user.userSeq) {
         this.friendDelete(friend.sendUserSeq);
       }
     },
