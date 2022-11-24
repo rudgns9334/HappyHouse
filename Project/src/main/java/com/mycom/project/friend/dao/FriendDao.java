@@ -17,5 +17,10 @@ public interface FriendDao {
 	UserDto friendDetail(FriendParamDto friendParamDto);
 	
 	int friendRequest(FriendParamDto friendParamDto);
+	
+	int checkDuplicate(FriendParamDto friendParamDto);
+	
+	int friendAccept(FriendParamDto friendParamDto);
+	
 	int friendDelete(FriendParamDto friendParamDto);
 }

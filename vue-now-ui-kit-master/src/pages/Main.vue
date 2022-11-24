@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mobile-menu></mobile-menu>
+    
     <div class="page-header clear-filter" filter-color="orange">
       <parallax class="page-header-image" style="background-image: url('img/hero_bg_3.jpg')"> </parallax>
       <div class="container">
@@ -14,7 +14,7 @@
     <review-list></review-list>
     <img src="img/bg11.jpg" alt="" />
 
-    <pre-loader></pre-loader>
+    
   </div>
 </template>
 <script>
@@ -22,11 +22,6 @@ import {Parallax} from "@/components";
 // import SearchBar from "./components/SearchBar.vue";
 import PopularApt from "./components/PopularApt.vue";
 import ReviewList from "./components/ReviewList.vue";
-
-import custom from "@/common/custom.js";
-import menu from "@/common/menu.js";
-import PreLoader from "./components/PreLoader.vue";
-import MobileMenu from "./components/MobileMenu.vue";
 
 export default {
   name: "index",
@@ -36,12 +31,6 @@ export default {
     // SearchBar,
     PopularApt,
     ReviewList,
-    PreLoader,
-    MobileMenu,
-  },
-  mounted() {
-    custom.init();
-    menu.init();
   },
 };
 </script>

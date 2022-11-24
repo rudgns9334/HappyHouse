@@ -25,6 +25,14 @@
     		
     </select>
     
+    <select id="checkDuplicate" parameterType="map" resultType="int">
+    	select count(*)
+    		from user_friend
+    		where (send_user_seq = #{sendSeq} and receive_user_seq = #{receiveSeq})
+    		and (send_user_seq = #{receiveSeq} and receive_user_seq = #{sendSeq})
+    		
+    </select>
+    
     <select id="friendDetail" parameterType="map" resultType="com.mycom.project.user.dto.UserDto">
     	select user_seq, user_name, user_profile_image_url, user_comment
     		from users
@@ -36,8 +44,16 @@
     		values (#{sendSeq}, #{receiveSeq}, '001')
     </insert>
     
+    <update id="friendAccept" parameterType="map">
+    	update user_friend
+    		set friend_state = '002'
+    		where send_user_seq = #{sendSeq}
+    		and receive_user_seq = #{receiveSeq}
+    </update>
+    
     <delete id="friendDelete" parameterType="map">
     	delete from user_friend 
-    		where friend_id = #{friendId}
+    		where (send_user_seq = #{sendSeq} and receive_user_seq = #{receiveSeq})
+    		or (send_user_seq = #{receiveSeq} and receive_user_seq = #{sendSeq})
     </delete>
 </mapper>

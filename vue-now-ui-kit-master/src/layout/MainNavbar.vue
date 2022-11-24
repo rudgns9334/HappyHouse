@@ -35,7 +35,7 @@
           </router-link>
         </li>
         <li class="nav-item" v-show="isLogin">
-          <a class="nav-link" @click="logout">
+          <a class="nav-link" @click="goLogout">
             <p>Logout</p>
           </a>
         </li>
@@ -64,23 +64,24 @@
           </a>
         </li>
         <li class="nav-item" v-show="isLogin">
-          <span class="material-symbols-outlined" style="padding-top: 7px; color: #fff">
+          <span @click="callAlerm" class="material-symbols-outlined" :class="[{newIcon: isNew},{noNewIcon: !isNew}]" style="cursor: pointer; padding-top: 7px;">
             circle_notifications
           </span>
         </li>
       </template>
     </navbar>
-    <alerm></alerm>
+    <alerm v-if="isAlerm"></alerm>
   </div>
 </template>
 
 <script>
 import { Navbar } from "@/components";
 import { Popover } from "element-ui";
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapMutations, mapState } from "vuex";
 import Alerm from "../pages/components/Alerm.vue";
 
 const userStore = "userStore";
+const alermStore = "alermStore";
 
 export default {
   name: "main-navbar",
@@ -95,15 +96,48 @@ export default {
   },
   computed: {
     ...mapState(userStore, ["isLogin", "user"]),
+    ...mapState(alermStore,["isAlerm", "isNew"]),
   },
   methods: {
     ...mapActions(userStore, ["logout"]),
+    ...mapActions(alermStore,["alermList", "alermReadAll"]),
+    ...mapMutations(alermStore,["SET_IS_ALERM","INIT"]),
+    callAlerm(){
+      this.SET_IS_ALERM(!this.isAlerm);
+      if(!this.isAlerm){
+        this.alermReadAll();
+      }
+    },
+    goLogout(){
+      this.INIT();
+      this.logout();
+    },
+    checkAlarm(){
+      if(this.isLogin){
+        this.alermList();
+      }
+      setInterval(()=>{
+        if(this.isLogin){
+          this.alermList();
+        }
+      }, 10000);
+    }
   },
+  created(){
+    this.checkAlarm();
+  }
 };
 </script>
 
 <style>
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+.noNewIcon{
+  color: #fff;
+}
+.newIcon {
+  color: red;
 }
 </style>

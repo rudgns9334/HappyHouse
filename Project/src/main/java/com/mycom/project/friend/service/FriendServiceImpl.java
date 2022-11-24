@@ -21,6 +21,7 @@ public class FriendServiceImpl implements FriendService{
 	private final int SUCCESS = 1;
 	private final int FAIL = -1;
 	private final int NOSEARCHWORD = -2;
+	private final int DUPLICATE = -3;
 	
 	@Override
 	public FriendResultDto friendListSearchWord(FriendParamDto friendParamDto) {
@@ -84,8 +85,14 @@ public class FriendServiceImpl implements FriendService{
 	public FriendResultDto friendRequest(FriendParamDto friendParamDto) {
 		FriendResultDto friendResultDto = new FriendResultDto();
 		try {
-			if(friendDao.friendRequest(friendParamDto) == 1) {
-				friendResultDto.setResult(SUCCESS);
+			if(friendDao.checkDuplicate(friendParamDto) == 0) {
+				if(friendDao.friendRequest(friendParamDto) == 1) {
+					friendResultDto.setResult(SUCCESS);
+				}else {
+					friendResultDto.setResult(FAIL);
+				}
+			}else {
+				friendResultDto.setResult(DUPLICATE);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -99,6 +106,20 @@ public class FriendServiceImpl implements FriendService{
 		FriendResultDto friendResultDto = new FriendResultDto();
 		try {
 			if(friendDao.friendDelete(friendParamDto) == 1) {
+				friendResultDto.setResult(SUCCESS);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			friendResultDto.setResult(FAIL);
+		}
+		return friendResultDto;
+	}
+
+	@Override
+	public FriendResultDto friendAccept(FriendParamDto friendParamDto) {
+		FriendResultDto friendResultDto = new FriendResultDto();
+		try {
+			if(friendDao.friendAccept(friendParamDto) == 1) {
 				friendResultDto.setResult(SUCCESS);
 			}
 		}catch(Exception e) {

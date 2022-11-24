@@ -8,6 +8,12 @@
     		values ( #{userName}, #{userPassword}, #{userEmail}, #{userProfileImageUrl}, now(), #{userState}, '' )
     </insert>
     
+    <select id="userDetail" parameterType="int" resultType="com.mycom.project.user.dto.UserDto">
+    	select user_seq, user_name, user_password, user_email, user_profile_image_url, user_register_date, user_state, user_event_part, user_comment
+    		from users
+    		where user_seq = #{userSeq}
+    </select>
+    
     <update id="userModify" parameterType="com.mycom.project.user.dto.UserDto">
     	update users
     		set user_name = #{userName}, user_password = #{userPassword}, user_comment = #{userComment}

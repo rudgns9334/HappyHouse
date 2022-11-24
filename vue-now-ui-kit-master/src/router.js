@@ -26,6 +26,7 @@ const onlyAuthUser = async (to, from, next) => {
   }
   if (!checkToken || checkUserInfo === null) {
     alertify.alert("Go to Login Page").setHeader("<em> Non-Member Access </em> ");
+    store.commit("alermStore/INIT");
     store.dispatch("userStore/logout");
     next({name: "login"});
   } else {

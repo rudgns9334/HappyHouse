@@ -13,7 +13,10 @@ export default {
     async friendRequest(body, success, fail){
         await http.post('/friends/request', JSON.stringify(body)).then(success).catch(fail);
     },
+    async friendAccept(body, success, fail){
+        await http.put('/friends/accept', JSON.stringify(body)).then(success).catch(fail);
+    },
     async friendDelete(params, success, fail){
-        await http.delete('/friends/delete' + params).then(success).catch(fail);
+        await http.delete('/friends/delete',{params}).then(success).catch(fail);
     }
 }

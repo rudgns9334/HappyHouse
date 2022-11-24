@@ -19,7 +19,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(friend, index) in list" :key="index">
+        <tr v-for="(friend, index) in getFriendList" :key="index">
           <td></td>
           <td></td>
           <td></td>
@@ -31,21 +31,22 @@
           </td>
           <td></td>
           <td>
-            <span class="material-symbols-outlined" style="cursor: pointer"> delete </span>
+            <span class="material-symbols-outlined" style="cursor: pointer" @click="deleteFriend(friend)"> delete </span>
           </td>
         </tr>
       </tbody>
     </table>
-    <friend-find-modal></friend-find-modal>
+    <friend-find-modal v-on:hide="hideModal"></friend-find-modal>
   </div>
 </template>
 
 <script>
 import { Modal } from "bootstrap";
-import { mapState } from "vuex";
+import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
 import FriendFindModal from "../modals/FriendFindModal.vue";
 
 const friendStore = "friendStore";
+const userStore = "userStore";
 export default {
   components: {
     FriendFindModal,
@@ -57,11 +58,27 @@ export default {
     };
   },
   computed: {
-    ...mapState(friendStore, ["list"]),
+    ...mapState(userStore, ["user"]),
+
+    ...mapGetters(friendStore,["getFriendList"]),
   },
   methods: {
+    ...mapMutations(friendStore, ["INIT_SEARCH"]),
+    ...mapActions(friendStore,["friendDelete"]),
+
+    deleteFriend(friend){
+      if(friend.sendUserSeq == this.user.userSeq){
+        this.friendDelete(friend.receiveUserSeq);
+      }else if(friend.receiveUserSeq == this.user.userSeq){
+        this.friendDelete(friend.sendUserSeq);
+      }
+    },
     showModal() {
+      this.INIT_SEARCH();
       this.friendFindModal.show();
+    },
+    hideModal() {
+      this.friendFindModal.hide();
     },
   },
   mounted() {
