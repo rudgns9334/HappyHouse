@@ -435,7 +435,7 @@ export default {
         </button>
         */
         this.aptArea = h.area;
-        iwContent = `<div class="modal-body" style="width: 300px; height: 280px;">
+        iwContent = `<div class="modal-body" style="width: 300px; height: 280px; margin: 20px">
                       <h5>${this.aptName}아파트 ${this.aptFloor}층</h5>
                       <p>${this.aptAddress}</p>
                       <hr>
