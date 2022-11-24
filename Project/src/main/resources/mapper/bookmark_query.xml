@@ -16,7 +16,7 @@
 	
 	<delete id="bookMarkDelete" parameterType="map">
 		delete from bookmark
-		where bookmark_id = #{bookmarkId}
+		where deal_no = #{dealNo}
 	</delete>
 	
 	

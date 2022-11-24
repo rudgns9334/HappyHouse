@@ -17,6 +17,7 @@
 		<mapper resource="mapper/alerm_query.xml"></mapper>
 		<mapper resource="mapper/bookmark_query.xml"></mapper>
 		<mapper resource="mapper/board_query.xml"></mapper>
+		<mapper resource="mapper/event_query.xml"></mapper>
 	</mappers>
 	
 </configuration>

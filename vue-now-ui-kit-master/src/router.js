@@ -10,6 +10,8 @@ import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 import Apt from "./pages/AptMap.vue";
 import Notice from "./pages/Notice.vue";
+import Event from "./pages/Event.vue";
+import Review from "./pages/Review.vue";
 
 import store from "./store/store.js";
 
@@ -114,6 +116,26 @@ export default new Router({
       path: "/notice",
       name: "notice",
       components: {default: Notice, header: MainNavbar, footer: MainFooter},
+      beforeEnter: onlyAuthUser,
+      props: {
+        header: {colorOnScroll: 400},
+        footer: {backgroundColor: "black"},
+      },
+    },
+    {
+      path: "/event",
+      name: "event",
+      components: {default: Event, header: MainNavbar, footer: MainFooter},
+      beforeEnter: onlyAuthUser,
+      props: {
+        header: {colorOnScroll: 400},
+        footer: {backgroundColor: "black"},
+      },
+    },
+    {
+      path: "/review",
+      name: "review",
+      components: {default: Review, header: MainNavbar, footer: MainFooter},
       beforeEnter: onlyAuthUser,
       props: {
         header: {colorOnScroll: 400},

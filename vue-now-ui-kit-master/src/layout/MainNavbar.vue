@@ -11,13 +11,7 @@
         <router-link v-popover:popover1 class="navbar-brand" to="/">
           <img src="img/main-logo.png" alt="" style="width: 100px" />
         </router-link>
-        <el-popover
-          ref="popover1"
-          popper-class="popover"
-          placement="bottom"
-          width="200"
-          trigger="hover"
-        >
+        <el-popover ref="popover1" popper-class="popover" placement="bottom" width="200" trigger="hover">
           <div class="popover-body">Designed by Invision. Coded by Creative Tim</div>
         </el-popover>
         <div
@@ -55,19 +49,15 @@
           </router-link>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            href="https://www.creative-tim.com/product/vue-now-ui-kit"
-            target="_blank"
-          >
+          <router-link class="nav-link" to="/event">
             <p>Event</p>
-          </a>
+          </router-link>
         </li>
         <li class="nav-item" v-show="isLogin">
           <span
             @click="callAlerm"
             class="material-symbols-outlined"
-            :class="[{ newIcon: isNew }, { noNewIcon: !isNew }]"
+            :class="[{newIcon: isNew}, {noNewIcon: !isNew}]"
             style="cursor: pointer; padding-top: 7px"
           >
             circle_notifications
@@ -80,9 +70,9 @@
 </template>
 
 <script>
-import { Navbar } from "@/components";
-import { Popover } from "element-ui";
-import { mapActions, mapMutations, mapState } from "vuex";
+import {Navbar} from "@/components";
+import {Popover} from "element-ui";
+import {mapActions, mapMutations, mapState} from "vuex";
 import Alerm from "../pages/components/Alerm.vue";
 
 const userStore = "userStore";
@@ -107,7 +97,7 @@ export default {
     ...mapActions(userStore, ["logout"]),
     ...mapActions(alermStore, ["alermList", "alermReadAll"]),
     ...mapMutations(alermStore, ["SET_IS_ALERM", "INIT"]),
-
+    
     callAlerm() {
       this.SET_IS_ALERM(!this.isAlerm);
       if (!this.isAlerm) {

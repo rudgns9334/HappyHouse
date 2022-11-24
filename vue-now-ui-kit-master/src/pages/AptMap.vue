@@ -19,35 +19,45 @@
         </router-link>
       </template>
       <template slot="navbar-menu">
-        <li class="nav-item">
-          <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
+        <li class="nav-item" v-show="!isLogin">
+          <router-link class="nav-link" to="/login">
             <p>Login</p>
-          </a>
+          </router-link>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
+        <li class="nav-item" v-show="isLogin">
+          <a class="nav-link" @click="goLogout">
             <p>Logout</p>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
+        <li class="nav-item" v-show="!isLogin">
+          <router-link class="nav-link" to="/register">
             <p>Register</p>
-          </a>
+          </router-link>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
+        <li class="nav-item" v-show="isLogin">
+          <router-link class="nav-link" to="/profile">
             <p>MyPage</p>
-          </a>
+          </router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
+          <router-link class="nav-link" to="/notice">
             <p>Notice</p>
-          </a>
+          </router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://www.creative-tim.com/product/vue-now-ui-kit" target="_blank">
+          <router-link class="nav-link" to="/event">
             <p>Event</p>
-          </a>
+          </router-link>
+        </li>
+        <li class="nav-item" v-show="isLogin">
+          <span
+            @click="callAlerm"
+            class="material-symbols-outlined"
+            :class="[{newIcon: isNew}, {noNewIcon: !isNew}]"
+            style="cursor: pointer; padding-top: 7px"
+          >
+            circle_notifications
+          </span>
         </li>
       </template>
     </navbar>
@@ -109,6 +119,8 @@ import {Navbar} from "@/components";
 import {mapState, mapMutations, mapActions} from "vuex";
 const aptStore = "aptStore";
 const userStore = "userStore";
+const bookMarkStore = "bookMarkStore";
+const alermStore = "alermStore";
 
 export default {
   name: "App",
@@ -139,6 +151,8 @@ export default {
   },
   computed: {
     ...mapState(aptStore, ["sidos", "guguns", "houses", "clickHouse", "isCenter", "lats", "lngs"]),
+    ...mapState(userStore, ["isLogin", "user"]),
+    ...mapState(alermStore, ["isAlerm", "isNew"]),
   },
   watch: {
     houses(house) {
@@ -421,7 +435,7 @@ export default {
         </button>
         */
         this.aptArea = h.area;
-        iwContent = `<div class="modal-body" style="width: 400px; height: 280px">
+        iwContent = `<div class="modal-body" style="width: 300px; height: 280px; margin: 20px">
                       <h5>${this.aptName}아파트 ${this.aptFloor}층</h5>
                       <p>${this.aptAddress}</p>
                       <hr>
@@ -673,6 +687,10 @@ export default {
   methods: {
     ...mapMutations(aptStore, ["SET_CONTAINER", "SET_ISCENTER"]),
     ...mapActions(userStore, ["logout"]),
+    ...mapActions(bookMarkStore, ["bookMarkInsert"]),
+    ...mapActions(alermStore, ["alermList", "alermReadAll"]),
+    ...mapMutations(alermStore, ["SET_IS_ALERM", "INIT"]),
+
     // 지도타입 컨트롤의 지도 또는 스카이뷰 버튼을 클릭하면 호출되어 지도타입을 바꾸는 함수입니다
     setMapType(maptype) {
       let kakao = window.kakao;
@@ -728,15 +746,54 @@ export default {
       this.kakaomap.setLevel(this.kakaomap.getLevel() + 1);
     },
     AddWishList(idx) {
-      // 위시리스트
+      var seq = this.user.userSeq;
+      var index = idx;
+      index *= 1;
 
-      console.log(idx);
+      const body = {
+        userSeq: seq,
+        dealNo: index,
+      };
+      this.bookMarkInsert(body);
     },
+    callAlerm() {
+      this.SET_IS_ALERM(!this.isAlerm);
+      if (!this.isAlerm) {
+        this.alermReadAll();
+      }
+    },
+    goLogout() {
+      this.INIT();
+      this.logout();
+    },
+    checkAlarm() {
+      if (this.isLogin) {
+        this.alermList();
+      }
+      setInterval(() => {
+        if (this.isLogin) {
+          this.alermList();
+        }
+      }, 10000);
+    },
+  },
+  created() {
+    this.checkAlarm();
   },
 };
 </script>
 
 <style>
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+.noNewIcon {
+  color: #fff;
+}
+.newIcon {
+  color: red;
+}
 .input-select {
   margin-right: 5px;
 }
