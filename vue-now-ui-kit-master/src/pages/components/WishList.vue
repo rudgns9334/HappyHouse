@@ -2,18 +2,26 @@
   <div class="section">
     <div class="container">
       <div class="align-items-center">
-        <div class="col-lg-6">
-          <h2 class="font-weight-bold text-primary heading" style="text-align: center">Wish List</h2>
+        <div class="col-lg-6" style="margin: auto">
+          <h2 class="font-weight-bold text-primary heading" style="text-align: center; margin-bottom: 80px; margin">
+            WISH LIST
+          </h2>
         </div>
         <div class="col-lg-6 text-lg-end">
           <p></p>
         </div>
       </div>
       <div class="row">
-        <div class="col-12">
+        <div v-show="isEmpty" class="bgDiv">
+          <div style="text-align: center">
+            <h1 style="color: #fff"><strong>No WishList</strong></h1>
+          </div>
+        </div>
+        <div class="col-12" v-show="!isEmpty">
           <div class="property-slider-wrap">
             <div class="property-slider">
-              <div class="property-item" v-for="(apt, index) in listGetters" :key="index">
+              <div class="property-item" v-for="(apt, index) in list" :key="index">
+                <p>{{ apt.no }}</p>
                 <a href="/properties?propNum=1" class="img">
                   <img src="/images/img_1.jpg" alt="Image" class="img-fluid" />
                 </a>
@@ -31,7 +39,7 @@
                         <span class="caption">전용 면적 : {{ apt.area }}m<sup>2</sup></span>
                       </span>
                     </div>
-                    <a class="btn btn-primary" style="color: #fff">DELETE</a>
+                    <a class="btn btn-primary" style="color: #fff" @click="deleteWishItem(apt.no)">DELETE</a>
                   </div>
                 </div>
               </div>
@@ -58,7 +66,7 @@ export default {
   name: "wishList",
   computed: {
     ...mapState(userStore, ["user"]),
-    ...mapState(bookMarkStore, ["list"]),
+    ...mapState(bookMarkStore, ["list", "isEmpty"]),
     ...mapGetters(bookMarkStore, ["getWishList"]),
     listGetters() {
       return this.getWishList;
@@ -68,17 +76,31 @@ export default {
     this.callBookMarkList();
   },
   mounted() {
-    console.log(this.list);
+    this.callBookMarkList();
+    console.log("@@@@@", this.list);
   },
   methods: {
-    ...mapActions(bookMarkStore, ["bookMarkList"]),
+    ...mapActions(bookMarkStore, ["bookMarkList", "bookMarkDelete"]),
 
     callBookMarkList() {
+      console.log("INIT!!!");
       console.log(this.user);
       this.bookMarkList(this.user.userSeq);
+    },
+    deleteWishItem(no) {
+      console.log(no);
+      this.bookMarkDelete(no);
     },
   },
 };
 </script>
 
-<style></style>
+<style>
+.bgDiv {
+  background-color: #005555;
+  height: 300px;
+}
+.bgDiv h1 {
+  margin-top: 120px;
+}
+</style>
