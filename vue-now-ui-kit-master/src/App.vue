@@ -20,6 +20,10 @@ export default {
     PreLoader,
     MobileMenu,
   },
+  created() {
+    custom.init();
+    menu.init();
+  },
   mounted() {
     custom.init();
     menu.init();

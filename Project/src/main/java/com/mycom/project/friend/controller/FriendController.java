@@ -116,6 +116,7 @@ public class FriendController {
 	private ResponseEntity<FriendResultDto> friendAccept(@RequestBody FriendParamDto friendParamDto) {
 		FriendResultDto friendResultDto;
 
+		System.out.println("accept" + friendParamDto);
 		friendResultDto = friendService.friendAccept(friendParamDto);
 		
 		if (friendResultDto.getResult() == SUCCESS) {

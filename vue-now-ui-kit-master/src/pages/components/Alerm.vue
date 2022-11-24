@@ -1,5 +1,5 @@
 <template>
-  <div class="alerm" v-bind:class="[{ turnOn: isAlerm }, { turnOff: !isAlerm }]">
+  <div class="alerm close">
     <table class="table">
       <thead>
         <tr>
@@ -12,6 +12,15 @@
         <tr v-for="(alerm, index) in getList" :key="index">
           <td v-if="alerm.contentType == '001'">회원가입 축하드립니다!</td>
           <td v-if="alerm.contentType == '001'"></td>
+          <td v-if="alerm.contentType == '001'" class="text-center">
+            <span
+              class="material-symbols-outlined"
+              style="cursor: pointer; color: red"
+              @click="alermDelete(alerm.alermId)"
+            >
+              delete
+            </span>
+          </td>
           <td v-if="alerm.contentType == '002'">
             {{ alerm.userName }}님으로 부터 친구 요청이 왔어요!
           </td>
@@ -24,7 +33,7 @@
               check
             </span>
           </td>
-          <td class="text-center">
+          <td v-if="alerm.contentType == '002'" class="text-center">
             <span
               class="material-symbols-outlined"
               style="cursor: pointer; color: red"
@@ -70,31 +79,18 @@ export default {
 .alerm {
   position: fixed;
   top: 75px;
-  right: 0;
+  right: 130px;
   float: right;
-  width: 470px;
+  width: 350px;
   height: 500px;
   z-index: 10;
   overflow: auto;
   background: #fff;
+  transition-duration: 1000ms;
 }
 
-.turnOn {
-  animation: fadeInDown 1s;
-}
-
-.turnOff {
-  animation: fadeInUp 1s;
-}
-
-@keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, -100%, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translateZ(0);
-  }
+.alerm.close {
+  transform: translateY(-1000px);
+  background-color: transparent;
 }
 </style>

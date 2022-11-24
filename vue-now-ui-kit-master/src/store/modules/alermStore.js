@@ -78,8 +78,12 @@ export default {
         )
        },
        alermSend({commit}, params){
+        let sendUserSeq = this.state.userStore.user.userSeq;
+        if(params.contentType == "001"){
+            sendUserSeq = 1;
+        }
         let body = {
-            sendUserSeq: this.state.userStore.user.userSeq,
+            sendUserSeq,
             ...params
         }
         alermAxios.alermSend(

@@ -16,6 +16,10 @@ export default {
         
     },
     mutations: {
+        INIT(state){
+            state.isFriendList = false;
+            state.list = [];
+        },
         INIT_SEARCH(state){
             state.searchWord = '';
             state.userList = [];
@@ -69,7 +73,7 @@ export default {
        },
        friendDetail({commit, state}, friendSeq){
         friendAxios.friendDetail(
-            `/${this.state.userStore.user.userSeq}/${friendSeq}`,
+            `/${friendSeq}`,
             ({data}) => {
                 if(data.result == 1){
                     console.log("친구불러오기 성공");
@@ -107,7 +111,7 @@ export default {
             sendSeq,
             receiveSeq: this.state.userStore.user.userSeq
         }
-        friendAxios.friendRequest(
+        friendAxios.friendAccept(
             body,
             ({data}) => {
                 if(data.result == 1){

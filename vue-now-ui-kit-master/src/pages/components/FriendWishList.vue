@@ -2,9 +2,9 @@
   <div class="section">
     <div class="container">
       <div class="align-items-center">
-        <div class="col-lg-6" style="margin: auto">
-          <h2 class="font-weight-bold text-primary heading" style="text-align: center; margin-bottom: 80px; margin">
-            WISH LIST
+        <div class="col-lg-6">
+          <h2 class="font-weight-bold text-primary heading" style="text-align: center">
+            Wish List
           </h2>
         </div>
         <div class="col-lg-6 text-lg-end">
@@ -12,18 +12,14 @@
         </div>
       </div>
       <div class="row">
-        <div v-show="isEmpty" class="bgDiv">
-          <div style="text-align: center">
-            <h1 style="color: #fff"><strong>No WishList</strong></h1>
-          </div>
-        </div>
-        <div class="col-12" v-show="!isEmpty">
+        <div class="col-12">
           <div class="property-slider-wrap">
             <div class="property-slider">
               <div class="property-item" v-for="(apt, index) in list" :key="index">
                 <a href="/properties?propNum=1" class="img">
                   <img src="/images/img_1.jpg" alt="Image" class="img-fluid" />
                 </a>
+
                 <div class="property-content">
                   <div class="price mb-2">
                     <span>{{ apt.dealAmount }}</span>
@@ -31,12 +27,13 @@
                   <div>
                     <span class="d-block mb-2 text-black-50">{{ apt.houseAddress }}</span>
                     <span class="city d-block mb-3">{{ apt.aptName }} {{ apt.floor }}층</span>
+
                     <div class="specs d-flex mb-4">
                       <span class="d-block d-flex align-items-center me-3">
                         <span class="caption">전용 면적 : {{ apt.area }}m<sup>2</sup></span>
                       </span>
                     </div>
-                    <a class="btn btn-primary" style="color: #fff" @click="deleteWishItem(apt.no)">DELETE</a>
+                    <a class="btn btn-primary" style="color: #fff">DELETE</a>
                   </div>
                 </div>
               </div>
@@ -64,38 +61,32 @@ import { mapState, mapActions, mapGetters } from "vuex";
 import custom from "@/common/custom.js";
 import menu from "@/common/menu.js";
 
-const userStore = "userStore";
+const friendStore = "friendStore";
 const bookMarkStore = "bookMarkStore";
 export default {
-  name: "wishList",
+  name: "friendwishList",
   computed: {
-    ...mapState(userStore, ["user"]),
-    ...mapState(bookMarkStore, ["list", "isEmpty"]),
+    ...mapState(friendStore, ["user"]),
+    ...mapState(bookMarkStore, ["list"]),
     ...mapGetters(bookMarkStore, ["getWishList"]),
+
     listGetters() {
       return this.getWishList;
     },
   },
   created() {
-    console.log("created");
     this.callBookMarkList();
-    console.log(this.list);
   },
   mounted() {
-    this.callBookMarkList();
-    console.log("@@@@@", this.list);
+    console.log(this.list);
   },
+  updated() {},
   methods: {
-    ...mapActions(bookMarkStore, ["bookMarkList", "bookMarkDelete"]),
+    ...mapActions(bookMarkStore, ["bookMarkList"]),
 
     callBookMarkList() {
-      console.log("INIT!!!");
       console.log(this.user);
       this.bookMarkList(this.user.userSeq);
-    },
-    deleteWishItem(no) {
-      console.log(no);
-      this.bookMarkDelete(no);
     },
   },
   watch: {
@@ -111,12 +102,4 @@ export default {
 };
 </script>
 
-<style>
-.bgDiv {
-  background-color: #005555;
-  height: 300px;
-}
-.bgDiv h1 {
-  margin-top: 120px;
-}
-</style>
+<style></style>

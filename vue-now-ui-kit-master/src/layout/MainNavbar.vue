@@ -65,7 +65,7 @@
         </li>
       </template>
     </navbar>
-    <alerm v-if="isAlerm"></alerm>
+    <alerm></alerm>
   </div>
 </template>
 
@@ -97,15 +97,23 @@ export default {
     ...mapActions(userStore, ["logout"]),
     ...mapActions(alermStore, ["alermList", "alermReadAll"]),
     ...mapMutations(alermStore, ["SET_IS_ALERM", "INIT"]),
+    
     callAlerm() {
       this.SET_IS_ALERM(!this.isAlerm);
       if (!this.isAlerm) {
         this.alermReadAll();
+        // 닫힐 때 -> close 있어야 -> class 추가
+        document.querySelector(".alerm").classList.add("close");
+      } else {
+        // 열릴 때 -> close 없어 -> classlist 제거
+        document.querySelector(".alerm").classList.remove("close");
       }
     },
     goLogout() {
       this.INIT();
       this.logout();
+      this.SET_IS_ALERM(false);
+      document.querySelector(".alerm").classList.add("close");
     },
     checkAlarm() {
       if (this.isLogin) {
