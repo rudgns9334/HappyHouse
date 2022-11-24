@@ -54,7 +54,12 @@ export default {
         ({data}) => {
           console.log(data);
           if (data.result == 1) {
-            alertify.alert("Add in WishList!!").setHeader("<em> SUCCESS! </em> ");
+            alertify
+              .alert("Add in WishList!!")
+              .setHeader("<em> SUCCESS! </em> ")
+              .set("onok", function () {
+                console.log("donmove");
+              });
             dispatch("bookMarkList", this.state.userStore.user.userSeq);
           }
         },

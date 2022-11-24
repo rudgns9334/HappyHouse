@@ -435,16 +435,14 @@ export default {
         </button>
         */
         this.aptArea = h.area;
-        iwContent = `<div class="modal-body" style="width: 500px; height: 280px;">
-                      <div style="margin: 20px">
-                        <h5>${this.aptName}아파트 ${this.aptFloor}층</h5>
-                        <p>${this.aptAddress}</p>
-                        <hr>
-                        <p>거래 금액 : ${this.aptPrice}</p>
-                        <p>전용 면적 : ${this.aptArea}m<sup>2</sup></p>
-                      </div>
+        iwContent = `<div class="modal-body" style="width: 300px; height: 280px;">
+                      <h5>${this.aptName}아파트 ${this.aptFloor}층</h5>
+                      <p>${this.aptAddress}</p>
+                      <hr>
+                      <p>거래 금액 : ${this.aptPrice}</p>
+                      <p>전용 면적 : ${this.aptArea}m<sup>2</sup></p>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" style="margin-right: 20px" data-no="${h.no}">WISH</button>
+                        <button type="button" class="btn btn-primary test" data-no="${h.no}">WISH</button>
                       </div>
                     </div>`;
         this.iwContents.push(iwContent);
