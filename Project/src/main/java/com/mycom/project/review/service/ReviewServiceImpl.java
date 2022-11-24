@@ -20,7 +20,7 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public ReviewResultDto reviewRegister(ReviewDto reviewDto) {
-		System.out.println(reviewDto);
+
 		ReviewResultDto reviewResultDto = new ReviewResultDto();
 		if (reviewDao.reviewRegister(reviewDto) == 1) {
 			reviewResultDto.setResult(SUCCESS);
