@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Main from "./pages/Main.vue";
-import Landing from "./pages/Landing.vue";
 import Login from "./pages/Login.vue";
 import Register from "./pages/Register.vue";
 import Profile from "./pages/Profile.vue";
@@ -13,7 +12,6 @@ import Notice from "./pages/Notice.vue";
 import Event from "./pages/Event.vue";
 import Review from "./pages/Review.vue";
 import Admin from "./pages/Admin.vue";
-import AdminNoticeList from "./pages/components/AdminNoticeList.vue";
 
 import store from "./store/store.js";
 
@@ -55,15 +53,6 @@ export default new Router({
       path: "/main",
       name: "main",
       components: {default: Main, header: MainNavbar, footer: MainFooter},
-      props: {
-        header: {colorOnScroll: 400},
-        footer: {backgroundColor: "black"},
-      },
-    },
-    {
-      path: "/landing",
-      name: "landing",
-      components: {default: Landing, header: MainNavbar, footer: MainFooter},
       props: {
         header: {colorOnScroll: 400},
         footer: {backgroundColor: "black"},
