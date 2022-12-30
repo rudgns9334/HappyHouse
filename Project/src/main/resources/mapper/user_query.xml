@@ -8,12 +8,6 @@
     		values ( #{userName}, #{userPassword}, #{userEmail}, #{userProfileImageUrl}, now(), #{userState}, '' )
     </insert>
     
-    <select id="userDetail" parameterType="int" resultType="com.mycom.project.user.dto.UserDto">
-    	select user_seq, user_name, user_password, user_email, user_profile_image_url, user_register_date, user_state, user_event_part, user_comment
-    		from users
-    		where user_seq = #{userSeq}
-    </select>
-    
     <update id="userModify" parameterType="com.mycom.project.user.dto.UserDto">
     	update users
     		set user_name = #{userName}, user_password = #{userPassword}, user_comment = #{userComment}
@@ -35,4 +29,73 @@
     		from users
     		where user_email = #{userEmail}
     </select>
+    
+    
+    <select id="userList" parameterType="map" resultType="com.mycom.project.user.dto.UserDto">
+		select user_seq, user_name, user_password, user_email, user_profile_image_url, user_register_date, user_state, user_event_part, user_comment
+            from users
+            order by user_seq desc
+            limit #{limit} offset #{offset}
+	</select>
+	<select id="userListTotalCount" parameterType="map" resultType="int">
+		select count(*) from users
+	</select>
+	
+	<!-- searchWord -->
+	<select id="userListSearchWord" parameterType="map" resultType="com.mycom.project.user.dto.UserDto">
+		select user_seq, user_name, user_password, user_email, user_profile_image_url, user_register_date, user_state, user_event_part, user_comment
+            from users
+            where user_name like concat('%', #{searchWord},'%')
+            order by user_seq desc
+            limit #{limit} offset #{offset}
+	</select>
+	<select id="userListSearchWordTotalCount" parameterType="map" resultType="int">
+		select count(*) from users 
+			where user_name like concat('%', #{searchWord},'%')
+	</select>
+	
+	<!-- Detail -->
+	<select id="userDetail" parameterType="int" resultType="com.mycom.project.user.dto.UserDto">
+		select user_seq, user_name, user_password, user_email, user_profile_image_url, user_register_date, user_state, user_event_part, user_comment
+            from users
+            where user_seq = #{userSeq}
+	</select>
+	
+	<select id="userDetailFile" parameterType="int" resultType="com.mycom.project.user.dto.UserFileDto">
+		select file_id, user_seq, file_name, file_size, file_content_type, file_url, reg_dt
+			from user_file
+			where user_seq = #{userSeq}	
+	</select>
+	
+	<!-- Update -->
+	<update id="userUpdate" parameterType="com.mycom.project.user.dto.UserDto">
+		update users
+    		set user_name = #{userName}, user_password = #{userPassword}, user_comment = #{userComment}, user_state = #{userState}
+    		where user_seq = #{userSeq}
+	</update>
+	
+	<select id="userFileUrlDeleteList" parameterType="int" resultType="string">
+		select file_url from user_file where user_seq = ${userSeq}	
+	</select>
+	
+	<!-- Delete 게시글 -->
+	<delete id="userDelete" parameterType="int">
+		delete from users where user_seq = #{userSeq}
+	</delete>
+	
+	<delete id="userFileDelete" parameterType="int">
+		delete from user_file where user_seq = #{userSeq}
+	</delete>
+
+	<!-- Insert 게시글 -->
+	<insert id="userInsert" parameterType="com.mycom.project.user.dto.UserDto" useGeneratedKeys="true" keyProperty="userSeq">
+    	insert into users ( user_name, user_password, user_email, user_profile_image_url, user_register_date, user_state, user_comment )
+                VALUES ( #{userName}, #{userPassword}, #{userEmail}, #{userProfileImageUrl} now(), #{userState}, #{userComment} )
+	</insert>
+	<!-- Insert 첨부파일 -->
+	<insert id="userFileInsert" parameterType="com.mycom.project.user.dto.UserFileDto" >
+		insert into board_file ( user_seq, file_name, file_size, file_content_type, file_url )
+			values (#{userSeq}, #{fileName}, #{fileSize}, #{fileContentType}, #{fileUrl} )
+	</insert>
+	
 </mapper>

@@ -79,21 +79,50 @@ export default {
              boardAxios.boardList(
                 params,
                 ({ data }) => {
-                    if(data.result == 'login'){
-                        router.push("/login");
-                    }else{
-                        console.log(data.list);
-                        context.commit("SET_BOARD_LIST", data.list);
-                        context.commit("SET_BOARD_TOTAL_LIST_ITEM_COUNT", data.count);
-                    }
+                    console.log(data.list);
+                    context.commit("SET_BOARD_LIST", data.list);
+                    context.commit("SET_BOARD_TOTAL_LIST_ITEM_COUNT", data.count);
                 },
                 (error) => {
                     console.error(error);
                     this._vm.$alertify.error("서버에 문제가 있습니다.");
                 });
+        },
+        boardDetail({commit}, board){
+            let params = {
+                boardId: board.boardId,
+                userSeq: board.userSeq
+             };
+            boardAxios.boardDetail(
+                params,
+                ({data}) => {
+                    let { dto } = data;
+                    commit("SET_BOARD_DETAIL", dto);
+                },
+                (error) => {
+                    console.log("BoardMainVue: error : ");
+                    console.log(error);
+                }
+            )
+        },
+        boardDelete({commit, dispatch}, boardId){
+            boardAxios.boardDelete(
+                boardId,
+                ({data}) => {
+                    this._vm.$alertify.success("글이 삭제되었습니다.");
+                    dispatch("boardList","001");
+                },
+                (error) => {
+                    console.log("BoardMainVue: error : ");
+                    console.log(error);
+                }
+            )
         }
     },
     getters:{
+        getBoard(state){
+            return state.board;
+        },
         getBoardList: function (state) {
             return state.list;
          },

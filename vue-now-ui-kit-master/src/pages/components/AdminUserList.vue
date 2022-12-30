@@ -1,19 +1,19 @@
 <template>
-  <div class="container notice-list" style="margin-top: 50px">
+  <div class="container notice-list" style="margin-top: 20px">
     <div class="container">
       <input
         type="text"
         class="form-control"
         id="inputSearchWord"
         placeholder="Search"
-        v-model="$store.state.boardStore.searchWord"
-        @keydown.enter="callBoardList"
+        v-model="$store.state.userStore.admin.searchWord"
+        @keydown.enter="callUserList"
       />
       <button
         class="btn btn-round btn-success"
         type="button"
         id="btnSearchWord"
-        @click="callBoardList"
+        @click="callUserList"
       >
         Search
       </button>
@@ -22,70 +22,79 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Owner</th>
-          <th scope="col">Title</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
           <th scope="col">Date</th>
-          <th scope="col">Views</th>
+          <th scope="col">Auth</th>
         </tr>
       </thead>
       <tbody>
-        <tr style="cursor: pointer" v-for="(board, index) in listGetters" :key="index">
-          <td>{{ board.boardId }}</td>
-          <td>{{ board.userName }}</td>
-          <td>{{ board.title }}</td>
-          <td>{{ board.regDt.date | makeDateStr(".") }}</td>
-          <td>{{ board.readCount }}</td>
+        <tr style="cursor: pointer" v-for="(user, index) in listGetters" @click="detailUser(user.userSeq)" :key="index" >
+          <td>{{ user.userSeq }}</td>
+          <td>{{ user.userName }}</td>
+          <td>{{ user.userEmail }}</td>
+          <td>{{ user.userRegisterDate.date | makeDateStr(".") }}</td>
+          <td v-if="user.userState=='001'">일반회원</td>
+          <td v-if="user.userState=='003'">관리자</td>
         </tr>
       </tbody>
     </table>
     <div
       style="height: 46px"
-      v-for="idx in 8 - $store.state.boardStore.countCurrentList"
+      v-for="idx in 8 - $store.state.userStore.admin.countCurrentList"
       :key="idx + 'blank'"
     ></div>
     <div class="navbar-fixed-bottom">
-      <n-pagination type="default" v-on:call-parent="movePage"> </n-pagination>
+      <user-pagination type="default" v-on:call-parent="movePage"> </user-pagination>
     </div>
   </div>
 </template>
 
 <script>
 import util from "@/common/util.js";
-import { Pagination } from "@/components";
-import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
+import { PaginationUser } from "@/components";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 
-const boardStore = "boardStore";
-
+const userStore = "userStore";
+const adminStore = "adminStore";
 export default {
   components: {
-    [Pagination.name]: Pagination,
+    [PaginationUser.name]: PaginationUser,
   },
-  name: "noticeList",
+  name: "userList",
   computed: {
-    ...mapGetters(boardStore, ["getBoardList"]),
+    ...mapGetters(userStore, ["getList"]),
+
     listGetters() {
-      return this.getBoardList;
+      return this.getList;
     },
   },
   methods: {
-    ...mapActions(boardStore, ["boardList"]),
-    ...mapMutations(boardStore, ["SET_BOARD_MOVE_PAGE"]),
-    callBoardList() {
-      this.boardList("001");
+    ...mapActions(userStore, ["userList", "userDetail"]),
+    ...mapMutations(userStore, ["SET_USER_MOVE_PAGE"]),
+    ...mapMutations(adminStore, ["INIT_USER", "SET_USER_DETAIL"]),
+
+    detailUser(userSeq){
+      this.userDetail(userSeq);
+      this.SET_USER_DETAIL();
+    },
+
+    callUserList() {
+      this.userList();
     },
     movePage(pageIndex) {
-      console.log("BoardMainVue : movePage : pageIndex : " + pageIndex);
+      console.log("UserMainVue : movePage : pageIndex : " + pageIndex);
 
       // store commit 으로 변경
       // this.offset = (pageIndex - 1) * this.listRowCount;
       // this.currentPageIndex = pageIndex;
-      this.SET_BOARD_MOVE_PAGE(pageIndex);
+      this.SET_USER_MOVE_PAGE(pageIndex);
 
-      this.callBoardList();
+      this.callUserList();
     },
   },
   created() {
-    this.callBoardList();
+    this.callUserList();
   },
   filters: {
     makeDateStr: function (date, type) {

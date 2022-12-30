@@ -8,13 +8,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mycom.project.user.dto.UserDto;
+import com.mycom.project.user.dto.UserParamDto;
 import com.mycom.project.user.dto.UserResultDto;
 import com.mycom.project.user.service.UserService;
 
@@ -79,5 +82,73 @@ public class UserController {
 			map.put("result", "fail");
 			return new ResponseEntity<Map<String, String>>(map, HttpStatus.NOT_FOUND);
 		}
+	}
+	
+	@GetMapping(value="/users")
+	private ResponseEntity<UserResultDto> userList(UserParamDto userParamDto) {
+		UserResultDto userResultDto;
+
+		if (userParamDto.getSearchWord() == null || userParamDto.getSearchWord().isEmpty()) {
+			userResultDto = userService.userList(userParamDto);
+		} else {
+			userResultDto = userService.userListSearchWord(userParamDto);
+		}
+		
+		if (userResultDto.getResult() == SUCCESS) {
+			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping(value="/users/detail")
+	private ResponseEntity<UserResultDto> userDetail(UserParamDto userParamDto) {
+		
+		UserResultDto userResultDto = userService.userDetail(userParamDto);
+		
+		if (userResultDto.getResult() == SUCCESS) {
+			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	@PostMapping(value="/users/{userSeq}")
+	private ResponseEntity<UserResultDto> userUpdate(UserDto dto, MultipartHttpServletRequest request) {
+		System.out.println("UPDATE");
+
+		UserResultDto userResultDto = userService.userUpdate(dto, request);
+		
+		if (userResultDto.getResult() == SUCCESS) {
+			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@DeleteMapping(value="/users/{userSeq}")
+	private ResponseEntity<UserResultDto> userDelete(@PathVariable int userSeq) {
+
+		UserResultDto userResultDto = userService.userDelete(userSeq);
+		
+		if (userResultDto.getResult() == SUCCESS) {
+			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@PostMapping(value="/users")
+	private ResponseEntity<UserResultDto> userInsert(UserDto userDto, MultipartHttpServletRequest request){
+
+	    System.out.println(userDto);
+	    
+	    UserResultDto userResultDto = userService.userInsert(userDto, request);
+	    
+	    if( userResultDto.getResult() == SUCCESS ) {
+	        return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.OK);
+	    }else {
+	        return new ResponseEntity<UserResultDto>(userResultDto, HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
 	}
 }

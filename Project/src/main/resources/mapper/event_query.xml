@@ -4,7 +4,7 @@
 <mapper namespace="com.mycom.project.event.dao.EventDao">
 	<!-- limit, offset -->
 	<select id="eventList" parameterType="map" resultType="com.mycom.project.event.dto.EventDto">
-		select event_id, event_name, start_dt, end_dt, img_url
+		select event_id, event_name, start_dt, end_dt, img_url, event_state
             from EVENT
             order by event_id asc
             limit #{limit} offset #{offset}

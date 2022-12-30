@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -52,13 +53,9 @@ public class BoardController {
 		}
 	}
 	
-	@GetMapping(value="/boards/{boardId}")
-	private ResponseEntity<BoardResultDto> boardDetail(@PathVariable int boardId, HttpSession session) {
-		BoardParamDto boardParamDto = new BoardParamDto();
-		boardParamDto.setBoardId(boardId);
-		UserDto userDto = (UserDto) session.getAttribute("userDto");
-		boardParamDto.setUserSeq(userDto.getUserSeq());
-
+	@GetMapping(value="/boards/detail")
+	private ResponseEntity<BoardResultDto> boardDetail(BoardParamDto boardParamDto) {
+		
 		BoardResultDto boardResultDto = service.boardDetail(boardParamDto);
 		
 		if (boardResultDto.getResult() == SUCCESS) {
@@ -96,10 +93,6 @@ public class BoardController {
 	@PostMapping(value="/boards")
 	private ResponseEntity<BoardResultDto> boardInsert(BoardDto boardDto, MultipartHttpServletRequest request){
 
-		HttpSession session = request.getSession();
-	    UserDto userDto = (UserDto) session.getAttribute("userDto");
-	    boardDto.setUserSeq(userDto.getUserSeq());
-	    
 	    System.out.println(boardDto);
 	    
 	    BoardResultDto boardResultDto = service.boardInsert(boardDto, request);

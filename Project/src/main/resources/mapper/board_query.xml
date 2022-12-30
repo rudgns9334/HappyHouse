@@ -70,8 +70,8 @@
 	
 	<!-- Insert 게시글 -->
 	<insert id="boardInsert" parameterType="com.mycom.project.board.dto.BoardDto" useGeneratedKeys="true" keyProperty="boardId">
-    	insert into board ( user_seq, title, content, reg_dt, read_count )
-                VALUES ( #{userSeq}, #{title}, #{content}, now(), 0 )
+    	insert into board ( user_seq, title, content, reg_dt, read_count, board_code )
+                VALUES ( #{userSeq}, #{title}, #{content}, now(), 0, #{boardCode} )
 	</insert>
 	<!-- Insert 첨부파일 -->
 	<insert id="boardFileInsert" parameterType="com.mycom.project.board.dto.BoardFileDto" >
