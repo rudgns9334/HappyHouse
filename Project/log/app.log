@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 2022-12-30 14:08:20.605  WARN 10140 --- [http-nio-8080-exec-166] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
 2022-12-30 14:08:20.608  WARN 10140 --- [http-nio-8080-exec-176] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
 2022-12-30 14:08:20.610  WARN 10140 --- [http-nio-8080-exec-172] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
@@ -3161,6 +3162,8 @@
 2022-12-30 14:17:13.854  INFO 10140 --- [Thread-8] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
 2022-12-30 14:17:13.859  WARN 10140 --- [Thread-8] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [logback-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
 =======
+=======
+>>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
 2022-11-25 00:05:09.825  INFO 6188 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-11-25 00:05:09.830  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2022-11-25 00:05:09.840  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
@@ -3170,6 +3173,9 @@
 2022-11-25 00:16:20.926  INFO 6188 --- [Thread-6] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
 2022-11-25 00:16:20.927  INFO 6188 --- [Thread-6] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
 2022-11-25 00:16:20.930  WARN 6188 --- [Thread-6] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [logback-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+<<<<<<< HEAD
+>>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
+=======
 >>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
  sun.misc.Unsafe.park(Native Method)
  java.util.concurrent.locks.LockSupport.park(Unknown Source)
@@ -3181,10 +3187,13 @@
  java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
  java.lang.Thread.run(Unknown Source)
 <<<<<<< HEAD
+<<<<<<< HEAD
 2022-12-30 14:17:13.860  WARN 10140 --- [Thread-8] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [logback-2] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  sun.misc.Unsafe.park(Native Method)
  java.util.concurrent.locks.LockSupport.park(Unknown Source)
  java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+=======
+2022-11-25 00:16:20.931  WARN 6188 --- [Thread-6] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
 =======
 2022-11-25 00:16:20.931  WARN 6188 --- [Thread-6] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  sun.misc.Unsafe.park(Native Method)
@@ -3221,6 +3230,7 @@
 2022-11-25 00:30:21.786  INFO 6188 --- [Thread-8] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
 2022-11-25 00:30:21.787  INFO 6188 --- [Thread-8] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
 2022-11-25 00:30:21.792  WARN 6188 --- [Thread-8] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-2 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+>>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
  sun.misc.Unsafe.park(Native Method)
  java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
  java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
@@ -3230,6 +3240,33 @@
  java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
  java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
  java.lang.Thread.run(Unknown Source)
+<<<<<<< HEAD
+2022-11-25 00:16:20.936  INFO 6188 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-25 00:16:20.942  INFO 6188 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-25 00:16:21.051  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 6188 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-25 00:16:21.051  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-25 00:16:21.358  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-25 00:16:21.359  INFO 6188 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-25 00:16:21.359  INFO 6188 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-25 00:16:21.370  INFO 6188 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-25 00:16:21.370  INFO 6188 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 317 ms
+2022-11-25 00:16:21.488  INFO 6188 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-25 00:16:21.547  INFO 6188 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-25 00:16:21.558  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-25 00:16:21.561  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.536 seconds (JVM running for 12967.306)
+2022-11-25 00:16:21.562  INFO 6188 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-25 00:16:28.019  INFO 6188 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-25 00:16:28.019  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-25 00:16:28.020  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-11-25 00:16:28.023  INFO 6188 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2022-11-25 00:16:28.036  INFO 6188 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2022-11-25 00:26:05.137  WARN 6188 --- [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.NullPointerException]
+2022-11-25 00:30:01.004  WARN 6188 --- [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.NullPointerException]
+2022-11-25 00:30:21.699  INFO 6188 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-11-25 00:30:21.786  INFO 6188 --- [Thread-8] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-25 00:30:21.787  INFO 6188 --- [Thread-8] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-25 00:30:21.792  WARN 6188 --- [Thread-8] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-2 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+=======
 2022-11-25 00:30:21.795  INFO 6188 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
 2022-11-25 00:30:21.800  INFO 6188 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
 2022-11-25 00:30:21.893  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 6188 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
@@ -3253,6 +3290,7 @@
 2022-11-25 00:31:05.422  INFO 6188 --- [Thread-12] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
 2022-11-25 00:31:05.423  INFO 6188 --- [Thread-12] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
 2022-11-25 00:31:05.428  WARN 6188 --- [Thread-12] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-3 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+>>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
  sun.misc.Unsafe.park(Native Method)
  java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
  java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
@@ -3262,6 +3300,67 @@
  java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
  java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
  java.lang.Thread.run(Unknown Source)
+<<<<<<< HEAD
+2022-11-25 00:30:21.795  INFO 6188 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2022-11-25 00:30:21.800  INFO 6188 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2022-11-25 00:30:21.893  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 6188 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-25 00:30:21.894  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-25 00:30:22.130  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-25 00:30:22.130  INFO 6188 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-25 00:30:22.130  INFO 6188 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-25 00:30:22.142  INFO 6188 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-25 00:30:22.142  INFO 6188 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 247 ms
+2022-11-25 00:30:22.238  INFO 6188 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-25 00:30:22.285  INFO 6188 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-25 00:30:22.293  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-25 00:30:22.296  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.422 seconds (JVM running for 13808.041)
+2022-11-25 00:30:22.296  INFO 6188 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-25 00:30:31.013  INFO 6188 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-25 00:30:31.014  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-25 00:30:31.014  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-11-25 00:30:31.016  INFO 6188 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2022-11-25 00:30:31.030  INFO 6188 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2022-11-25 00:31:05.328  INFO 6188 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-11-25 00:31:05.422  INFO 6188 --- [Thread-12] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-25 00:31:05.423  INFO 6188 --- [Thread-12] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-25 00:31:05.428  WARN 6188 --- [Thread-12] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-3 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+=======
+2022-11-25 00:31:05.433  INFO 6188 --- [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2022-11-25 00:31:05.439  INFO 6188 --- [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2022-11-25 00:31:05.562  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 6188 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-25 00:31:05.562  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-25 00:31:05.805  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-25 00:31:05.806  INFO 6188 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-25 00:31:05.806  INFO 6188 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-25 00:31:05.815  INFO 6188 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-25 00:31:05.815  INFO 6188 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 251 ms
+2022-11-25 00:31:05.913  INFO 6188 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-25 00:31:05.967  INFO 6188 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-25 00:31:05.979  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-25 00:31:05.982  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.441 seconds (JVM running for 13851.727)
+2022-11-25 00:31:05.982  INFO 6188 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-25 00:31:06.528  INFO 6188 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-25 00:31:06.529  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-25 00:31:06.530  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-25 00:31:06.556  WARN 6188 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'multipart/form-data;boundary=----WebKitFormBoundaryWI2r7B6YBUFR3txf;charset=UTF-8' not supported]
+2022-11-25 00:31:11.021  INFO 6188 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2022-11-25 00:31:11.034  INFO 6188 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2022-11-25 00:31:28.061  WARN 6188 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'multipart/form-data;boundary=----WebKitFormBoundaryB8mE2lifosswUAlX;charset=UTF-8' not supported]
+2022-11-25 00:35:38.821  INFO 6188 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-11-25 00:35:38.903  INFO 6188 --- [Thread-16] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-25 00:35:38.905  INFO 6188 --- [Thread-16] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-25 00:35:38.909  WARN 6188 --- [Thread-16] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-4 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+>>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+ java.lang.Thread.run(Unknown Source)
+<<<<<<< HEAD
 2022-11-25 00:31:05.433  INFO 6188 --- [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
 2022-11-25 00:31:05.439  INFO 6188 --- [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
 2022-11-25 00:31:05.562  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 6188 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
@@ -3291,17 +3390,6 @@
  java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
  java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
 >>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
- java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
- java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
- java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
- java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
- java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
- java.lang.Thread.run(Unknown Source)
-<<<<<<< HEAD
-2022-12-30 14:17:13.860  WARN 10140 --- [Thread-8] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [logback-3] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- sun.misc.Unsafe.park(Native Method)
- java.util.concurrent.locks.LockSupport.park(Unknown Source)
- java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
 =======
 2022-11-25 00:35:38.913  INFO 6188 --- [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
 2022-11-25 00:35:38.918  INFO 6188 --- [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
@@ -3338,6 +3426,109 @@
  java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
  java.lang.Thread.run(Unknown Source)
 <<<<<<< HEAD
+<<<<<<< HEAD
+2022-12-30 14:17:13.860  WARN 10140 --- [Thread-8] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [logback-3] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(Unknown Source)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+=======
+2022-11-25 00:35:38.913  INFO 6188 --- [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2022-11-25 00:35:38.918  INFO 6188 --- [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2022-11-25 00:35:39.014  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 6188 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-25 00:35:39.014  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-25 00:35:39.264  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-25 00:35:39.265  INFO 6188 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-25 00:35:39.265  INFO 6188 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-25 00:35:39.275  INFO 6188 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-25 00:35:39.275  INFO 6188 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 259 ms
+2022-11-25 00:35:39.386  INFO 6188 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-25 00:35:39.434  INFO 6188 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-25 00:35:39.443  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-25 00:35:39.446  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.452 seconds (JVM running for 14125.191)
+2022-11-25 00:35:39.446  INFO 6188 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-25 00:35:40.154  INFO 6188 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-25 00:35:40.155  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-25 00:35:40.156  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-25 00:35:40.171  INFO 6188 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2022-11-25 00:35:40.183  INFO 6188 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2022-11-25 00:35:40.232  WARN 6188 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.dao.DataIntegrityViolationException: <EOL><EOL>### Error updating database.  Cause: java.sql.SQLException: Field 'BOARD_CODE' doesn't have a default value<EOL><EOL>### The error may exist in mapper/board_query.xml<EOL><EOL>### The error may involve com.mycom.project.board.dao.BoardDao.boardInsert-Inline<EOL><EOL>### The error occurred while setting parameters<EOL><EOL>### SQL: insert into board ( user_seq, title, content, reg_dt, read_count )                 VALUES ( ?, ?, ?, now(), 0 )<EOL><EOL>### Cause: java.sql.SQLException: Field 'BOARD_CODE' doesn't have a default value<EOL>; Field 'BOARD_CODE' doesn't have a default value; nested exception is java.sql.SQLException: Field 'BOARD_CODE' doesn't have a default value]
+2022-11-25 00:37:33.321  INFO 6188 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
+2022-11-25 00:37:33.405  INFO 6188 --- [Thread-20] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-25 00:37:33.405  INFO 6188 --- [Thread-20] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-25 00:37:33.408  WARN 6188 --- [Thread-20] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-5 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+>>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
+=======
+2022-11-25 00:37:33.410  INFO 6188 --- [Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2022-11-25 00:37:33.412  INFO 6188 --- [Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2022-11-25 00:37:33.511  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 6188 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-25 00:37:33.512  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-25 00:37:33.750  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-25 00:37:33.750  INFO 6188 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-25 00:37:33.750  INFO 6188 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-25 00:37:33.761  INFO 6188 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-25 00:37:33.761  INFO 6188 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 248 ms
+2022-11-25 00:37:33.856  INFO 6188 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-25 00:37:33.910  INFO 6188 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-25 00:37:33.920  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-25 00:37:33.924  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.431 seconds (JVM running for 14239.67)
+2022-11-25 00:37:33.925  INFO 6188 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-25 00:37:41.268  INFO 6188 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-25 00:37:41.269  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-25 00:37:41.270  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-25 00:37:41.272  INFO 6188 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2022-11-25 00:37:41.284  INFO 6188 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2022-11-25 00:38:00.370  INFO 6188 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-11-25 00:38:00.458  INFO 6188 --- [Thread-24] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-25 00:38:00.459  INFO 6188 --- [Thread-24] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-25 00:38:00.461  WARN 6188 --- [Thread-24] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-6 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+ java.lang.Thread.run(Unknown Source)
+2022-11-25 00:38:00.464  INFO 6188 --- [Thread-24] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2022-11-25 00:38:00.469  INFO 6188 --- [Thread-24] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2022-11-25 00:38:00.560  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 6188 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-25 00:38:00.561  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-25 00:38:00.804  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-25 00:38:00.805  INFO 6188 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-25 00:38:00.805  INFO 6188 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-25 00:38:00.815  INFO 6188 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-25 00:38:00.815  INFO 6188 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 253 ms
+2022-11-25 00:38:00.915  INFO 6188 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-25 00:38:00.959  INFO 6188 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-25 00:38:00.968  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-25 00:38:00.971  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.43 seconds (JVM running for 14266.715)
+2022-11-25 00:38:00.972  INFO 6188 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-25 00:38:01.014  INFO 6188 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-25 00:38:01.014  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-25 00:38:01.015  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-11-25 00:38:01.017  INFO 6188 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2022-11-25 00:38:01.030  INFO 6188 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2022-11-25 00:38:08.578  WARN 6188 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'boardCode' in 'class com.mycom.project.board.dto.BoardDto']
+2022-11-25 00:39:22.531  INFO 6188 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-11-25 00:39:22.634  INFO 6188 --- [Thread-28] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-25 00:39:22.635  INFO 6188 --- [Thread-28] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-25 00:39:22.639  WARN 6188 --- [Thread-28] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-7 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+>>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+ java.lang.Thread.run(Unknown Source)
+<<<<<<< HEAD
+<<<<<<< HEAD
 2022-12-30 14:17:13.861  WARN 10140 --- [Thread-8] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [logback-4] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  sun.misc.Unsafe.park(Native Method)
  java.util.concurrent.locks.LockSupport.park(Unknown Source)
@@ -3370,12 +3561,79 @@
  java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
  java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
 >>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
+=======
+2022-11-25 00:39:22.642  INFO 6188 --- [Thread-28] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2022-11-25 00:39:22.648  INFO 6188 --- [Thread-28] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2022-11-25 00:39:22.725  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 6188 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-25 00:39:22.725  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-25 00:39:22.964  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-25 00:39:22.965  INFO 6188 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-25 00:39:22.965  INFO 6188 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-25 00:39:22.973  INFO 6188 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-25 00:39:22.974  INFO 6188 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 247 ms
+2022-11-25 00:39:23.058  INFO 6188 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-25 00:39:23.100  INFO 6188 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-25 00:39:23.109  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-25 00:39:23.111  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.406 seconds (JVM running for 14348.857)
+2022-11-25 00:39:23.112  INFO 6188 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-25 00:39:31.024  INFO 6188 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-25 00:39:31.025  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-25 00:39:31.026  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-25 00:39:31.028  INFO 6188 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2022-11-25 00:39:31.040  INFO 6188 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2022-11-25 00:39:44.393  INFO 6188 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-11-25 00:39:44.495  INFO 6188 --- [Thread-32] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-25 00:39:44.495  INFO 6188 --- [Thread-32] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-25 00:39:44.498  WARN 6188 --- [Thread-32] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-8 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
  java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
  java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
  java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
  java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
  java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
  java.lang.Thread.run(Unknown Source)
+2022-11-25 00:39:44.500  INFO 6188 --- [Thread-32] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2022-11-25 00:39:44.506  INFO 6188 --- [Thread-32] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+2022-11-25 00:39:44.604  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 6188 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-25 00:39:44.605  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-25 00:39:44.852  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-25 00:39:44.852  INFO 6188 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-25 00:39:44.852  INFO 6188 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-25 00:39:44.861  INFO 6188 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-25 00:39:44.862  INFO 6188 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 256 ms
+2022-11-25 00:39:44.948  INFO 6188 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-25 00:39:44.989  INFO 6188 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-25 00:39:44.998  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-25 00:39:45.000  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.417 seconds (JVM running for 14370.746)
+2022-11-25 00:39:45.001  INFO 6188 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-25 00:39:45.521  INFO 6188 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-25 00:39:45.522  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-25 00:39:45.522  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-11-25 00:39:45.533  INFO 6188 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
+2022-11-25 00:39:45.545  INFO 6188 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
+2022-11-25 00:52:11.357 ERROR 6188 --- [http-nio-8080-exec-7] c.m.p.login.service.JwtServiceImpl       : JWT expired at 2022-11-25T00:45:32Z. Current time: 2022-11-25T00:52:11Z, a difference of 399356 milliseconds.  Allowed clock skew: 0 milliseconds.
+2022-11-25 01:06:55.618  WARN 6188 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.NullPointerException]
+2022-11-25 01:06:56.663  WARN 6188 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.NullPointerException]
+2022-11-25 01:09:17.553  WARN 6188 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.NullPointerException]
+2022-11-25 01:14:39.121  WARN 6188 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.NullPointerException]
+2022-11-25 01:21:25.489  WARN 6188 --- [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: "detail"]
+2022-11-25 01:24:10.665  INFO 6188 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-11-25 01:24:10.751  INFO 6188 --- [Thread-36] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-25 01:24:10.752  INFO 6188 --- [Thread-36] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-25 01:24:10.756  WARN 6188 --- [Thread-36] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-9 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+>>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+ java.lang.Thread.run(Unknown Source)
+<<<<<<< HEAD
 <<<<<<< HEAD
 2022-12-30 14:17:13.861  WARN 10140 --- [Thread-8] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [logback-5] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  sun.misc.Unsafe.park(Native Method)
@@ -3570,6 +3828,34 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 2022-11-25 02:25:39.927  INFO 6188 --- [Thread-40] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
 2022-11-25 02:25:39.930  WARN 6188 --- [Thread-40] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-10 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  sun.misc.Unsafe.park(Native Method)
+=======
+2022-11-25 01:24:10.759  INFO 6188 --- [Thread-36] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown initiated...
+2022-11-25 01:24:10.764  INFO 6188 --- [Thread-36] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown completed.
+2022-11-25 01:24:10.918  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 6188 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
+2022-11-25 01:24:10.918  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-11-25 01:24:11.153  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-25 01:24:11.154  INFO 6188 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-25 01:24:11.154  INFO 6188 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-25 01:24:11.165  INFO 6188 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-25 01:24:11.165  INFO 6188 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 245 ms
+2022-11-25 01:24:11.252  INFO 6188 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-11-25 01:24:11.294  INFO 6188 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-25 01:24:11.303  INFO 6188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-25 01:24:11.306  INFO 6188 --- [restartedMain] com.mycom.project.ProjectApplication     : Started ProjectApplication in 0.407 seconds (JVM running for 17037.051)
+2022-11-25 01:24:11.306  INFO 6188 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-11-25 01:24:14.231  INFO 6188 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-25 01:24:14.232  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-25 01:24:14.233  INFO 6188 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-25 01:24:14.234  INFO 6188 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Starting...
+2022-11-25 01:24:14.246  INFO 6188 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Start completed.
+2022-11-25 01:43:54.039 ERROR 6188 --- [http-nio-8080-exec-5] c.m.p.login.service.JwtServiceImpl       : JWT expired at 2022-11-25T01:40:36Z. Current time: 2022-11-25T01:43:54Z, a difference of 198039 milliseconds.  Allowed clock skew: 0 milliseconds.
+2022-11-25 02:14:18.330 ERROR 6188 --- [http-nio-8080-exec-1] c.m.p.login.service.JwtServiceImpl       : JWT expired at 2022-11-25T02:13:54Z. Current time: 2022-11-25T02:14:18Z, a difference of 24330 milliseconds.  Allowed clock skew: 0 milliseconds.
+2022-11-25 02:25:39.838  INFO 6188 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
+2022-11-25 02:25:39.926  INFO 6188 --- [Thread-40] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-25 02:25:39.927  INFO 6188 --- [Thread-40] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-25 02:25:39.930  WARN 6188 --- [Thread-40] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-10 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+>>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
  java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
  java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
  java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
@@ -6259,6 +6545,9 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	The import com.mycom.project.event.service cannot be resolved
 	EventService cannot be resolved to a type
 	EventService cannot be resolved to a type
+<<<<<<< HEAD
+>>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
+=======
 >>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1334) ~[spring-beans-5.3.23.jar:5.3.23]
@@ -6285,13 +6574,19 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at java.lang.reflect.Method.invoke(Unknown Source) ~[na:1.8.0_321]
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.7.5.jar:2.7.5]
 <<<<<<< HEAD
+<<<<<<< HEAD
 Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.mycom.project.common.LoginInterceptor]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
 	Syntax error, insert "}" to complete ClassBody
 =======
+=======
+>>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
 Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.mycom.project.event.controller.EventController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
 	The import com.mycom.project.event.service cannot be resolved
 	EventService cannot be resolved to a type
 	EventService cannot be resolved to a type
+<<<<<<< HEAD
+>>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
+=======
 >>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
 
 	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:224) ~[spring-beans-5.3.23.jar:5.3.23]
@@ -6299,17 +6594,23 @@ Caused by: org.springframework.beans.BeanInstantiationException: Failed to insta
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1326) ~[spring-beans-5.3.23.jar:5.3.23]
 	... 22 common frames omitted
 <<<<<<< HEAD
+<<<<<<< HEAD
 Caused by: java.lang.Error: Unresolved compilation problem: 
 	Syntax error, insert "}" to complete ClassBody
 
 	at com.mycom.project.common.LoginInterceptor.<init>(LoginInterceptor.java:37) ~[main/:na]
 =======
+=======
+>>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
 Caused by: java.lang.Error: Unresolved compilation problems: 
 	The import com.mycom.project.event.service cannot be resolved
 	EventService cannot be resolved to a type
 	EventService cannot be resolved to a type
 
 	at com.mycom.project.event.controller.EventController.<init>(EventController.java:13) ~[main/:na]
+<<<<<<< HEAD
+>>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
+=======
 >>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_321]
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source) ~[na:1.8.0_321]
@@ -6318,6 +6619,7 @@ Caused by: java.lang.Error: Unresolved compilation problems:
 	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:211) ~[spring-beans-5.3.23.jar:5.3.23]
 	... 24 common frames omitted
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 2022-12-30 14:22:07.925  INFO 25304 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 25304 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
 2022-12-30 14:22:07.926  INFO 25304 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
@@ -6380,6 +6682,8 @@ Caused by: java.lang.Error: Unresolved compilation problems:
 2022-12-30 14:41:33.749  INFO 25304 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2022-12-30 14:41:33.755  INFO 25304 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
 =======
+=======
+>>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
 2022-11-25 06:26:12.474  INFO 29488 --- [restartedMain] com.mycom.project.ProjectApplication     : Starting ProjectApplication using Java 1.8.0_321 on DESKTOP-PDFSO0V with PID 29488 (C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project\bin\main started by rudgn in C:\Users\rudgn\Desktop\ssafy\final\HappyHouse\Project)
 2022-11-25 06:26:12.475  INFO 29488 --- [restartedMain] com.mycom.project.ProjectApplication     : No active profile set, falling back to 1 default profile: "default"
 2022-11-25 06:26:12.688  INFO 29488 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
@@ -6686,4 +6990,7 @@ Caused by: java.lang.Error: Unresolved compilation problems:
  java.lang.Thread.run(Thread.java:748)
 2022-11-25 11:51:20.912  INFO 9544 --- [RMI TCP Connection(103)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
 2022-11-25 11:51:20.916  INFO 9544 --- [RMI TCP Connection(103)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+<<<<<<< HEAD
+>>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
+=======
 >>>>>>> 2880ba64faafbe190b244006c6de66cdc1dc8243
